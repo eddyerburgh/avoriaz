@@ -18,3 +18,5 @@ dist
 
 # Docs
 _book
+.tmp
+tmp*
