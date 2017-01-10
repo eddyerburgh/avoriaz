@@ -1,6 +1,8 @@
 import Vue from 'vue';
+import VueWrapper from './VueWrapper';
 
-export default function mount(Component) {
-  const Ctor = Vue.extend(Component);
-  return new Ctor().$mount();
+export default function mount(component) {
+  const Ctor = Vue.extend(component);
+  const vm = new Ctor().$mount();
+  return new VueWrapper(vm);
 }
