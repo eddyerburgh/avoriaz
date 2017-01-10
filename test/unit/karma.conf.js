@@ -1,29 +1,29 @@
 const path = require('path');
-const webpack = require('webpack');
+
 const projectRoot = path.resolve(__dirname, '../../');
 
-const webpackConfig =  {
+const webpackConfig = {
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     loaders: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue',
       },
       {
         test: /\.js$/,
         loader: 'babel',
         include: [
-          projectRoot
+          projectRoot,
         ],
-        exclude: /node_modules/
-      }
+        exclude: /node_modules/,
+      },
     ],
   },
-  devtool: '#inline-source-map'
+  devtool: '#inline-source-map',
 };
 
-module.exports = function (config) {
+module.exports = function karmaConfig(config) {
   config.set({
     browsers: ['PhantomJS'],
     frameworks: ['mocha'],

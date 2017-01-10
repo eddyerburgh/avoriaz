@@ -1,6 +1,7 @@
+const functionBind = require('function-bind');
 // Polyfill fn.bind() for PhantomJS
 /* eslint-disable no-extend-native */
-Function.prototype.bind = require('function-bind');
+Function.prototype.bind = functionBind;
 
 // require all test files (files that ends with .test.js)
 const testsContext = require.context('./', true, /\.spec/);
