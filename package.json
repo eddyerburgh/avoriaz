@@ -6,7 +6,7 @@
   "scripts": {
     "docs:build": "npm run docs:prepare && rimraf _book && gitbook build",
     "docs:prepare": "gitbook install",
-    "docs:publish": "npm run docs:build && cd _book && cd docs && git init && git commit --allow-empty -m 'Update docs' && git fetch https://github.com/eddyerburgh/avoriaz.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/eddyerburgh/avoriaz.git gh-pages:gh-pages --force",
+    "docs:publish": "npm run docs:build && cd _book && cd docs && git init && git commit --allow-empty -m 'Update docs' && git fetch https://github.com/eddyerburgh/avoriaz.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/eddyerburgh/avoriaz.git gh-pages:gh-pages",
     "docs:watch": "cd docs && gitbook serve",
     "lint": "eslint  --ext .js,.vue src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",

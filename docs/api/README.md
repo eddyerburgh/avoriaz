@@ -1,1 +1,1 @@
-## [mount](/docs/api/mount/README.md)
+## [render](/docs/api/render/README.md)

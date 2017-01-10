@@ -4,15 +4,14 @@ Returns true if wrapper contains selector. Use any valid selector (tag, class, i
 
 
 ```js
-import { mount } from 'avoriaz';
+import { render } from 'avoriaz';
 import { expect } from 'chai';
 import Foo from './components/Foo';
 
 describe('Foo', () => {
-  it('calls componentDidMount', () => {
-    const wrapper = mount(Foo);
-    const input = wrapper.find('div');
-    expect(input.contains('p')).to.equal(true);
+  it('contains a p tag', () => {
+    const wrapper = render(Foo);
+    expect(wrapper.contains('p')).to.equal(true);
   });
 });
 
