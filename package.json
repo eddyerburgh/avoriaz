@@ -14,12 +14,11 @@
     "url": "git+ssh://git@github.com/eddyerburgh/avoriaz.git"
   },
   "keywords": [
+    "test vue",
     "vue.js",
     "vue",
-    "testing",
-    "vue",
-    "test",
-    "utilities"
+    "vue test",
+    "vue testing utilities"
   ],
   "author": "Edd Yerburgh",
   "license": "ISC",
@@ -53,6 +52,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.8.1",
     "mocha": "^3.2.0",
+    "vue": "^2.1.8",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.8",
