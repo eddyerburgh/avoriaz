@@ -5,7 +5,6 @@ import Wrapper from '../../../src/Wrapper';
 
 describe('Wrapper', () => {
   describe('find', () => {
-
     it('returns an array of VueWrappers of elements matching tag selector passed', () => {
       const wrapper = mount(Form);
       const input = wrapper.find('input');
@@ -29,15 +28,14 @@ describe('Wrapper', () => {
   });
 
   describe('contains', () => {
-
     it('returns true if wrapper contains element', () => {
       const wrapper = mount(Form);
-      expect(wrapper.contains('input')).to.be.true;
+      expect(wrapper.contains('input')).to.equal(true);
     });
 
     it('returns false if wrapper does not contain element', () => {
       const wrapper = mount(Form);
-      expect(wrapper.contains('doesntexist')).to.be.false;
+      expect(wrapper.contains('doesntexist')).to.equal(false);
     });
-  })
+  });
 });

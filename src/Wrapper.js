@@ -5,7 +5,7 @@ export default class Wrapper {
   }
 
   /**
-   * Finds every node in the render tree of the current wrapper that matches the provided selector.
+   * Finds every node in the mount tree of the current wrapper that matches the provided selector.
    *
    * @param {String} selector
    * @returns {VueWrapper}

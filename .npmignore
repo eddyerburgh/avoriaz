@@ -9,3 +9,7 @@
 *.log
 reports
 coverage
+
+# Docs
+docs
+_book
