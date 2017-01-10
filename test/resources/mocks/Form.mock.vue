@@ -1,6 +1,6 @@
 <template>
 	<form id="form-mock">
-		<input class="input-text" type="text"/>
+		<input id="input-text" class="input-text" type="text"/>
 		<submit />
 	</form>
 </template>

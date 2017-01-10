@@ -13,4 +13,8 @@ export default class Wrapper {
   find(selector) {
     return new Wrapper(this.element.querySelectorAll(selector));
   }
+
+  contains(selector) {
+    return this.element.querySelectorAll(selector).length > 0;
+  }
 }
