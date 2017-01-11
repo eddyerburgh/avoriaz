@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import render from '../../../src/render';
+import mount from '../../../src/mount';
 import Form from '../../resources/mocks/Form.mock.vue';
 
 describe('render', () => {
   it('returns an object', () => {
-    const wrapper = render(Form);
+    const wrapper = mount(Form);
 
     expect(wrapper).to.be.an('object');
   });

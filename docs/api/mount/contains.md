@@ -4,13 +4,13 @@ Returns true if wrapper contains selector. Use any valid selector (tag, class, i
 
 
 ```js
-import { render } from 'avoriaz';
+import { mount } from 'avoriaz';
 import { expect } from 'chai';
 import Foo from './components/Foo';
 
 describe('Foo', () => {
   it('contains a p tag', () => {
-    const wrapper = render(Foo);
+    const wrapper = mount(Foo);
     expect(wrapper.contains('p')).to.equal(true);
   });
 });
