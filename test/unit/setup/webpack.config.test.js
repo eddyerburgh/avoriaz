@@ -20,5 +20,10 @@ module.exports = {
       },
     ],
   },
+  vue: {
+    loaders: {
+      js: 'babel'
+    }
+  },
   devtool: '#inline-source-map',
 };
