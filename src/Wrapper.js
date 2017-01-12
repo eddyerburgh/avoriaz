@@ -46,6 +46,17 @@ export default class Wrapper {
   }
 
   /**
+   * Returns HTML of element as a string
+   *
+   * @returns {String} HTML of wrapper element
+   */
+  html() {
+    const tmp = document.createElement('div');
+    tmp.appendChild(this.element);
+    return tmp.innerHTML;
+  }
+
+  /**
    * Simulates a DOM event on wrapper
    *
    * @param {String} type - type of event

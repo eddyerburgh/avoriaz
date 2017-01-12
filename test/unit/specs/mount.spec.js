@@ -3,6 +3,7 @@ import Form from '../../resources/components/Form.vue';
 import Wrapper from '../../../src/Wrapper';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
+import Submit from '../../resources/components/Submit.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -82,6 +83,23 @@ describe('Wrapper', () => {
       wrapper.simulate('keydown');
 
       expect(keydownHandler).to.be.calledOnce;
+    });
+  });
+
+  describe('html', () => {
+    it('returns a VueWrappers HTML as a string', () => {
+      const expectedHtml = '<input type="submit" class="input-submit">';
+      const wrapper = mount(Submit);
+
+      expect(wrapper.html()).to.equal(expectedHtml);
+    });
+
+    it('returns a Wrappers HTML as a string', () => {
+      const expectedHtml = '<input id="input-text" type="text" class="input-text">';
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+
+      expect(input.html()).to.equal(expectedHtml);
     });
   });
 });
