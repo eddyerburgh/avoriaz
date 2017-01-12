@@ -46,7 +46,7 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-const bar = wrapper.find('#bar');
+const bar = wrapper.find('#bar')[0];
 
 bar.simulate('click');
 ```
