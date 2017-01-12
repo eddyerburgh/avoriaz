@@ -6,3 +6,4 @@
     * [contains](/api/mount/contains.md)
     * [find](/api/mount/find.md)
     * [hasClass](/api/mount/hasClass.md)
+    * [simulate](/api/mount/simulate.md)
