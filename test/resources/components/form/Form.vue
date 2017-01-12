@@ -15,9 +15,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.input-text {
-	color: red;
-}
-</style>
