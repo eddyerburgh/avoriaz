@@ -1,6 +1,6 @@
 # avoriaz
 
-> A JavaScript test utilities library for Vue.js
+> a Vue.js testing utility library
 
 ## Installation
 

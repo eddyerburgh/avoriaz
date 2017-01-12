@@ -1,7 +1,7 @@
 {
   "name": "avoriaz",
   "version": "1.0.0",
-  "description": "a Vue.js testing framework",
+  "description": "a Vue.js testing utility library",
   "main": "build",
   "scripts": {
     "build": "babel src --out-dir dist",
