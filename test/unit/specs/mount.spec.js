@@ -136,7 +136,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('text', () => {
+  describe('text', () => {
     it('returns text content of wrapper node', () => {
       const text = 'test text prop';
       const wrapper = mount(Paragraph, { propsData: { text } });

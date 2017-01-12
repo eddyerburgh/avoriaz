@@ -91,4 +91,14 @@ export default class Wrapper {
     const eventObject = new Event(type);
     this.element.dispatchEvent(eventObject);
   }
+
+  /**
+   * Return text of wrapper element
+   *
+   * @param {String} type - type of event
+   * @returns {Boolean}
+   */
+  text() {
+    return this.element.innerText;
+  }
 }
