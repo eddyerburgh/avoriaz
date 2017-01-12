@@ -36,6 +36,16 @@ export default class Wrapper {
   }
 
   /**
+   * Checks if wrapper has a class name
+   *
+   * @param {String} className - class name to check
+   * @returns {Boolean}
+   */
+  hasClass(className) {
+    return this.element.className.indexOf(className) !== -1;
+  }
+
+  /**
    * Simulates a DOM event on wrapper
    *
    * @param {String} type - type of event
