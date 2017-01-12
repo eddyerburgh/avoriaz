@@ -7,9 +7,12 @@ function elementWithId(id) {
   return element;
 }
 
+const getAttribute = () => {};
+
 const vNodeMock = {
   elm: {
     className: 'find',
+    getAttribute
   },
   tag: 'span',
   child: undefined,
@@ -22,6 +25,7 @@ const vNodeMock = {
         {
           elm: {
             className: 'find',
+            getAttribute
           },
           tag: 'p',
           children: undefined,
@@ -29,6 +33,7 @@ const vNodeMock = {
         {
           elm: {
             className: undefined,
+            getAttribute
           },
           tag: 'div',
           child: undefined,
@@ -39,6 +44,7 @@ const vNodeMock = {
     {
       elm: {
         className: undefined,
+        getAttribute
       },
       tag: 'div',
       child: undefined,
