@@ -6,7 +6,7 @@
 
 <script>
   export default{
-    name: 'Submit',
+    name: 'ClickComponent',
     props: ['parentClickHandler', 'childClickHandler'],
   };
 </script>
