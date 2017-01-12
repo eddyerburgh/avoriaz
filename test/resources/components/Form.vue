@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Submit from './Submit.mock.vue';
+import Submit from './Submit.vue';
 
 export default {
   name: 'Form',
