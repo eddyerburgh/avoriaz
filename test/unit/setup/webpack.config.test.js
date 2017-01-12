@@ -6,7 +6,7 @@ module.exports = {
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     resolve: {
-      extensions: ['.js', '.vue']
+      extensions: ['.js', '.vue'],
     },
     loaders: [
       {
@@ -20,13 +20,13 @@ module.exports = {
           projectRoot,
         ],
         exclude: /node_modules/,
-      }
+      },
     ],
   },
   vue: {
     loaders: {
-      js: 'babel'
-    }
+      js: 'babel',
+    },
   },
   devtool: '#inline-source-map',
 };

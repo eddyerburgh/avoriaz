@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import mount from '../../../src/mount';
-import Form from '../../resources/mocks/Form.mock.vue';
+import Form from '../../resources/components/Form.vue';
 
 describe('render', () => {
   it('returns an object', () => {
