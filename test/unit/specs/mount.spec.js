@@ -30,7 +30,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('contains', () => {
+  describe('contains', () => {
     it('returns true if wrapper contains element', () => {
       const wrapper = mount(Form);
       expect(wrapper.contains('input')).to.equal(true);
@@ -42,7 +42,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('hasClass', () => {
+  describe('hasClass', () => {
     it('returns true if wrapper has class name', () => {
       const wrapper = mount(Form);
       expect(wrapper.hasClass('form')).to.equal(true);
@@ -54,7 +54,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('simulate', () => {
+  describe('simulate', () => {
     it('causes click handler to fire when wrapper.simulate("click") is called on a child node', () => {
       const childClickHandler = sinon.stub();
       const wrapper = mount(ClickComponent, {
@@ -87,7 +87,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('html', () => {
+  describe('html', () => {
     it('returns a VueWrappers HTML as a string', () => {
       const expectedHtml = '<input id="input-submit" type="submit" class="input-submit">';
       const wrapper = mount(Submit);
@@ -104,7 +104,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe.skip('is', () => {
+  describe('is', () => {
     it('returns true if root node matches tag selector', () => {
       const wrapper = mount(Submit);
       expect(wrapper.is('input')).to.equal(true);
