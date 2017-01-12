@@ -17,7 +17,12 @@ export function findByTag(vNode, tag) {
 
 export function findByClass(vNode, className) {
   const nodes = findAllVNodes(vNode);
-  return nodes.filter(node => node.elm.className === className);
+  return nodes.filter((node) => {
+    if (node.elm.className) {
+      return node.elm.className.split(' ').indexOf(className) !== -1;
+    }
+    return false;
+  });
 }
 
 export function findById(vNode, id) {

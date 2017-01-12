@@ -12,7 +12,7 @@ const getAttribute = () => {};
 const vNodeMock = {
   elm: {
     className: 'find',
-    getAttribute
+    getAttribute,
   },
   tag: 'span',
   child: undefined,
@@ -25,7 +25,7 @@ const vNodeMock = {
         {
           elm: {
             className: 'find',
-            getAttribute
+            getAttribute,
           },
           tag: 'p',
           children: undefined,
@@ -33,7 +33,7 @@ const vNodeMock = {
         {
           elm: {
             className: undefined,
-            getAttribute
+            getAttribute,
           },
           tag: 'div',
           child: undefined,
@@ -43,8 +43,8 @@ const vNodeMock = {
     },
     {
       elm: {
-        className: undefined,
-        getAttribute
+        className: 'this that',
+        getAttribute,
       },
       tag: 'div',
       child: undefined,
@@ -63,6 +63,10 @@ describe('vNode', () => {
   describe('findByClass', () => {
     it('returns an array of vNodes of elements matching className passed', () => {
       expect(vNode.findByClass(vNodeMock, 'find').length).to.equal(2);
+    });
+
+    it('returns an array of vNodes of elements matching className passed when node has multiple classes', () => {
+      expect(vNode.findByClass(vNodeMock, 'this').length).to.equal(1);
     });
   });
 
