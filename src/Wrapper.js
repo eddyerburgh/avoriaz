@@ -42,9 +42,8 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   hasClass(className) {
-    return this.element.className.indexOf(className) !== -1;
+    return this.element.className.split(' ').indexOf(className) !== -1;
   }
-
   /**
    * Returns HTML of element as a string
    *
@@ -54,6 +53,24 @@ export default class Wrapper {
     const tmp = document.createElement('div');
     tmp.appendChild(this.element);
     return tmp.innerHTML;
+  }
+
+  /**
+   * Checks if node matches selector
+   *
+   * @param {String} selector - selector to check node is
+   * @returns {Boolean}
+   */
+  is(selector) {
+    if (selector[0] === '.') {
+      return this.element.className.split(' ').indexOf(selector.substr(1)) !== -1;
+    }
+
+    if (selector[0] === '#') {
+      return this.element.getAttribute('id') === selector.substr(1);
+    }
+
+    return this.element.tagName === selector.toUpperCase();
   }
 
   /**

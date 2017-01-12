@@ -1,5 +1,5 @@
 <template>
-    <input class="input-submit" type="submit" />
+    <input id="input-submit" class="input-submit" type="submit" />
 </template>
 
 <script>

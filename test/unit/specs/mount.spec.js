@@ -88,7 +88,7 @@ describe('Wrapper', () => {
 
   describe('html', () => {
     it('returns a VueWrappers HTML as a string', () => {
-      const expectedHtml = '<input type="submit" class="input-submit">';
+      const expectedHtml = '<input id="input-submit" type="submit" class="input-submit">';
       const wrapper = mount(Submit);
 
       expect(wrapper.html()).to.equal(expectedHtml);
@@ -100,6 +100,38 @@ describe('Wrapper', () => {
       const input = wrapper.find('#input-text')[0];
 
       expect(input.html()).to.equal(expectedHtml);
+    });
+  });
+
+  describe('is', () => {
+    it('returns true if root node matches tag selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('input')).to.equal(true);
+    });
+
+    it('returns true if root node matches class selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('.input-submit')).to.equal(true);
+    });
+
+    it('returns true if root node matches id selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('#input-submit')).to.equal(true);
+    });
+
+    it('returns false if root node does not match tag selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('p')).to.equal(false);
+    });
+
+    it('returns false if root node does not match class selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('.p')).to.equal(false);
+    });
+
+    it('returns false if root node does not match id selector', () => {
+      const wrapper = mount(Submit);
+      expect(wrapper.is('#p')).to.equal(false);
     });
   });
 });
