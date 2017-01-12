@@ -1,9 +1,9 @@
 import mount from '../../../src/mount';
-import Form from '../../resources/components/Form.vue';
+import Form from '../../resources/components/form/Form.vue';
 import Wrapper from '../../../src/Wrapper';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
-import Submit from '../../resources/components/Submit.vue';
+import Submit from '../../resources/components/form/Submit.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
