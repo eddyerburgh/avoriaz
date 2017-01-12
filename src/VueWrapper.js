@@ -8,8 +8,6 @@ export default class VueWrapper extends Wrapper {
     const vm = new Constructor(options);
     const mountedVm = vm.$mount();
 
-    super(mountedVm.$el);
-
-    this.vm = vm;
+    super(mountedVm._vnode); // eslint-disable-line no-underscore-dangle
   }
 }

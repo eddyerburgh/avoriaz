@@ -4,6 +4,7 @@ import Wrapper from '../../../src/Wrapper';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
 import Submit from '../../resources/components/form/Submit.vue';
+import Paragraph from '../../resources/components/paragraph/Paragraph.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -29,7 +30,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe('contains', () => {
+  describe.skip('contains', () => {
     it('returns true if wrapper contains element', () => {
       const wrapper = mount(Form);
       expect(wrapper.contains('input')).to.equal(true);
@@ -41,7 +42,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe('hasClass', () => {
+  describe.skip('hasClass', () => {
     it('returns true if wrapper has class name', () => {
       const wrapper = mount(Form);
       expect(wrapper.hasClass('form')).to.equal(true);
@@ -53,7 +54,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe('simulate', () => {
+  describe.skip('simulate', () => {
     it('causes click handler to fire when wrapper.simulate("click") is called on a child node', () => {
       const childClickHandler = sinon.stub();
       const wrapper = mount(ClickComponent, {
@@ -86,7 +87,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe('html', () => {
+  describe.skip('html', () => {
     it('returns a VueWrappers HTML as a string', () => {
       const expectedHtml = '<input id="input-submit" type="submit" class="input-submit">';
       const wrapper = mount(Submit);
@@ -103,7 +104,7 @@ describe('Wrapper', () => {
     });
   });
 
-  describe('is', () => {
+  describe.skip('is', () => {
     it('returns true if root node matches tag selector', () => {
       const wrapper = mount(Submit);
       expect(wrapper.is('input')).to.equal(true);
@@ -132,6 +133,14 @@ describe('Wrapper', () => {
     it('returns false if root node does not match id selector', () => {
       const wrapper = mount(Submit);
       expect(wrapper.is('#p')).to.equal(false);
+    });
+  });
+
+  describe.skip('text', () => {
+    it('returns text content of wrapper node', () => {
+      const text = 'test text prop';
+      const wrapper = mount(Paragraph, { propsData: { text } });
+      expect(wrapper.text()).to.equal(text);
     });
   });
 });

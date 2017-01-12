@@ -39,6 +39,11 @@ const vNodeMock = {
           child: undefined,
           children: undefined,
         },
+        {
+          elm: {
+            nodeName: '#text',
+          },
+        },
       ],
     },
     {

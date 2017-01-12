@@ -1,7 +1,14 @@
+import {
+  findByClass,
+  findByTag,
+  findById,
+} from './vNode';
+
 export default class Wrapper {
 
-  constructor(element) {
-    this.element = element;
+  constructor(vNode) {
+    this.vNode = vNode;
+    this.element = vNode.elm;
   }
 
   /**
@@ -11,18 +18,19 @@ export default class Wrapper {
    * @returns {VueWrapper||VueWrapper[]}
    */
   find(selector) {
-    const nodeList = this.element.querySelectorAll(selector);
-    if (nodeList.length === 0) {
-      throw new Error('element could not be found');
+    if (selector[0] === '.') {
+      const nodes = findByClass(this.vNode, selector.substr(1));
+
+      return nodes.map(node => new Wrapper(node));
     }
 
-    const wrappers = [];
-
-    for (let i = 0; i < nodeList.length; i++) { // eslint-disable-line no-plusplus
-      wrappers.push(new Wrapper(nodeList[i]));
+    if (selector[0] === '#') {
+      const nodes = findById(this.vNode, selector.substr(1));
+      return nodes.map(node => new Wrapper(node));
     }
+    const nodes = findByTag(this.vNode, selector);
 
-    return wrappers;
+    return nodes.map(node => new Wrapper(node));
   }
 
   /**

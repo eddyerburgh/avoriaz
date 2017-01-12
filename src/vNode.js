@@ -27,5 +27,11 @@ export function findByClass(vNode, className) {
 
 export function findById(vNode, id) {
   const nodes = findAllVNodes(vNode);
-  return nodes.filter(node => node.elm.getAttribute('id') === id);
+  return nodes.filter((node) => {
+    // Text nodes don't have getAttribute method
+    if (node.elm.nodeName === '#text') {
+      return false;
+    }
+    return node.elm.getAttribute('id') === id;
+  });
 }
