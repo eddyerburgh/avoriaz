@@ -5,6 +5,9 @@ const projectRoot = path.resolve(__dirname, '../../../');
 module.exports = {
   // use inline sourcemap for karma-sourcemap-loader
   module: {
+    resolve: {
+      extensions: ['.js', '.vue']
+    },
     loaders: [
       {
         test: /\.vue$/,
@@ -17,7 +20,7 @@ module.exports = {
           projectRoot,
         ],
         exclude: /node_modules/,
-      },
+      }
     ],
   },
   vue: {
