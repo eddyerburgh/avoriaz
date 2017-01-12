@@ -4,6 +4,7 @@
   "description": "a Vue.js testing framework",
   "main": "build",
   "scripts": {
+    "build": "babel src --out-dir dist",
     "docs:build": "npm run docs:prepare && rimraf _book && gitbook build",
     "docs:prepare": "gitbook install",
     "docs:publish": "npm run docs:build && cd _book && cd docs && git init && git commit --allow-empty -m 'Update docs' && git fetch git@github.com:eddyerburgh/avoriaz.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push git@github.com:eddyerburgh/avoriaz.git gh-pages --force",
@@ -31,6 +32,7 @@
   },
   "homepage": "https://github.com/eddyerburgh/avoriaz#readme",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
