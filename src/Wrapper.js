@@ -88,7 +88,7 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   simulate(type) {
-    const eventObject = new Event(type);
+    const eventObject = new window.Event(type);
     this.element.dispatchEvent(eventObject);
   }
 
