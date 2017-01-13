@@ -13,3 +13,5 @@ coverage
 # Docs
 docs
 _book
+.tmp
+tmp*
