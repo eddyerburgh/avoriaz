@@ -1,6 +1,8 @@
-# avoriaz
+# avoriaz [![Build Status](https://travis-ci.org/eddyerburgh/avoriaz.svg?branch=master)](https://travis-ci.org/eddyerburgh/avoriaz)
+
 
 > a Vue.js testing utility library
+
 
 ## Installation
 
@@ -44,7 +46,7 @@ import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
 
-expect(wrapper.text()).to.equal('some text'));
+expect(wrapper.text()).to.equal('some text');
 ```
 
 ##### Call DOM events on a child 
