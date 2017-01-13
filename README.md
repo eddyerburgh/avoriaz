@@ -18,7 +18,7 @@ npm install --save-dev avoriaz
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
+import Foo from './Foo.vue';
 
 const wrapper = mount(Foo, {
   propsData: { clickHandler },
@@ -30,17 +30,29 @@ wrapper.simulate('click');
 ##### Assert wrapper contains a child
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
+import Foo from './Foo.vue';
 
-const wrapper = mount();
+const wrapper = mount(Foo);
 
-expect(wrapper.contains('.bar').to.equal(true));
+expect(wrapper.contains('.bar')).to.equal(true);
+```
+
+##### Assert wrapper contains text
+```js
+import { mount } from 'avoriaz';
+import Foo from './Foo.vue';
+
+const wrapper = mount(Foo);
+
+expect(wrapper.text()).to.equal('some text'));
 ```
 
 ##### Call DOM events on a child 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
+import Foo from './Foo.vue';
+
+clickHandler = sinon.stub();
 
 const wrapper = mount(Foo, {
   propsData: { clickHandler },
@@ -49,4 +61,6 @@ const wrapper = mount(Foo, {
 const bar = wrapper.find('#bar')[0];
 
 bar.simulate('click');
+
+expect(clickHandler.called()).to.equal(true)
 ```
