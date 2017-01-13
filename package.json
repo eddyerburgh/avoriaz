@@ -12,8 +12,7 @@
     "lint": "eslint  --ext .js,.vue src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint:fix && npm run test:karma",
-    "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
-    "test:report": "cat test/unit/coverage/lcov.info | coveralls"
+    "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
@@ -42,7 +41,6 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
     "chai": "^3.5.0",
-    "coveralls": "^2.11.15",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "eslint": "^3.13.1",
