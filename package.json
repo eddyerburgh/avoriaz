@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint:fix && npm run test:karma",
     "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
-    "test:report": "cat ./test/unit/coverage/lcov.info | coveralls"
+    "test:report": "cat test/unit/coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
