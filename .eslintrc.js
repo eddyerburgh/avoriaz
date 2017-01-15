@@ -16,5 +16,6 @@ module.exports = {
       'js': 'never',
       'vue': 'never'
     }],
+    'no-underscore-dangle': 0
   }
 };
