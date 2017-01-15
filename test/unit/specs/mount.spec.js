@@ -2,6 +2,7 @@ import mount from '../../../src/mount';
 import Form from '../../resources/components/form/Form.vue';
 import Wrapper from '../../../src/Wrapper';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
+import ClickToggleComponent from '../../resources/components/event-components/ClickToggleComponent.vue';
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
 import Submit from '../../resources/components/form/Submit.vue';
 import Paragraph from '../../resources/components/paragraph/Paragraph.vue';
@@ -84,6 +85,16 @@ describe('Wrapper', () => {
       wrapper.simulate('keydown');
 
       expect(keydownHandler).to.be.calledOnce;
+    });
+
+    it('causes DOM to update after clickHandler method that changes components data is called', () => {
+      const wrapper = mount(ClickToggleComponent);
+
+      expect(wrapper.hasClass('active')).to.equal(false);
+
+      wrapper.simulate('click');
+
+      expect(wrapper.hasClass('active')).to.equal(true);
     });
   });
 

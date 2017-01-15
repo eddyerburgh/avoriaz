@@ -6,9 +6,10 @@ import {
 
 export default class Wrapper {
 
-  constructor(vNode) {
+  constructor(vNode, update) {
     this.vNode = vNode;
     this.element = vNode.elm;
+    this.update = update;
   }
 
   /**
@@ -21,16 +22,16 @@ export default class Wrapper {
     if (selector[0] === '.') {
       const nodes = findByClass(this.vNode, selector.substr(1));
 
-      return nodes.map(node => new Wrapper(node));
+      return nodes.map(node => new Wrapper(node, this.update));
     }
 
     if (selector[0] === '#') {
       const nodes = findById(this.vNode, selector.substr(1));
-      return nodes.map(node => new Wrapper(node));
+      return nodes.map(node => new Wrapper(node, this.update));
     }
     const nodes = findByTag(this.vNode, selector);
 
-    return nodes.map(node => new Wrapper(node));
+    return nodes.map(node => new Wrapper(node, this.update));
   }
 
   /**
@@ -90,6 +91,7 @@ export default class Wrapper {
   simulate(type) {
     const eventObject = new window.Event(type);
     this.element.dispatchEvent(eventObject);
+    this.update();
   }
 
   /**

@@ -7,7 +7,7 @@ export default class VueWrapper extends Wrapper {
     const Constructor = Vue.extend(component);
     const vm = new Constructor(options);
     const mountedVm = vm.$mount();
-
-    super(mountedVm._vnode); // eslint-disable-line no-underscore-dangle
+    super(mountedVm._vnode, mountedVm._watcher.run.bind(mountedVm._watcher));
+    this.mountedVm = mountedVm;
   }
 }
