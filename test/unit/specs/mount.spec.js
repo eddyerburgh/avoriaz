@@ -147,6 +147,20 @@ describe('Wrapper', () => {
     });
   });
 
+  describe('isEmpty', () => {
+    it('returns true if node is empty', () => {
+      const wrapper = mount(Submit);
+
+      expect(wrapper.isEmpty()).to.equal(true);
+    });
+
+    it('returns false if node contains other nodes', () => {
+      const wrapper = mount(Form);
+
+      expect(wrapper.isEmpty()).to.equal(false);
+    });
+  });
+
   describe('text', () => {
     it('returns text content of wrapper node', () => {
       const text = 'test text prop';

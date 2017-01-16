@@ -83,6 +83,15 @@ export default class Wrapper {
   }
 
   /**
+   * Checks if node is empty
+   *
+   * @returns {Boolean}
+   */
+  isEmpty() {
+    return this.vNode.children === undefined;
+  }
+
+  /**
    * Simulates a DOM event on wrapper
    *
    * @param {String} type - type of event
