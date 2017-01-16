@@ -100,6 +100,6 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   text() {
-    return this.element.innerText;
+    return this.element.textContent;
   }
 }
