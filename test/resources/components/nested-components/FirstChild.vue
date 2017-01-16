@@ -5,12 +5,12 @@
 </template>
 
 <script>
-	import SecondChild from './SecondChild.vue';
+import SecondChild from './SecondChild.vue';
 
-  export default{
-    name: 'FirstChild',
-    components: {
-      SecondChild,
-    },
-  };
+export default{
+  name: 'FirstChild',
+  components: {
+    SecondChild,
+  },
+};
 </script>
