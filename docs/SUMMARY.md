@@ -11,3 +11,4 @@
     * [isEmpty](/api/mount/isEmpty.md)
     * [name](/api/mount/name.md)
     * [simulate](/api/mount/simulate.md)
+    * [update](/api/mount/update.md)
