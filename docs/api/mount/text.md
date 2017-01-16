@@ -4,7 +4,7 @@ Returns text content of wrapper.
 
 ### Returns
 
-Sttring: text content of wrapper.
+String: text content of wrapper.
 
 ### Example
 
