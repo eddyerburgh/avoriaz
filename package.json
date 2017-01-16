@@ -12,7 +12,8 @@
     "lint": "eslint  --ext .js,.vue src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run lint:fix && npm run test:karma",
-    "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run"
+    "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
+    "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.test.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
     "eslint-plugin-react": "^6.9.0",
     "gitbook-cli": "^2.3.0",
     "istanbul": "^0.4.5",
+    "jsdom": "^9.9.1",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
@@ -72,6 +74,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.8.1",
     "mocha": "^3.2.0",
+    "mocha-webpack": "^0.7.0",
     "rimraf": "^2.5.4",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
