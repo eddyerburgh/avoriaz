@@ -97,7 +97,6 @@ export default class Wrapper {
   /**
    * Return text of wrapper element
    *
-   * @param {String} type - type of event
    * @returns {Boolean}
    */
   text() {
