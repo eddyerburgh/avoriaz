@@ -1,4 +1,4 @@
-# contains(selector)
+# is(selector)
 
 Returns true if wrapper node matches selector. Use any valid selector (tag, class, id)
 

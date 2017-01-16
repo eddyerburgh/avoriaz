@@ -8,5 +8,6 @@
     * [hasClass](/api/mount/hasClass.md)
     * [html](/api/mount/html.md)
     * [is](/api/mount/is.md)
-    * [isEmpty](/api/mount/isEmpty.md)|
+    * [isEmpty](/api/mount/isEmpty.md)
+    * [name](/api/mount/name.md)
     * [simulate](/api/mount/simulate.md)

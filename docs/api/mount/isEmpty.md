@@ -1,4 +1,4 @@
-# hasClass(className)
+# isEmpty(className)
 
 Check if wrapper contains child nodes. Returns a boolean.
 

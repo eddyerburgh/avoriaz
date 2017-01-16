@@ -92,6 +92,19 @@ export default class Wrapper {
   }
 
   /**
+   * Returns name of component, or tag name if node is not a Vue component
+   *
+   * @returns {String}
+   */
+  name() {
+    if (this.isVueComponent) {
+      return this.vm.$options.name;
+    }
+
+    return this.vNode.tag;
+  }
+
+  /**
    * Simulates a DOM event on wrapper
    *
    * @param {String} type - type of event
