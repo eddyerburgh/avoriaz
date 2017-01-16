@@ -1,4 +1,4 @@
-# name(className)
+# name()
 
 Returns component name if node is a Vue component, or the tag name if it is a native DOM node.
 

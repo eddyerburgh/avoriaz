@@ -6,6 +6,7 @@ import ClickToggleComponent from '../../resources/components/event-components/Cl
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
 import Submit from '../../resources/components/form/Submit.vue';
 import Paragraph from '../../resources/components/paragraph/Paragraph.vue';
+import ComputedProperties from '../../resources/components/data-components/ComputedProperties.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -173,11 +174,44 @@ describe('Wrapper', () => {
     });
   });
 
+
   describe('text', () => {
     it('returns text content of wrapper node', () => {
       const text = 'test text prop';
       const wrapper = mount(Paragraph, { propsData: { text } });
       expect(wrapper.text()).to.equal(text);
+    });
+  });
+
+  describe('data', () => {
+    it('returns the data object of the Vue instance', () => {
+      const wrapper = mount(ComputedProperties);
+      expect(wrapper.data()).to.deep.equal(ComputedProperties.data());
+    });
+  });
+
+  describe('computed', () => {
+    it('returns the computed object of the Vue instance', () => {
+      const wrapper = mount(ComputedProperties);
+      expect(wrapper.computed()).to.deep.equal(ComputedProperties.computed);
+    });
+  });
+
+  describe('methods', () => {
+    it('returns the methods object of the Vue instance', () => {
+      const wrapper = mount(ClickToggleComponent);
+      expect(wrapper.methods()).to.deep.equal(ClickToggleComponent.method);
+    });
+  });
+
+  describe('propsData', () => {
+    it('returns props object of the Vue instance', () => {
+      const propsData = {
+        childClickHandler: () => 'childClickHandler',
+        parentClickHandler: () => 'parentClickHandler',
+      };
+      const wrapper = mount(ClickComponent, { propsData });
+      expect(wrapper.propsData()).to.deep.equal(propsData);
     });
   });
 });
