@@ -7,28 +7,37 @@ import KeydownComponent from '../../resources/components/event-components/Keydow
 import Submit from '../../resources/components/form/Submit.vue';
 import Paragraph from '../../resources/components/paragraph/Paragraph.vue';
 import ComputedProperties from '../../resources/components/data-components/ComputedProperties.vue';
+import Parent from '../../resources/components/nested-components/Parent.vue';
+import SecondChild from '../../resources/components/nested-components/SecondChild.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
-    it('returns an array of VueWrappers of elements matching tag selector passed', () => {
+    it('returns an array of Wrappers of elements matching tag selector passed', () => {
       const wrapper = mount(Form);
       const input = wrapper.find('input')[0];
       expect(input).to.be.an.instanceOf(Wrapper);
       expect(input.element.className).to.equal('input-text');
     });
 
-    it('returns an array of VueWrappers of elements matching class selector passed', () => {
+    it('returns an array of Wrapper of elements matching class selector passed', () => {
       const wrapper = mount(Form);
       const input = wrapper.find('.input-text')[0];
       expect(input).to.be.an.instanceOf(Wrapper);
       expect(input.element.className).to.equal('input-text');
     });
 
-    it('returns an array of VueWrappers of elements matching id selector passed', () => {
+    it('returns an array of Wrappers of elements matching id selector passed', () => {
       const wrapper = mount(Form);
       const input = wrapper.find('#input-text')[0];
+
       expect(input).to.be.an.instanceOf(Wrapper);
       expect(input.element.className).to.equal('input-text');
+    });
+
+    it('returns an array of VueWrappers of Vue Components matching component', () => {
+      const wrapper = mount(Parent);
+      const secondChildComponents = wrapper.find(SecondChild);
+      expect(secondChildComponents.length).to.equal(6);
     });
   });
 

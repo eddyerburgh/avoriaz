@@ -1,6 +1,10 @@
 <template>
 	<div>
-
+		<SecondChild />
+		<SecondChild />
+		<div>
+			<SecondChild />
+		</div>
 	</div>
 </template>
 

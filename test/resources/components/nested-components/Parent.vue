@@ -1,6 +1,14 @@
 <template>
 	<div>
 		<FirstChild />
+		<div>
+			<div>
+				<div />
+				<div>
+					<FirstChild />
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 

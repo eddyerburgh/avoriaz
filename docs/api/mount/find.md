@@ -1,23 +1,34 @@
 # find(selector)
 
-Returns a static wrapper of an element. Use any valid selector (tag, class, id)
+Returns a static wrapper of an element. Use any valid selector (tag, class, id) or Vue component.
 
 ### Arguments
 
-selector (String): selector, can be any valid DOM selector ('#id', '.class-name', 'tag')
+selector (String|Object): selector, can be any valid DOM selector ('#id', '.class-name', 'tag'). Or pass a Vue component.
 
 ### Returns
 
-Object: returns a new Wrapper of the selector.
+Array: returns an array of wrappers matching selector, or Vue Wrappers matching component.
 
 ### Example
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
+import Foo from './Foo.vue';
 
 
 const wrapper = mount(Foo);
 const input = wrapper.find('div');
 expect(input.contains('p')).to.equal(true);
+```
+
+With a Vue Component:
+```js
+import { mount } from 'avoriaz';
+import Foo from './Foo.vue';
+import Bar from './Bar.vue'
+
+const wrapper = mount(Foo);
+const bar = wrapper.find(Bar)[0];
+expect(bar.props().foo).to.equal('foo');
 ```
