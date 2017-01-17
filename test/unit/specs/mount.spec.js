@@ -152,6 +152,17 @@ describe('Wrapper', () => {
 
       expect(wrapper.hasClass('active')).to.equal(true);
     });
+
+    it('throws an error if type is not a string', () => {
+      const wrapper = mount(Form);
+      const invalidSelectors = [
+        undefined, null, NaN, 0, 2, true, false, () => {}, {}, [],
+      ];
+      invalidSelectors.forEach((invalidSelector) => {
+        const message = 'wrapper.simulate() must be passed a string';
+        expect(() => wrapper.simulate(invalidSelector)).to.throw(Error, message);
+      });
+    });
   });
 
   describe('html', () => {

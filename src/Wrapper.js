@@ -153,6 +153,9 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   simulate(type) {
+    if (typeof type !== 'string') {
+      throw new Error('wrapper.simulate() must be passed a string');
+    }
     const eventObject = new window.Event(type);
     this.element.dispatchEvent(eventObject);
     this.update();
