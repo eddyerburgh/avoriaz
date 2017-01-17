@@ -113,6 +113,10 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   is(selector) {
+    if (!isValidSelector(selector)) {
+      throw new Error('wrapper.is() must be passed a valid CSS selector or a Vue constructor');
+    }
+
     if (selector[0] === '.') {
       return this.element.className.split(' ').indexOf(selector.substr(1)) !== -1;
     }

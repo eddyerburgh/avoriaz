@@ -212,6 +212,17 @@ describe('Wrapper', () => {
       const wrapper = mount(Submit);
       expect(wrapper.is('#p')).to.equal(false);
     });
+
+    it('throws an error if selector is not a valid avoriaz selector', () => {
+      const wrapper = mount(Form);
+      const invalidSelectors = [
+        undefined, null, NaN, 0, 2, true, false, () => {}, {}, { name: undefined }, [],
+      ];
+      invalidSelectors.forEach((invalidSelector) => {
+        const message = 'wrapper.is() must be passed a valid CSS selector or a Vue constructor';
+        expect(() => wrapper.is(invalidSelector)).to.throw(Error, message);
+      });
+    });
   });
 
   describe('isEmpty', () => {
