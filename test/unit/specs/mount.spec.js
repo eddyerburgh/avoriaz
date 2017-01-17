@@ -40,7 +40,13 @@ describe('Wrapper', () => {
       expect(secondChildComponents.length).to.equal(6);
     });
 
-    it('returns an array of VueWrappers of Vue Components matching component is using dom node as reference', () => {
+    it('returns array of VueWrappers of Vue Components matching component if component name in parent is different to filename', () => {
+      const wrapper = mount(Form);
+      const submit = wrapper.find(Submit);
+      expect(submit.length).to.equal(1);
+    });
+
+    it('returns an array of VueWrappers of Vue Components matching component using dom node as reference', () => {
       const wrapper = mount(Parent);
       const div = wrapper.find('div')[0];
       const secondChildComponents = div.find(SecondChild);

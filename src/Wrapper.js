@@ -2,8 +2,8 @@ import {
   findByClass,
   findByTag,
   findById,
-} from './vNode';
-import findVueComponents from './findVueComponents';
+} from './utils/vNode';
+import { findVueComponents } from './utils/vm';
 import VueWrapper from './VueWrapper';
 
 function isValidSelector(selector) {
@@ -142,6 +142,10 @@ export default class Wrapper {
   is(selector) {
     if (!isValidSelector(selector)) {
       throw new Error('wrapper.is() must be passed a valid CSS selector or a Vue constructor');
+    }
+
+    if (typeof selector === 'object') {
+      return selector.name === this.vm.$options._componentTag;
     }
 
     if (selector[0] === '.') {

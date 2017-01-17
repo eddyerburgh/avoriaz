@@ -1,4 +1,4 @@
-import * as vNode from '../../../src/vNode';
+import * as vNode from '../../../src/utils/vNode';
 
 
 function elementWithId(id) {
