@@ -64,6 +64,11 @@ export default class Wrapper {
       throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
 
+    if (typeof selector === 'object') {
+      const vm = this.vm || this.vNode.context.$root;
+      return findVueComponents(vm, selector.name).length > 0;
+    }
+
     return this.element.querySelectorAll(selector).length > 0;
   }
 

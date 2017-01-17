@@ -77,6 +77,18 @@ describe('Wrapper', () => {
       expect(wrapper.contains('input')).to.equal(true);
     });
 
+    it('returns true if wrapper contains Vue component', () => {
+      const wrapper = mount(Form);
+      expect(wrapper.contains(Submit)).to.equal(true);
+    });
+
+    it('returns true if wrapper that is not a vue component contains Vue component', () => {
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+
+      expect(input.contains(Submit)).to.equal(true);
+    });
+
     it('returns false if wrapper does not contain element', () => {
       const wrapper = mount(Form);
       expect(wrapper.contains('doesntexist')).to.equal(false);
