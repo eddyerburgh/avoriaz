@@ -31,10 +31,18 @@ export default class Wrapper {
    * @returns {VueWrapper||VueWrapper[]}
    */
   find(selector) {
+    if (typeof selector === 'function' || selector === null) {
+      throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
+    }
+
     if (typeof selector === 'object') {
       const vm = this.vm || this.vNode.context.$root;
       const components = findVueComponents(vm, selector.name);
       return components.map(component => new VueWrapper(component));
+    }
+
+    if (typeof selector !== 'string') {
+      throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
 
     if (selector[0] === '.') {

@@ -39,6 +39,27 @@ describe('Wrapper', () => {
       const secondChildComponents = wrapper.find(SecondChild);
       expect(secondChildComponents.length).to.equal(6);
     });
+
+    it('returns an array of VueWrappers of Vue Components matching component is using dom node as reference', () => {
+      const wrapper = mount(Parent);
+      const div = wrapper.find('div')[0];
+      const secondChildComponents = div.find(SecondChild);
+      expect(secondChildComponents.length).to.equal(6);
+    });
+
+    it('returns an empty array if no nodes matching selector are found', () => {
+      const wrapper = mount(Parent);
+      const secondChildComponents = wrapper.find('pre');
+      expect(secondChildComponents.length).to.equal(0);
+    });
+
+    it('throws an error if selector is not a string or an object', () => {
+      const wrapper = mount(Parent);
+      [undefined, null, NaN, 0, 2, true, false, () => {}].forEach((invalidSelector) => {
+        const message = 'wrapper.find() must be passed a valid CSS selector or a Vue constructor';
+        expect(() => wrapper.find(invalidSelector)).to.throw(Error, message);
+      });
+    });
   });
 
   describe('contains', () => {
