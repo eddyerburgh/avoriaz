@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist",
     "docs:build": "npm run docs:prepare && rimraf _book && gitbook build",
     "docs:prepare": "gitbook install",
-    "docs:publish": "npm run docs:build && cd docs && git init && git commit --allow-empty -m 'Update docs' && git pull git@github.com:eddyerburgh/avoriaz.git gh-pages && git add . && git commit -m 'Update docs' && git push git@github.com:eddyerburgh/avoriaz.git gh-pages",
+    "docs:publish": "npm run docs:build && cd docs && git init && git commit --allow-empty -m 'Update docs' && git pull git@github.com:eddyerburgh/avoriaz.git gh-pages && git push git@github.com:eddyerburgh/avoriaz.git gh-pages",
     "docs:watch": "cd docs && gitbook serve",
     "lint": "eslint  --ext .js,.vue src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
