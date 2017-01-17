@@ -77,10 +77,13 @@ describe('Wrapper', () => {
     });
 
     it('throws an error if selector is not a valid avoriaz selector', () => {
-      const wrapper = mount(Parent);
-      [undefined, null, NaN, 0, 2, true, false, () => {}].forEach((invalidSelector) => {
+      const wrapper = mount(Form);
+      const invalidSelectors = [
+        undefined, null, NaN, 0, 2, true, false, () => {}, {}, { name: undefined },
+      ];
+      invalidSelectors.forEach((invalidSelector) => {
         const message = 'wrapper.find() must be passed a valid CSS selector or a Vue constructor';
-        expect(() => wrapper.find(invalidSelector)).to.throw(Error, message);
+        expect(() => wrapper.contains(invalidSelector)).to.throw(Error, message);
       });
     });
   });

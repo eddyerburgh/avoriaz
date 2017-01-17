@@ -44,6 +44,9 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   contains(selector) {
+    if (!isValidSelector(selector)) {
+      throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
+    }
     return this.element.querySelectorAll(selector).length > 0;
   }
 
