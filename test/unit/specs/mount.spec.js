@@ -265,6 +265,13 @@ describe('Wrapper', () => {
       const wrapper = mount(ComputedProperties);
       expect(wrapper.data()).to.deep.equal(ComputedProperties.data());
     });
+
+    it('throws an error if node is not a Vue instance', () => {
+      const message = 'wrapper.data() can only be called on a Vue instance';
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+      expect(() => input.data()).throw(Error, message);
+    });
   });
 
   describe('computed', () => {
@@ -272,12 +279,26 @@ describe('Wrapper', () => {
       const wrapper = mount(ComputedProperties);
       expect(wrapper.computed()).to.deep.equal(ComputedProperties.computed);
     });
+
+    it('throws an error if node is not a Vue instance', () => {
+      const message = 'wrapper.computed() can only be called on a Vue instance';
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+      expect(() => input.computed()).throw(Error, message);
+    });
   });
 
   describe('methods', () => {
     it('returns the methods object of the Vue instance', () => {
       const wrapper = mount(ClickToggleComponent);
       expect(wrapper.methods()).to.deep.equal(ClickToggleComponent.method);
+    });
+
+    it('throws an error if node is not a Vue instance', () => {
+      const message = 'wrapper.methods() can only be called on a Vue instance';
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+      expect(() => input.methods()).throw(Error, message);
     });
   });
 
@@ -289,6 +310,13 @@ describe('Wrapper', () => {
       };
       const wrapper = mount(ClickComponent, { propsData });
       expect(wrapper.propsData()).to.deep.equal(propsData);
+    });
+
+    it('throws an error if node is not a Vue instance', () => {
+      const message = 'wrapper.propsData() can only be called on a Vue instance';
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+      expect(() => input.propsData()).throw(Error, message);
     });
   });
 });

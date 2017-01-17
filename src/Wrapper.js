@@ -38,6 +38,19 @@ export default class Wrapper {
   }
 
   /**
+   * Returns instances computed object
+   *
+   * @returns {Object}
+   */
+  computed() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.computed() can only be called on a Vue instance');
+    }
+
+    return this.vm.$options.computed;
+  }
+
+  /**
    * Checks if wrapper contains provided selector.
    *
    * @param {String} selector
@@ -47,9 +60,23 @@ export default class Wrapper {
     if (!isValidSelector(selector)) {
       throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
+
     return this.element.querySelectorAll(selector).length > 0;
   }
 
+
+  /**
+   * Returns instances data object
+   *
+   * @returns {Object}
+   */
+  data() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.data() can only be called on a Vue instance');
+    }
+
+    return this.vm._data;
+  }
   /**
    * Finds every node in the mount tree of the current wrapper that matches the provided selector.
    *
@@ -138,6 +165,19 @@ export default class Wrapper {
   }
 
   /**
+   * Returns instances methods object
+   *
+   * @returns {Object}
+   */
+  methods() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.methods() can only be called on a Vue instance');
+    }
+
+    return this.vm.$options.method;
+  }
+
+  /**
    * Returns name of component, or tag name if node is not a Vue component
    *
    * @returns {String}
@@ -151,6 +191,19 @@ export default class Wrapper {
   }
 
   /**
+   * Returns instances propsData object
+   *
+   * @returns {String}
+   */
+  propsData() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.propsData() can only be called on a Vue instance');
+    }
+
+    return this.vm.$options.propsData;
+  }
+
+  /**
    * Simulates a DOM event on wrapper
    *
    * @param {String} type - type of event
@@ -160,6 +213,7 @@ export default class Wrapper {
     if (typeof type !== 'string') {
       throw new Error('wrapper.simulate() must be passed a string');
     }
+
     const eventObject = new window.Event(type);
     this.element.dispatchEvent(eventObject);
     this.update();
@@ -173,4 +227,6 @@ export default class Wrapper {
   text() {
     return this.element.textContent;
   }
+
+
 }
