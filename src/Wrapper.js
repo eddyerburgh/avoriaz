@@ -89,6 +89,10 @@ export default class Wrapper {
    * @returns {Boolean}
    */
   hasClass(className) {
+    if (typeof className !== 'string') {
+      throw new Error('wrapper.hasClass() must be passed a string');
+    }
+
     return this.element.className.split(' ').indexOf(className) !== -1;
   }
   /**
