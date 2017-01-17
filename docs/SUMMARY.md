@@ -17,3 +17,4 @@
     * [simulate](/api/mount/simulate.md)
     * [text](/api/mount/text.md)
     * [update](/api/mount/update.md)
+  * [selectors](/api/selectors)

@@ -4,7 +4,7 @@ Returns a static wrapper of an element. Use any valid selector (tag, class, id) 
 
 ### Arguments
 
-selector (String|Object): selector, can be any valid DOM selector ('#id', '.class-name', 'tag'). Or pass a Vue component.
+selector (String|Component): selector, can be any valid DOM selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors)
 
 ### Returns
 

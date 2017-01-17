@@ -4,7 +4,7 @@ Returns true if wrapper contains selector. Use any valid selector (tag, class, i
 
 ### Arguments
 
-selector (String): selector, can be any valid DOM selector ('#id', '.class-name', 'tag')
+selector (String|Component): selector, can be any valid DOM selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors)
 
 ### Returns
 
