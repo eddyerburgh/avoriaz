@@ -17,6 +17,7 @@ npm install --save-dev avoriaz
 ## Examples
 
 - [Example using mocha-webpack](https://github.com/eddyerburgh/avoriaz-mocha-example)
+- [Example using karma and mocha](https://github.com/eddyerburgh/avoriaz-karma-mocha-example)
 
 ##### Call DOM events on the Vue wrapper
 
