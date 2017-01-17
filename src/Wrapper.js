@@ -6,6 +6,29 @@ import {
 import findVueComponents from './findVueComponents';
 import VueWrapper from './VueWrapper';
 
+function isValidSelector(selector) {
+  if (typeof selector === 'string') {
+    return true;
+  }
+  if (typeof selector === 'function') {
+    return false;
+  }
+
+  if (selector === null) {
+    return false;
+  }
+
+  if (typeof selector !== 'object') {
+    return false;
+  }
+
+  if (typeof selector.name !== 'string') {
+    return false;
+  }
+
+  return true;
+}
+
 export default class Wrapper {
 
   constructor(vNode, update) {
@@ -31,7 +54,7 @@ export default class Wrapper {
    * @returns {VueWrapper||VueWrapper[]}
    */
   find(selector) {
-    if (typeof selector === 'function' || selector === null) {
+    if (!isValidSelector(selector)) {
       throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
 
@@ -39,10 +62,6 @@ export default class Wrapper {
       const vm = this.vm || this.vNode.context.$root;
       const components = findVueComponents(vm, selector.name);
       return components.map(component => new VueWrapper(component));
-    }
-
-    if (typeof selector !== 'string') {
-      throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
 
     if (selector[0] === '.') {

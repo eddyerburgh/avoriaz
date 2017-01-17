@@ -53,9 +53,12 @@ describe('Wrapper', () => {
       expect(secondChildComponents.length).to.equal(0);
     });
 
-    it('throws an error if selector is not a string or an object', () => {
+    it('throws an error if selector is not a valid avoriaz selector', () => {
       const wrapper = mount(Parent);
-      [undefined, null, NaN, 0, 2, true, false, () => {}].forEach((invalidSelector) => {
+      const invalidSelectors = [
+        undefined, null, NaN, 0, 2, true, false, () => {}, {}, { name: undefined },
+      ];
+      invalidSelectors.forEach((invalidSelector) => {
         const message = 'wrapper.find() must be passed a valid CSS selector or a Vue constructor';
         expect(() => wrapper.find(invalidSelector)).to.throw(Error, message);
       });
@@ -71,6 +74,14 @@ describe('Wrapper', () => {
     it('returns false if wrapper does not contain element', () => {
       const wrapper = mount(Form);
       expect(wrapper.contains('doesntexist')).to.equal(false);
+    });
+
+    it('throws an error if selector is not a valid avoriaz selector', () => {
+      const wrapper = mount(Parent);
+      [undefined, null, NaN, 0, 2, true, false, () => {}].forEach((invalidSelector) => {
+        const message = 'wrapper.find() must be passed a valid CSS selector or a Vue constructor';
+        expect(() => wrapper.find(invalidSelector)).to.throw(Error, message);
+      });
     });
   });
 
