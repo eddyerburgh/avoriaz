@@ -204,6 +204,18 @@ describe('Wrapper', () => {
       expect(wrapper.is('#input-submit')).to.equal(true);
     });
 
+    it('returns true if root node matches Vue Component selector', () => {
+      const wrapper = mount(Form);
+      const submit = wrapper.find(Submit)[0];
+      expect(submit.is(Submit)).to.equal(true);
+    });
+
+    it('returns false if root node is not a Vue Component', () => {
+      const wrapper = mount(Form);
+      const input = wrapper.find('#input-text')[0];
+      expect(input.is(Submit)).to.equal(false);
+    });
+
     it('returns false if root node does not match tag selector', () => {
       const wrapper = mount(Submit);
       expect(wrapper.is('p')).to.equal(false);

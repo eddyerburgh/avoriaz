@@ -3,7 +3,10 @@ import {
   findByTag,
   findById,
 } from './utils/vNode';
-import { findVueComponents } from './utils/vm';
+import {
+  findVueComponents,
+  vmCtorMatchesName,
+} from './utils/vm';
 import VueWrapper from './VueWrapper';
 
 function isValidSelector(selector) {
@@ -145,7 +148,11 @@ export default class Wrapper {
     }
 
     if (typeof selector === 'object') {
-      return selector.name === this.vm.$options._componentTag;
+      if (!this.isVueComponent) {
+        return false;
+      }
+
+      return vmCtorMatchesName(this.vm, selector.name);
     }
 
     if (selector[0] === '.') {
