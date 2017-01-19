@@ -4,16 +4,14 @@ Returns a Vue instances data object. Can only be called on a Vue component wrapp
 
 ### Returns
 
-(Object): data object 
+Object: data object 
 
 ### Example
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './components/Foo';
+import Foo from './Foo.vue';
 
-it('renders with the correct data', () => {
-  const wrapper = mount(Foo);
-  expect(wrapper.data().foo).to.equal('foo');
-});
+const wrapper = mount(Foo);
+expect(wrapper.data().foo).to.equal('foo');
 ```

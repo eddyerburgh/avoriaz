@@ -1,14 +1,14 @@
 # find(selector)
 
-Returns a static wrapper of an element. Use any valid selector (tag, class, id) or Vue component.
+Returns a wrapper of a DOM node or Vue component. Use any valid [avoriaz selector](/api/selectors).
 
 ### Arguments
 
-selector (String|Component): selector, can be any valid DOM selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors)
+selector (String|Component): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors).
 
 ### Returns
 
-Array: returns an array of wrappers matching selector, or Vue Wrappers matching component.
+Array: returns an array of wrappers matching selector. Vue component wrappers have extra methods ([computed](/api/mount/computed.md), [data](/api/mount/data.md), [methods](/api/mount/methods.md), [propsData](/api/mount/propsData.md)). To check if a wrapper is a Vue component wrapper, use wrapper.isVueComponent.
 
 ### Example
 
@@ -16,10 +16,9 @@ Array: returns an array of wrappers matching selector, or Vue Wrappers matching 
 import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
-
 const wrapper = mount(Foo);
-const input = wrapper.find('div');
-expect(input.contains('p')).to.equal(true);
+const div = wrapper.find('div');
+expect(div.is('div')).to.equal(true);
 ```
 
 With a Vue Component:
@@ -30,5 +29,5 @@ import Bar from './Bar.vue'
 
 const wrapper = mount(Foo);
 const bar = wrapper.find(Bar)[0];
-expect(bar.props().foo).to.equal('foo');
+expect(bar.isVueComponent).to.equal(true);
 ```

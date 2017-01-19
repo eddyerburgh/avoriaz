@@ -1,6 +1,6 @@
 # html()
 
-Returns HTML of wrapper node as a string.
+Returns HTML of wrapper DOM node as a string.
 
 ### Returns
 
@@ -10,13 +10,8 @@ Returns HTML of wrapper node as a string.
 
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
-import Foo from './components/Foo';
+import Foo from './Foo.vue';
 
-describe('Foo', () => {
-  it('has the class name bar', () => {
-    const wrapper = mount(Foo);
-    expect(wrapper.html()).to.equal('<p>Foo</p>');
-  });
-});
+const wrapper = mount(Foo);
+expect(wrapper.html()).to.equal('<div><p>Foo</p></div>');
 ```

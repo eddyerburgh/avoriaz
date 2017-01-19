@@ -2,7 +2,7 @@
 
 Returns a Vue instances propData object. Can only be called on a Vue component wrapper.
 
-The propsData object contains the data of an instances props.
+The propsData object contains the data of an instances props. If a Vue component passed props to a child component, the data will be accessible in propsData.
 
 ### Returns
 
@@ -12,11 +12,9 @@ The propsData object contains the data of an instances props.
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './components/Foo';
+import Foo from './Foo.vue';
 
-it('renders with the correct propsData', () => {
-	const foo = 'bar';
-  const wrapper = mount(Foo, {propsData:{foo}});
-  expect(wrapper.propsData().foo).to.equal(foo);
-});
+const foo = 'bar';
+const wrapper = mount(Foo, {propsData:{foo}});
+expect(wrapper.propsData().foo).to.equal(foo);
 ```

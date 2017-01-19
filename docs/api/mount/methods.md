@@ -12,10 +12,8 @@ The methods object contains the methods of a Vue instance.
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './components/Foo';
+import Foo from './Foo.vue';
 
-it('renders with the correct propsData', () => {
-  const wrapper = mount(Foo);
-  expect(typeof wrapper.methods().foo).to.equal('function');
-});
+const wrapper = mount(Foo);
+expect(typeof wrapper.methods().foo).to.equal('function');
 ```

@@ -10,8 +10,7 @@ String: text content of wrapper.
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
-
+import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
 expect(wrapper.text()).to.equal('bar');

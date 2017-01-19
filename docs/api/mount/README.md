@@ -5,10 +5,10 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 ```js
 import { mount } from 'avoriaz';
 import { expect } from 'chai';
-import Foo from './components/Foo';
+import Foo from './Foo.vue';
 
 describe('Foo', () => {
-  it('calls componentDidMount', () => {
+  it('renders a div', () => {
     const wrapper = mount(Foo);
     expect(Foo.contains(div)).to.equal(true);
   });

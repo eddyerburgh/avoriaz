@@ -1,10 +1,10 @@
 # contains(selector)
 
-Returns true if wrapper contains selector. Use any valid selector (tag, class, id)
+Returns true if wrapper contains selector. Use any valid [avoriaz selector](/api/selectors).
 
 ### Arguments
 
-selector (String|Component): selector, can be any valid DOM selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors)
+selector (String|Component): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors).
 
 ### Returns
 
@@ -14,7 +14,7 @@ Boolean: returns true if wrapper contains selector.
 
 ```js
 import { mount } from 'avoriaz';
-import Foo from './Foo';
+import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
 expect(wrapper.contains('p')).to.equal(true);
