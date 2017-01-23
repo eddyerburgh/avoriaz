@@ -190,7 +190,7 @@ export default class Wrapper {
       throw new Error('wrapper.methods() can only be called on a Vue instance');
     }
 
-    return this.vm.$options.method;
+    return this.vm.$options.methods;
   }
 
   /**

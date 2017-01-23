@@ -321,7 +321,7 @@ describe('Wrapper', () => {
   describe('methods', () => {
     it('returns the methods object of the Vue instance', () => {
       const wrapper = mount(ClickToggleComponent);
-      expect(wrapper.methods()).to.deep.equal(ClickToggleComponent.method);
+      expect(wrapper.methods()).to.deep.equal(ClickToggleComponent.methods);
     });
 
     it('throws an error if node is not a Vue instance', () => {
