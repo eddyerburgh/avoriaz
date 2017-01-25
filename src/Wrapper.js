@@ -72,7 +72,6 @@ export default class Wrapper {
     return this.element.querySelectorAll(selector).length > 0;
   }
 
-
   /**
    * Returns instances data object
    *
@@ -85,6 +84,7 @@ export default class Wrapper {
 
     return this.vm._data;
   }
+
   /**
    * Finds every node in the mount tree of the current wrapper that matches the provided selector.
    *
@@ -243,6 +243,4 @@ export default class Wrapper {
   text() {
     return this.element.textContent;
   }
-
-
 }
