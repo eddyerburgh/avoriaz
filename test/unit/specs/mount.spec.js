@@ -1,6 +1,8 @@
 import mount from '../../../src/mount';
-import Form from '../../resources/components/form/Form.vue';
 import Wrapper from '../../../src/Wrapper';
+
+// Vue components for testing purposes
+import Form from '../../resources/components/form/Form.vue';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import ClickToggleComponent from '../../resources/components/event-components/ClickToggleComponent.vue';
 import KeydownComponent from '../../resources/components/event-components/KeydownComponent.vue';
@@ -9,6 +11,7 @@ import Paragraph from '../../resources/components/paragraph/Paragraph.vue';
 import ComputedProperties from '../../resources/components/data-components/ComputedProperties.vue';
 import Parent from '../../resources/components/nested-components/Parent.vue';
 import SecondChild from '../../resources/components/nested-components/SecondChild.vue';
+import Transition from '../../resources/components/nested-components/Transition.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -24,6 +27,12 @@ describe('Wrapper', () => {
       const input = wrapper.find('.input-text')[0];
       expect(input).to.be.an.instanceOf(Wrapper);
       expect(input.element.className).to.equal('input-text');
+    });
+
+    it('returns an array of Wrapper of elements matching class selector passed if they are nested in a transition', () => {
+      const wrapper = mount(Transition);
+      const children = wrapper.find('.child');
+      expect(children.length).to.equal(3);
     });
 
     it('returns an array of Wrappers of elements matching id selector passed', () => {

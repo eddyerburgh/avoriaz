@@ -7,6 +7,10 @@ function findAllVNodes(vNode, nodes = []) {
     }
   }
 
+  if (vNode.child) {
+    findAllVNodes(vNode.child._vnode, nodes);
+  }
+
   return nodes;
 }
 
@@ -18,7 +22,7 @@ export function findByTag(vNode, tag) {
 export function findByClass(vNode, className) {
   const nodes = findAllVNodes(vNode);
   return nodes.filter((node) => {
-    if (node.elm.className) {
+    if (node.elm && node.elm.className) {
       return node.elm.className.split(' ').indexOf(className) !== -1;
     }
     return false;
@@ -29,9 +33,14 @@ export function findById(vNode, id) {
   const nodes = findAllVNodes(vNode);
   return nodes.filter((node) => {
     // Text nodes don't have getAttribute method
-    if (node.elm.nodeName === '#text') {
+    if (node.elm && node.elm.nodeName === '#text') {
       return false;
     }
-    return node.elm.getAttribute('id') === id;
+
+    if (node.elm && node.elm.getAttribute) {
+      return node.elm.getAttribute('id') === id;
+    }
+
+    return false;
   });
 }

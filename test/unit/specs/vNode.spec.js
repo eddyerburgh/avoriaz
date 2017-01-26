@@ -15,7 +15,21 @@ const vNodeMock = {
     getAttribute,
   },
   tag: 'span',
-  child: undefined,
+  child: {
+    _vnode: {
+      children: [
+        {
+          elm: {
+            className: 'find',
+            getAttribute,
+          },
+          tag: 'div',
+          child: undefined,
+          children: undefined,
+        },
+      ],
+    },
+  },
   children: [
     {
       elm: elementWithId('id'),
@@ -61,13 +75,13 @@ const vNodeMock = {
 describe('vNode', () => {
   describe('findByTag', () => {
     it('returns an array of vNodes of elements matching tag selector passed', () => {
-      expect(vNode.findByTag(vNodeMock, 'div').length).to.equal(3);
+      expect(vNode.findByTag(vNodeMock, 'div').length).to.equal(4);
     });
   });
 
   describe('findByClass', () => {
     it('returns an array of vNodes of elements matching className passed', () => {
-      expect(vNode.findByClass(vNodeMock, 'find').length).to.equal(2);
+      expect(vNode.findByClass(vNodeMock, 'find').length).to.equal(3);
     });
 
     it('returns an array of vNodes of elements matching className passed when node has multiple classes', () => {
