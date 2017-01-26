@@ -12,6 +12,7 @@ import ComputedProperties from '../../resources/components/data-components/Compu
 import Parent from '../../resources/components/nested-components/Parent.vue';
 import SecondChild from '../../resources/components/nested-components/SecondChild.vue';
 import Transition from '../../resources/components/nested-components/Transition.vue';
+import SlotParent from '../../resources/components/slots/SlotParent.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -33,6 +34,12 @@ describe('Wrapper', () => {
       const wrapper = mount(Transition);
       const children = wrapper.find('.child');
       expect(children.length).to.equal(3);
+    });
+
+    it('returns an array of Wrapper of elements matching class selector passed if they are declared inside a slot', () => {
+      const wrapper = mount(SlotParent);
+      const children = wrapper.find('.slot-footer-content');
+      expect(children.length).to.equal(1);
     });
 
     it('returns an array of Wrappers of elements matching id selector passed', () => {
