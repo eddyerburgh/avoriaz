@@ -1,12 +1,8 @@
-import {
-  findByClass,
-  findByTag,
-  findById,
-} from './utils/vNode';
+import findMatchingVNodes from './lib/findMatchingVNodes';
 import {
   findVueComponents,
   vmCtorMatchesName,
-} from './utils/vm';
+} from './lib/vm';
 import VueWrapper from './VueWrapper';
 
 function isValidSelector(selector) {
@@ -102,17 +98,7 @@ export default class Wrapper {
       return components.map(component => new VueWrapper(component));
     }
 
-    if (selector[0] === '.') {
-      const nodes = findByClass(this.vNode, selector.substr(1));
-
-      return nodes.map(node => new Wrapper(node, this.update));
-    }
-
-    if (selector[0] === '#') {
-      const nodes = findById(this.vNode, selector.substr(1));
-      return nodes.map(node => new Wrapper(node, this.update));
-    }
-    const nodes = findByTag(this.vNode, selector);
+    const nodes = findMatchingVNodes(this.vNode, selector);
 
     return nodes.map(node => new Wrapper(node, this.update));
   }

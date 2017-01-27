@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import './lib/matchesPolyfill';
 import VueWrapper from './VueWrapper';
 
 export default function mount(component, options) {

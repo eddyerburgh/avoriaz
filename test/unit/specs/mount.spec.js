@@ -1,3 +1,4 @@
+import { compileToFunctions } from 'vue-template-compiler';
 import mount from '../../../src/mount';
 import Wrapper from '../../../src/Wrapper';
 
@@ -17,10 +18,11 @@ import SlotParent from '../../resources/components/slots/SlotParent.vue';
 describe('Wrapper', () => {
   describe('find', () => {
     it('returns an array of Wrappers of elements matching tag selector passed', () => {
-      const wrapper = mount(Form);
-      const input = wrapper.find('input')[0];
-      expect(input).to.be.an.instanceOf(Wrapper);
-      expect(input.element.className).to.equal('input-text');
+      const compiled = compileToFunctions('<div><p></p><p></p></div>');
+      const wrapper = mount(compiled);
+      const divs = wrapper.find('p');
+      expect(divs[0]).to.be.an.instanceOf(Wrapper);
+      expect(divs.length).to.equal(2);
     });
 
     it('returns an array of Wrapper of elements matching class selector passed', () => {
