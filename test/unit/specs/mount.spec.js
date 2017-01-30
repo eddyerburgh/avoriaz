@@ -52,6 +52,19 @@ describe('Wrapper', () => {
       expect(input.element.className).to.equal('input-text');
     });
 
+    it('returns an array of Wrappers of elements matching attribute selector passed', () => {
+      const compiled = compileToFunctions('<div><a href="/"></a></div>');
+      const wrapper = mount(compiled);
+      expect(wrapper.find('[href="/"]').length).to.equal(1);
+    });
+
+    it('throws an error when passed an invalid DOM selector', () => {
+      const compiled = compileToFunctions('<div><a href="/"></a></div>');
+      const wrapper = mount(compiled);
+      const message = 'wrapper.find() must be passed a valid CSS selector or a Vue constructor';
+      expect(() => wrapper.find('[href=&6"/"]')).to.throw(Error, message);
+    });
+
     it('returns an array of VueWrappers of Vue Components matching component', () => {
       const wrapper = mount(Parent);
       const secondChildComponents = wrapper.find(SecondChild);

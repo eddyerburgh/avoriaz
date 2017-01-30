@@ -4,9 +4,10 @@ import {
   vmCtorMatchesName,
 } from './lib/vm';
 import VueWrapper from './VueWrapper';
+import isDomSelector from './lib/isDomSelector';
 
 function isValidSelector(selector) {
-  if (typeof selector === 'string') {
+  if (isDomSelector(selector)) {
     return true;
   }
   if (typeof selector === 'function') {
