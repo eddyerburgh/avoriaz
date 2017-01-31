@@ -3,8 +3,8 @@ function getSelectors(selector) {
   return selectors.reduce((list, sel) => list.concat(sel), []);
 }
 
-function findAllVNodes(vNode, nodes = [], first) {
-  if (!first) {
+function findAllVNodes(vNode, nodes = [], ignoreFirstNode) {
+  if (!ignoreFirstNode) {
     nodes.push(vNode);
   }
 
@@ -21,8 +21,8 @@ function findAllVNodes(vNode, nodes = [], first) {
   return nodes;
 }
 
-function getMatchingNodes(vNode, selector, first) {
-  const nodes = findAllVNodes(vNode, [], first);
+function getMatchingVNodes(vNode, selector, ignoreFirstNode) {
+  const nodes = findAllVNodes(vNode, [], ignoreFirstNode);
   return nodes.filter((node) => {
     if (node.elm && node.elm.matches) {
       return node.elm.matches(selector);
@@ -31,10 +31,10 @@ function getMatchingNodes(vNode, selector, first) {
   });
 }
 
-function recurseGetMatchingVNodes(vNodes, selectors, first) {
+function recurseGetMatchingVNodes(vNodes, selectors, ignoreFirstNode) {
   const nodes = [];
 
-  vNodes.forEach(node => nodes.push(...getMatchingNodes(node, selectors[0], first)));
+  vNodes.forEach(node => nodes.push(...getMatchingVNodes(node, selectors[0], ignoreFirstNode)));
 
   if (selectors.length <= 1) {
     return nodes;
@@ -48,6 +48,6 @@ export default function findMatchingVNodes(vNode, selector) {
   if (selectorsArray.length > 1) {
     return recurseGetMatchingVNodes([vNode], selectorsArray);
   }
-  return getMatchingNodes(vNode, selector);
+  return getMatchingVNodes(vNode, selector);
 }
 
