@@ -17,18 +17,22 @@ function elementWithClass(tag, className) {
 
 const vNodeMock = {
   elm: elementWithClass('div', 'find'),
+  key: 1,
   child: {
     _vnode: {
       children: [
-        { elm: elementWithClass('div', 'find') },
+        { elm: elementWithClass('div', 'find'), key: 2 },
         {
           elm: elementWithAttribute('div', { attribute: 'value' }),
+          key: 3,
           children: [{
             elm: elementWithClass('p', 'some-class'),
+            key: 4,
             children: [
               {
                 elm: elementWithClass('p', 'another-class'),
-                children: [{ elm: elementWithClass('div', 'another-class') }] },
+                key: 5,
+                children: [{ elm: elementWithClass('div', 'another-class'), key: 6 }] },
             ],
           }],
         },
@@ -38,14 +42,15 @@ const vNodeMock = {
   children: [
     {
       elm: elementWithAttribute('div', { id: 'id', attribute: 'some value' }),
+      key: 7,
       children: [
-        { elm: elementWithClass('div', 'find') },
-        { elm: elementWithClass('div', 'find') },
-        { elm: { nodeName: '#text' },
+        { elm: elementWithClass('div', 'find'), key: 8 },
+        { elm: elementWithClass('div', 'find'), key: 9 },
+        { elm: { nodeName: '#text' }, key: 10,
         },
       ],
     },
-    { elm: elementWithClass('div', 'this that') },
+    { elm: elementWithClass('div', 'this that'), key: 11 },
   ],
 };
 
@@ -80,5 +85,9 @@ describe('findMatchingVNodes', () => {
 
   it('returns an array of vNodes of elements matching tag selector passed with descendant combinator', () => {
     expect(findMatchingVNodes(vNodeMock, 'p p div').length).to.equal(1);
+  });
+
+  it('returns an array of vNodes of elements matching tag selector passed with direct descendant combinator', () => {
+    expect(findMatchingVNodes(vNodeMock, 'div > div').length).to.equal(6);
   });
 });

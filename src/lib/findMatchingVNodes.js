@@ -1,28 +1,32 @@
 function getSelectors(selector) {
-  const selectors = selector.split(/ (?=(?:(?:[^"]*"){2})*[^"]*$)/);
+  const selectors = selector.split(' ');
   return selectors.reduce((list, sel) => list.concat(sel), []);
 }
 
-function findAllVNodes(vNode, nodes = [], ignoreFirstNode) {
+function findAllVNodes(vNode, nodes = [], ignoreFirstNode, depth) {
   if (!ignoreFirstNode) {
     nodes.push(vNode);
   }
 
+  if (depth === 0) {
+    return;
+  }
+
   if (vNode.children && vNode.children.length > 0) {
     for (let i = 0; i < vNode.children.length; i++) { // eslint-disable-line no-plusplus
-      findAllVNodes(vNode.children[i], nodes);
+      findAllVNodes(vNode.children[i], nodes, false, depth ? depth - 1 : undefined);
     }
   }
 
   if (vNode.child) {
-    findAllVNodes(vNode.child._vnode, nodes);
+    findAllVNodes(vNode.child._vnode, nodes, false, depth);
   }
 
-  return nodes;
+  return nodes; // eslint-disable-line consistent-return
 }
 
-function getMatchingVNodes(vNode, selector, ignoreFirstNode) {
-  const nodes = findAllVNodes(vNode, [], ignoreFirstNode);
+function getMatchingVNodes(vNode, selector, ignoreFirstNode, depth) {
+  const nodes = findAllVNodes(vNode, [], ignoreFirstNode, depth);
   return nodes.filter((node) => {
     if (node.elm && node.elm.matches) {
       return node.elm.matches(selector);
@@ -33,14 +37,21 @@ function getMatchingVNodes(vNode, selector, ignoreFirstNode) {
 
 function recurseGetMatchingVNodes(vNodes, selectors, ignoreFirstNode) {
   const nodes = [];
+  let newSelectors;
 
-  vNodes.forEach(node => nodes.push(...getMatchingVNodes(node, selectors[0], ignoreFirstNode)));
+  if (selectors[0] === '>') {
+    vNodes.forEach(node => nodes.push(...getMatchingVNodes(node, selectors[1], true, 1)));
+    newSelectors = selectors.slice(2);
+  } else {
+    vNodes.forEach(node => nodes.push(...getMatchingVNodes(node, selectors[0], ignoreFirstNode)));
+    newSelectors = selectors.slice(1);
+  }
 
-  if (selectors.length <= 1) {
+  if (newSelectors.length < 1) {
     return nodes;
   }
 
-  return recurseGetMatchingVNodes(nodes, selectors.splice(0, 1), true);
+  return recurseGetMatchingVNodes(nodes, newSelectors, true);
 }
 
 export default function findMatchingVNodes(vNode, selector) {

@@ -65,6 +65,22 @@ describe('Wrapper', () => {
       expect(() => wrapper.find('[href=&6"/"]')).to.throw(Error, message);
     });
 
+    it('returns an array of Wrappers of elements matching selector with descendant combinator passed', () => {
+      const compiled = compileToFunctions('<div><ul><li>list</li>item<li></li></ul></div>');
+      const wrapper = mount(compiled);
+      const divs = wrapper.find('div li');
+      expect(divs[0]).to.be.an.instanceOf(Wrapper);
+      expect(divs.length).to.equal(2);
+    });
+
+    it('returns an array of Wrappers of elements matching selector with descendant combinator passed', () => {
+      const compiled = compileToFunctions('<div><ul><ul></ul><ul/></div>');
+      const wrapper = mount(compiled);
+      const divs = wrapper.find('div > ul');
+      expect(divs[0]).to.be.an.instanceOf(Wrapper);
+      expect(divs.length).to.equal(1);
+    });
+
     it('returns an array of VueWrappers of Vue Components matching component', () => {
       const wrapper = mount(Parent);
       const secondChildComponents = wrapper.find(SecondChild);
