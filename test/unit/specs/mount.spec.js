@@ -73,7 +73,15 @@ describe('Wrapper', () => {
       expect(divs.length).to.equal(2);
     });
 
-    it('returns an array of Wrappers of elements matching selector with descendant combinator passed', () => {
+    it('does not return duplicate nodes', () => {
+      const compiled = compileToFunctions('<div><div><div><p/></div></div></div></div>');
+      const wrapper = mount(compiled);
+      const divs = wrapper.find('div p');
+      expect(divs[0]).to.be.an.instanceOf(Wrapper);
+      expect(divs.length).to.equal(1);
+    });
+
+    it('returns an array of Wrappers of elements matching selector with direct descendant combinator passed', () => {
       const compiled = compileToFunctions('<div><ul><ul></ul><ul/></div>');
       const wrapper = mount(compiled);
       const divs = wrapper.find('div > ul');

@@ -88,5 +88,8 @@
   },
   "peerDependencies": {
     "vue": "2.x"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
