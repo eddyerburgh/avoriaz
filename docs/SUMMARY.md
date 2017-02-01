@@ -18,4 +18,4 @@
     * [style](/api/mount/style.md)
     * [text](/api/mount/text.md)
     * [update](/api/mount/update.md)
-  * [selectors](/api/selectors)
+  * [selectors](/api/selectors.md)
