@@ -75,7 +75,7 @@ describe('Wrapper', () => {
 
     it('does not return duplicate nodes', () => {
       const compiled = compileToFunctions('<div><div><div><p/><p/></div></div></div></div>');
-      const wrapper = mount(compiled);console.log(wrapper);
+      const wrapper = mount(compiled); console.log(wrapper);
       const divs = wrapper.find('div p');
       expect(divs[0]).to.be.an.instanceOf(Wrapper);
       expect(divs.length).to.equal(2);
@@ -402,6 +402,14 @@ describe('Wrapper', () => {
       const wrapper = mount(Form);
       const input = wrapper.find('#input-text')[0];
       expect(() => input.propsData()).throw(Error, message);
+    });
+  });
+
+  describe('style', () => {
+    it('returns style object of wrapper element', () => {
+      const compiled = compileToFunctions('<div style="color:red;"></div>');
+      const wrapper = mount(compiled);
+      expect(wrapper.style().color).to.equal('red');
     });
   });
 });

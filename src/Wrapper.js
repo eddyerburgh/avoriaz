@@ -223,6 +223,15 @@ export default class Wrapper {
   }
 
   /**
+   * Returns element style object
+   *
+   * @returns {Object}
+   */
+  style() {
+    return this.element.style;
+  }
+
+  /**
    * Return text of wrapper element
    *
    * @returns {Boolean}

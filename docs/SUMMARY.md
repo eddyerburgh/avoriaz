@@ -15,6 +15,7 @@
     * [name](/api/mount/name.md)
     * [propsData](/api/mount/propsData.md)
     * [simulate](/api/mount/simulate.md)
+    * [style](/api/mount/style.md)
     * [text](/api/mount/text.md)
     * [update](/api/mount/update.md)
   * [selectors](/api/selectors)
