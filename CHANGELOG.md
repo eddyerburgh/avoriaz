@@ -1,4 +1,8 @@
-1.3.0 / 01-26-2017
+1.3.1 / 02-01-2017
+=================
+  * Fix npm publishing issue
+
+1.3.0 / 02-01-2017
 =================
   * Add support for descendant combinator and multiple selectors in .find
   * Add support for direct descendant combinator in .find
