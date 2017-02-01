@@ -1,5 +1,6 @@
 # avoriaz [![Build Status](https://travis-ci.org/eddyerburgh/avoriaz.svg?branch=master)](https://travis-ci.org/eddyerburgh/avoriaz)
 
+[Imgur](http://i.imgur.com/nggDAOG.png)
 
 > a Vue.js testing utility library
 
@@ -52,7 +53,7 @@ const wrapper = mount(Foo);
 expect(wrapper.text()).to.equal('some text');
 ```
 
-##### Call DOM events on a child 
+##### Call DOM events on a child
 ```js
 import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
