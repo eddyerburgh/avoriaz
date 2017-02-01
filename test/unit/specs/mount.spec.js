@@ -75,7 +75,7 @@ describe('Wrapper', () => {
 
     it('does not return duplicate nodes', () => {
       const compiled = compileToFunctions('<div><div><div><p/><p/></div></div></div></div>');
-      const wrapper = mount(compiled); console.log(wrapper);
+      const wrapper = mount(compiled);
       const divs = wrapper.find('div p');
       expect(divs[0]).to.be.an.instanceOf(Wrapper);
       expect(divs.length).to.equal(2);
