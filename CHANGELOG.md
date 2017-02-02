@@ -1,3 +1,7 @@
+1.4.0 / 02-01-2017
+=================
+  * Get computedStyles instead of element.style in style method.
+
 1.3.1 / 02-01-2017
 =================
   * Fix npm publishing issue

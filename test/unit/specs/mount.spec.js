@@ -14,6 +14,7 @@ import Parent from '../../resources/components/nested-components/Parent.vue';
 import SecondChild from '../../resources/components/nested-components/SecondChild.vue';
 import Transition from '../../resources/components/nested-components/Transition.vue';
 import SlotParent from '../../resources/components/slots/SlotParent.vue';
+import DivColorRed from '../../resources/components/style/DivColorRed.vue';
 
 describe('Wrapper', () => {
   describe('find', () => {
@@ -406,10 +407,15 @@ describe('Wrapper', () => {
   });
 
   describe('style', () => {
-    it('returns style object of wrapper element', () => {
+    it('returns inline styles of wrapper element', () => {
       const compiled = compileToFunctions('<div style="color:red;"></div>');
       const wrapper = mount(compiled);
-      expect(wrapper.style().color).to.equal('red');
+      expect(wrapper.style().color).to.equal('rgb(255, 0, 0)');
+    });
+
+    it('returns computed styles of wrapper element', () => {
+      const wrapper = mount(DivColorRed);
+      expect(wrapper.style().color).to.equal('rgb(255, 0, 0)');
     });
   });
 });

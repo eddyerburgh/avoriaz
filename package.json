@@ -12,7 +12,7 @@
     "lint": "eslint  --ext .js,.vue src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "prepublish": "rimraf dist && npm run build",
-    "test": "npm run lint:fix && npm run test:karma && npm run test:unit",
+    "test": "npm run lint:fix && npm run test:karma",
     "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
     "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.test.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js"
   },

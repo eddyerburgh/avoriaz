@@ -228,7 +228,8 @@ export default class Wrapper {
    * @returns {Object}
    */
   style() {
-    return this.element.style;
+    const node = document.querySelector('body').insertBefore(this.element, null);
+    return window.getComputedStyle(node);
   }
 
   /**
