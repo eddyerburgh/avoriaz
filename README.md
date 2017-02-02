@@ -1,4 +1,5 @@
-# ![avoriaz logo](http://i.imgur.com/nggDAOG.png)
+# avoriaz [![Build Status](https://travis-ci.org/eddyerburgh/avoriaz.svg?branch=master)](https://travis-ci.org/eddyerburgh/avoriaz)
+
 
 > a Vue.js testing utility library
 
