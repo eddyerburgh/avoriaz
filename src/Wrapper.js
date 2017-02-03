@@ -117,6 +117,24 @@ export default class Wrapper {
 
     return this.element.className.split(' ').indexOf(className) !== -1;
   }
+
+  hasStyle(style, value) {
+    if (typeof style !== 'string') {
+      throw new Error('wrapper.hasStyle() must be passed style as a string');
+    }
+
+    if (typeof value !== 'string') {
+      throw new Error('wrapper.hasClass() must be passed value as string');
+    }
+    const body = document.querySelector('body');
+    const node = body.insertBefore(this.element, null);
+    const mockDiv = document.createElement('div');
+    const mockNode = body.insertBefore(mockDiv, null);
+    mockDiv.style[style] = value;
+
+    return window.getComputedStyle(node)[style] === window.getComputedStyle(mockNode)[style];
+  }
+
   /**
    * Returns HTML of element as a string
    *

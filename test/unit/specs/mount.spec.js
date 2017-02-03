@@ -418,4 +418,31 @@ describe('Wrapper', () => {
       expect(wrapper.style().color).to.equal('rgb(255, 0, 0)');
     });
   });
+
+  describe('hasStyle', () => {
+    it('returns inline styles of wrapper element', () => {
+      const compiled = compileToFunctions('<div style="color:red;"></div>');
+      const wrapper = mount(compiled);
+      expect(wrapper.hasStyle('color', 'red')).to.equal(true);
+    });
+
+    it('returns computed styles of wrapper element', () => {
+      const wrapper = mount(DivColorRed);
+      expect(wrapper.hasStyle('color', 'red')).to.equal(true);
+    });
+
+    it('throws an error if style is not a string', () => {
+      const compiled = compileToFunctions('<div />');
+      const wrapper = mount(compiled);
+      const message = 'wrapper.hasStyle() must be passed style as a string';
+      expect(() => wrapper.hasStyle(undefined, 'red')).to.throw(Error, message);
+    });
+
+    it('throws an error if value is not a string', () => {
+      const compiled = compileToFunctions('<div />');
+      const wrapper = mount(compiled);
+      const message = 'wrapper.hasClass() must be passed value as string';
+      expect(() => wrapper.hasStyle('color', undefined)).to.throw(Error, message);
+    });
+  });
 });
