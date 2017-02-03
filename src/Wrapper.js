@@ -105,9 +105,28 @@ export default class Wrapper {
   }
 
   /**
-   * Checks if wrapper has a class name
+   * Checks if wrapper has an attribute with matching value
    *
-   * @param {String} className - class name to check
+   * @param {String} attribute - attribute to assert
+   * @param {String} value - value attribute should contain
+   * @returns {Boolean}
+   */
+  hasAttribute(attribute, value) {
+    if (typeof attribute !== 'string') {
+      throw new Error('wrapper.hasAttribute() must be passed attribute as a string');
+    }
+
+    if (typeof value !== 'string') {
+      throw new Error('wrapper.hasAttribute() must be passed value as a string');
+    }
+
+    return this.element.getAttribute(attribute) === value;
+  }
+
+  /**
+   * Asserts wrapper has a class name
+   *
+   * @param {String} className - class name to assert
    * @returns {Boolean}
    */
   hasClass(className) {

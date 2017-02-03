@@ -426,13 +426,13 @@ describe('Wrapper', () => {
   });
 
   describe('hasStyle', () => {
-    it('returns inline styles of wrapper element', () => {
+    it('returns true when element contains styles, set inline', () => {
       const compiled = compileToFunctions('<div style="color:red;"></div>');
       const wrapper = mount(compiled);
       expect(wrapper.hasStyle('color', 'red')).to.equal(true);
     });
 
-    it('returns computed styles of wrapper element', () => {
+    it('returns true when element contains styles, set in stylesheet', () => {
       if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
         return;
       }
@@ -452,6 +452,36 @@ describe('Wrapper', () => {
       const wrapper = mount(compiled);
       const message = 'wrapper.hasClass() must be passed value as string';
       expect(() => wrapper.hasStyle('color', undefined)).to.throw(Error, message);
+    });
+  });
+
+  describe('hasAttribute', () => {
+    it('returns true if wrapper contains attribute matching value', () => {
+      const attribute = 'attribute';
+      const value = 'value';
+      const compiled = compileToFunctions(`<div ${attribute}=${value}></div>`);
+      const wrapper = mount(compiled);
+      expect(wrapper.hasAttribute(attribute, value)).to.equal(true);
+    });
+
+    it('returns false if wrapper does not contain attribute', () => {
+      const compiled = compileToFunctions('<div />');
+      const wrapper = mount(compiled);
+      expect(wrapper.hasAttribute('attribute', 'value')).to.equal(false);
+    });
+
+    it('throws an error if attribute is not a string', () => {
+      const compiled = compileToFunctions('<div />');
+      const wrapper = mount(compiled);
+      const message = 'wrapper.hasAttribute() must be passed attribute as a string';
+      expect(() => wrapper.hasAttribute(undefined, 'value')).to.throw(Error, message);
+    });
+
+    it('throws an error if value is not a string', () => {
+      const compiled = compileToFunctions('<div />');
+      const wrapper = mount(compiled);
+      const message = 'wrapper.hasAttribute() must be passed value as a string';
+      expect(() => wrapper.hasAttribute('attribute', undefined)).to.throw(Error, message);
     });
   });
 });
