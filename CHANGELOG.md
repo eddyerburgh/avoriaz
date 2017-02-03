@@ -1,6 +1,13 @@
+1.5.0 / 03-01-2017
+=================
+  * Add .hasStyle method
+  * Add .hasAttribute method
+  * Deprecate .style method
+  * Reinstate unit tests running in jsdom
+
 1.4.0 / 02-01-2017
 =================
-  * Get computedStyles instead of element.style in style method.
+  * Get computedStyles instead of element.style in style method
 
 1.3.1 / 02-01-2017
 =================
