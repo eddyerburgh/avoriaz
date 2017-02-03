@@ -118,6 +118,13 @@ export default class Wrapper {
     return this.element.className.split(' ').indexOf(className) !== -1;
   }
 
+  /**
+   * Checks if wrapper has a style with value
+   *
+   * @param {String} style - style to assert
+   * @param {String} value - value to assert style contains
+   * @returns {Boolean}
+   */
   hasStyle(style, value) {
     if (typeof style !== 'string') {
       throw new Error('wrapper.hasStyle() must be passed style as a string');
@@ -246,6 +253,7 @@ export default class Wrapper {
    * @returns {Object}
    */
   style() {
+    console.warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead');
     const node = document.querySelector('body').insertBefore(this.element, null);
     return window.getComputedStyle(node);
   }
