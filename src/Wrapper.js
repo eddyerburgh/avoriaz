@@ -133,10 +133,17 @@ export default class Wrapper {
     if (typeof value !== 'string') {
       throw new Error('wrapper.hasClass() must be passed value as string');
     }
+
+    /* istanbul ignore next */
+    if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
+      console.warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported');
+    }
+
     const body = document.querySelector('body');
     const node = body.insertBefore(this.element, null);
     const mockDiv = document.createElement('div');
     const mockNode = body.insertBefore(mockDiv, null);
+
     mockDiv.style[style] = value;
 
     return window.getComputedStyle(node)[style] === window.getComputedStyle(mockNode)[style];

@@ -11,7 +11,7 @@ chai.use(sinonChai);
 // Set up JS DOM
 const exposedProperties = ['window', 'navigator', 'document'];
 
-global.document = jsdom('<html><body></body></html>');
+global.document = jsdom('<html><head><style></style></head><body></body></html>');
 global.window = document.defaultView;
 
 Object.keys(document.defaultView).forEach((property) => {
