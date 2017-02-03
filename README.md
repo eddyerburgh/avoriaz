@@ -48,6 +48,7 @@ import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
+const button = wrapper.find('div > button')[0];
 
 expect(wrapper.text()).to.equal('some text');
 ```
@@ -63,7 +64,7 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-const bar = wrapper.find('#bar')[0];
+const bar = wrapper.find('div .bar')[0];
 
 bar.simulate('click');
 
