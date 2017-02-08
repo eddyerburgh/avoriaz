@@ -1,3 +1,7 @@
+1.5.1 / 03-01-2017
+=================
+  * Remove babel-runtime from project
+
 1.5.0 / 03-01-2017
 =================
   * Add .hasStyle method
