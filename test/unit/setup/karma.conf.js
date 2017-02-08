@@ -1,4 +1,4 @@
-const webpackConfig = require('./webpack.config.test.js');
+const webpackConfig = require('./webpack.config.js');
 
 const travis = process.env.TRAVIS;
 
