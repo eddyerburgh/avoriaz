@@ -4,6 +4,14 @@ function isDomSelector(str) {
   }
 
   try {
+    if (!document) {
+      throw new Error('avoriaz must be run in a browser environment like PhantomJS, jsdom or chrome');
+    }
+  } catch (error) {
+    throw new Error('avoriaz must be run in a browser environment like PhantomJS, jsdom or chrome');
+  }
+
+  try {
     document.querySelector(str);
     return true;
   } catch (error) {
