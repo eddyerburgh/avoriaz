@@ -1,8 +1,12 @@
-1.5.1 / 03-01-2017
+1.5.2 / 02-08-2017
+=================
+  * Throw error if avoriaz does not have access to document
+
+1.5.1 / 02-08-2017
 =================
   * Remove babel-runtime from project
 
-1.5.0 / 03-01-2017
+1.5.0 / 02-03-2017
 =================
   * Add .hasStyle method
   * Add .hasAttribute method
