@@ -1,3 +1,7 @@
+1.6.0 / 02-12-2017
+=================
+  * Add use method to add plugins to avoriaz Vue instance
+
 1.5.2 / 02-08-2017
 =================
   * Throw error if avoriaz does not have access to document
