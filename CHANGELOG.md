@@ -41,7 +41,7 @@
 =================
   * Add support for Vue components in .find and .is methods
 
-1.2.0 / 01-17-2017 2017
+1.2.0 / 01-17-2017
 =================
   * Change text method to use textContent instead of innerText
   * Add computed, propsData, methods and data methods to wrapper
