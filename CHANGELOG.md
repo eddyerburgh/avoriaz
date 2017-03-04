@@ -1,3 +1,7 @@
+1.7.1 / 03-04-2017
+=================
+  * Move Vue to list of dependencies
+
 1.7.0 / 03-04-2017
 =================
   * Add setData method
