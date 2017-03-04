@@ -2,6 +2,8 @@
 
 Install a Vue.js plugin.
 
+NOTE: This has been temporarily removed from v1.7.2 due to an unsolved bug
+
 A wrapper around [Vue.use](https://vuejs.org/v2/api/#Vue-use)
 
 ### Arguments
