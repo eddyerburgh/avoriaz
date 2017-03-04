@@ -6,6 +6,7 @@
     * [computed](/api/mount/computed.md)
     * [contains](/api/mount/contains.md)
     * [data](/api/mount/data.md)
+    * [destroy](/api/mount/destroy.md)
     * [find](/api/mount/find.md)
     * [hasAttribute](/api/mount/hasAttribute.md)
     * [hasClass](/api/mount/hasClass.md)
