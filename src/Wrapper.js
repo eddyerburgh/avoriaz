@@ -258,6 +258,10 @@ export default class Wrapper {
   }
 
   setData(data) {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.setData() can only be called on a Vue instance');
+    }
+
     Object.keys(data).forEach((key) => {
       this.vm._data[key] = data[key];
     });
