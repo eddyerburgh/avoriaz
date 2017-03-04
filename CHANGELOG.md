@@ -1,3 +1,7 @@
+1.7.0 / 03-04-2017
+=================
+  * Add setData method
+
 1.6.0 / 02-12-2017
 =================
   * Add use method to add plugins to avoriaz Vue instance
