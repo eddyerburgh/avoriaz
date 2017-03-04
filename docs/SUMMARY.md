@@ -16,6 +16,7 @@
     * [methods](/api/mount/methods.md)
     * [name](/api/mount/name.md)
     * [propsData](/api/mount/propsData.md)
+    * [setData](/api/mount/setData.md)
     * [simulate](/api/mount/simulate.md)
     * [style](/api/mount/style.md)
     * [text](/api/mount/text.md)
