@@ -257,6 +257,13 @@ export default class Wrapper {
     return this.vm.$options.propsData;
   }
 
+  setData(data) {
+    Object.keys(data).forEach((key) => {
+      this.vm._data[key] = data[key];
+    });
+    this.update();
+  }
+
   /**
    * Simulates a DOM event on wrapper
    *
