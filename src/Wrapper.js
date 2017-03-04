@@ -83,6 +83,16 @@ export default class Wrapper {
   }
 
   /**
+   * Calls destroy on vm
+   */
+  destroy() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.destroy() can only be called on a Vue instance');
+    }
+    this.vm.$destroy();
+  }
+
+  /**
    * Finds every node in the mount tree of the current wrapper that matches the provided selector.
    *
    * @param {String|Object} selector
@@ -257,6 +267,11 @@ export default class Wrapper {
     return this.vm.$options.propsData;
   }
 
+  /**
+   * Sets vm data
+   *
+   * @param {Object} data - data to set
+   */
   setData(data) {
     if (!this.isVueComponent) {
       throw new Error('wrapper.setData() can only be called on a Vue instance');
