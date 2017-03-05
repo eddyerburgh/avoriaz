@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from './lib/vue';
 import './lib/matchesPolyfill';
 import VueWrapper from './VueWrapper';
 
