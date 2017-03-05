@@ -2,8 +2,6 @@
 
 Install a Vue.js plugin.
 
-NOTE: This has been temporarily removed from v1.7.2 due to an unsolved bug
-
 A wrapper around [Vue.use](https://vuejs.org/v2/api/#Vue-use)
 
 ### Arguments
@@ -18,3 +16,4 @@ import avoriaz from 'avoriaz';
 
 avoriaz.use(vuex);
 ```
+NOTE: This method is not available in v1.7.2 due to bug, upgrade to the latest version to use this method
