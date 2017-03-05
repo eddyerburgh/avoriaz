@@ -87,7 +87,9 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "vue": "2.1.10"
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+    "vue": "^2.1.10"
   }
 }
