@@ -80,16 +80,13 @@
     "rimraf": "^2.5.4",
     "sinon": "^2.0.0-pre.6",
     "sinon-chai": "^2.8.0",
-    "vue": "^2.1.10",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.1.10",
+    "vue-template-compiler": "^2.2.1",
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
-  },
-  "peerDependencies": {
-    "vue": "^2.1.10"
+    "lodash": "^4.17.4",
+    "vue": "^2.2.1"
   }
 }
