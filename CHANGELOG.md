@@ -1,3 +1,23 @@
+1.8.3 / 03-05-2017
+=================
+  * Expose use method
+
+1.8.2 / 03-05-2017
+=================
+  * Update Vue and vue-compiler version
+
+1.8.1 / 03-05-2017
+=================
+  * Add Vue to list of dependencies
+
+1.8.0 / 03-05-2017
+=================
+  * Move Vue to list of peer dependencies
+
+1.7.2 / 03-05-2017
+=================
+  * Remove use method due to bug
+
 1.7.1 / 03-04-2017
 =================
   * Move Vue to list of dependencies
