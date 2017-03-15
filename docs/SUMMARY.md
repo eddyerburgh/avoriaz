@@ -12,6 +12,7 @@
     * [hasClass](/api/mount/hasClass.md)
     * [hasStyle](/api/mount/hasStyle.md)
     * [html](/api/mount/html.md)
+    * [instance](/api/mount/instance.md)
     * [is](/api/mount/is.md)
     * [isEmpty](/api/mount/isEmpty.md)
     * [methods](/api/mount/methods.md)

@@ -190,6 +190,19 @@ export default class Wrapper {
   }
 
   /**
+   * Returns Vue instance
+   *
+   * @returns {String} HTML of wrapper element
+   */
+  instance() {
+    if (!this.isVueComponent) {
+      throw new Error('wrapper.instance() can only be called on a Vue instance');
+    }
+
+    return this.vm;
+  }
+
+  /**
    * Checks if node matches selector
    *
    * @param {String} selector - selector to check node is
