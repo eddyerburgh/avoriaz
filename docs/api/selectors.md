@@ -4,7 +4,7 @@ A lot of avoriaz methods take a selector as an argument. A selector can either b
 
 ## CSS Selectors
 
-avoriaz handles the following CSS selecors:
+avoriaz handles the following CSS selectors:
 
 - tag selectors (div, foo, bar)
 - class selectors (.foo, .bar)
