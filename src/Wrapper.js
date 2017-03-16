@@ -294,6 +294,7 @@ export default class Wrapper {
       this.vm._data[key] = data[key];
     });
     this.update();
+    this.vNode = this.vm._vnode;
   }
 
   /**
