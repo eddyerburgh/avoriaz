@@ -1,3 +1,7 @@
+1.9.1 / 03-16-2017
+=================
+  * [Bug] Update vNode when setData is called
+
 1.9.0 / 03-15-2017
 =================
   * Add instance method
