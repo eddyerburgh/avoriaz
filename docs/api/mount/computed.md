@@ -4,9 +4,29 @@ Returns a Vue instances computed object. Can only be called on a Vue component w
 
 ### Returns
 
-Object: computed object 
+Object: computed object
 
 ### Example
+
+`Foo.vue`
+
+```js
+<template>
+    <div></div>
+</template>
+<script>
+export default {
+    name: 'foo',
+    computed: {
+        foo () {
+            return 'f' + 'o' + 'o';
+        }
+    }
+};
+</script>
+```
+
+`Foo.spec.js`
 
 ```js
 import { mount } from 'avoriaz';
