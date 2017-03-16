@@ -5,9 +5,18 @@ import If from '../../../resources/components/v-if/If.vue';
 describe('setData', () => {
   it('sets component data and updates vm when called on Vue instance', () => {
     const wrapper = mount(If);
+    expect(wrapper.find('.ready').length).to.equal(0);
     expect(wrapper.find('.not-ready').length).to.equal(1);
     wrapper.setData({ ready: true });
     expect(wrapper.find('.ready').length).to.equal(1);
+    expect(wrapper.find('.not-ready').length).to.equal(0);
+  });
+
+  it('sets component data and updates nested vm nodes when called on Vue instance', () => {
+    const wrapper = mount(If);
+    expect(wrapper.find('.child.ready').length).to.equal(0);
+    wrapper.setData({ ready: true });
+    expect(wrapper.find('.child.ready').length).to.equal(1);
   });
 
   it('throws an error if node is not a Vue instance', () => {
