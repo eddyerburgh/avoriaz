@@ -4,14 +4,32 @@ Check if wrapper DOM node has attribute matching value
 
 ### Arguments
 
-attribute (String): attribute name to assert value of.
-value (String): the value attribute should hold.
+`attribute` (`String`): attribute name to assert value of.
+
+`value` (`String`): the value attribute should hold.
 
 ### Returns
 
-(Boolean): true if element contains attribute with matching value. False if not.
+(`Boolean`): `true` if element contains attribute
+with matching value, `false` otherwise.
 
 ## Example
+
+`Foo.vue`
+
+```js
+<template lang="html">
+    <div id="foo"></div>
+</template>
+
+<script>
+export default {
+    name: 'foo'
+}
+</script>
+```
+
+`Foo.spec.js`
 
 ```js
 import { mount } from 'avoriaz';
