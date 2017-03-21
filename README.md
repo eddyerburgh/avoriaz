@@ -18,19 +18,8 @@ npm install --save-dev avoriaz
 
 - [Example using karma and mocha](https://github.com/eddyerburgh/avoriaz-karma-mocha-example)
 - [Example using mocha-webpack](https://github.com/eddyerburgh/avoriaz-mocha-example)
+- [Example use karama and jasmine](https://github.com/eddyerburgh/avoriaz-karma-jasmine-example)
 
-##### Call DOM events on the Vue wrapper
-
-```js
-import { mount } from 'avoriaz';
-import Foo from './Foo.vue';
-
-const wrapper = mount(Foo, {
-  propsData: { clickHandler },
-});
-
-wrapper.simulate('click');
-```
 
 ##### Assert wrapper contains a child
 ```js
@@ -51,6 +40,16 @@ const wrapper = mount(Foo);
 const button = wrapper.find('div > button')[0];
 
 expect(wrapper.text()).to.equal('some text');
+```
+
+##### Check style is rendered
+```js
+import { mount } from 'avoriaz';
+import Foo from './Foo.vue';
+
+const wrapper = mount(Foo);
+
+wrapper.hasStyle('color', 'red');
 ```
 
 ##### Call DOM events on a child
