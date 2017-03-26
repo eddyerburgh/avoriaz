@@ -18,7 +18,7 @@ npm install --save-dev avoriaz
 
 - [Example using karma and mocha](https://github.com/eddyerburgh/avoriaz-karma-mocha-example)
 - [Example using mocha-webpack](https://github.com/eddyerburgh/avoriaz-mocha-example)
-- [Example use karama and jasmine](https://github.com/eddyerburgh/avoriaz-karma-jasmine-example)
+- [Example use karma and jasmine](https://github.com/eddyerburgh/avoriaz-karma-jasmine-example)
 
 
 ##### Assert wrapper contains a child
