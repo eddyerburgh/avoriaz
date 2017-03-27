@@ -1,3 +1,8 @@
+1.9.2 / 03-27-2017
+=================
+  * [Docs] Add examples to docs
+  * [Feature] Log warning when computed, propsData and methods are called with details on unbound this
+
 1.9.1 / 03-16-2017
 =================
   * [Bug] Update vNode when setData is called
