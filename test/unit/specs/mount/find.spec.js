@@ -74,7 +74,7 @@ describe('find', () => {
   });
 
   it('returns an array of Wrappers of elements matching selector with direct descendant combinator passed', () => {
-    const compiled = compileToFunctions('<div><ul><ul></ul><ul/></div>');
+    const compiled = compileToFunctions('<div><ul><ul></ul></ul></div>');
     const wrapper = mount(compiled);
     const divs = wrapper.find('div > ul');
     expect(divs[0]).to.be.an.instanceOf(Wrapper);
