@@ -3,7 +3,7 @@ import mount from '../../../../src/mount';
 import If from '../../../resources/components/v-if/If.vue';
 
 describe('setData', () => {
-it('sets component data and updates nested vm nodes when called on Vue instance', () => {
+  it('sets component data and updates nested vm nodes when called on Vue instance', () => {
     const wrapper = mount(If);
     expect(wrapper.find('.child.ready').length).to.equal(0);
     wrapper.setData({ ready: true });
