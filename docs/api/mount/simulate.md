@@ -14,7 +14,7 @@ import sinon from 'sinon';
 import Foo from './Foo';
 
 const clickHandler = sinon.stub();
-const wrapper = mount(ClickComponent, {
+const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
