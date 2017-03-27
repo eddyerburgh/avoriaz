@@ -1,4 +1,4 @@
-const chai = require('chai')
+const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const jsdom = require('jsdom').jsdom;
