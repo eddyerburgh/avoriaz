@@ -47,6 +47,8 @@ export default class Wrapper {
       throw new Error('wrapper.computed() can only be called on a Vue instance');
     }
 
+    console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+
     return this.vm.$options.computed;
   }
 
@@ -251,6 +253,8 @@ export default class Wrapper {
       throw new Error('wrapper.methods() can only be called on a Vue instance');
     }
 
+    console.warn('warning: functions returned by methods() will not have this bound to the vue instance. Calling a method that uses this will result in an error. You can access methods by using the vue instance. e.g. to call a method function named aMethod, call wrapper.vm.aMethod(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+
     return this.vm.$options.methods;
   }
 
@@ -276,6 +280,8 @@ export default class Wrapper {
     if (!this.isVueComponent) {
       throw new Error('wrapper.propsData() can only be called on a Vue instance');
     }
+
+    console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
 
     return this.vm.$options.propsData;
   }

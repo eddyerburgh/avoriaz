@@ -3,6 +3,15 @@ import mount from '../../../../src/mount';
 import ClickComponent from '../../../resources/components/event-components/ClickComponent.vue';
 
 describe('propsData', () => {
+  beforeEach(() => {
+    sinon.spy(console, 'warn');
+  });
+
+  afterEach(() => {
+    console.warn.restore();
+  });
+
+
   it('returns props object of the Vue instance', () => {
     const propsData = {
       childClickHandler: () => 'childClickHandler',
@@ -19,4 +28,13 @@ describe('propsData', () => {
     const input = wrapper.find('p')[0];
     expect(() => input.propsData()).throw(Error, message);
   });
+
+  it('calls console.warn with information on unbound this', () => {
+    const expectedText = 'warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15';
+    const compiled = compileToFunctions('<div><p></p></div>');
+    const wrapper = mount(compiled);
+    wrapper.propsData();
+    expect(console.warn).to.be.calledWith(expectedText);
+  });
 });
+
