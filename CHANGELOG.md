@@ -1,3 +1,8 @@
+1.9.3 / 03-29-2017
+=================
+  * [Docs] Add examples to docs
+  * [Docs] Fix typo in README
+
 1.9.2 / 03-27-2017
 =================
   * [Docs] Add examples to docs
