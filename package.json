@@ -1,6 +1,6 @@
 {
   "name": "avoriaz",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "a Vue.js testing utility library",
   "main": "build",
   "scripts": {
