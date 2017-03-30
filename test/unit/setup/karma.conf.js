@@ -8,9 +8,9 @@ module.exports = function karmaConfig(config) {
     browsers: travis ? ['PhantomJS'] : ['PhantomJS', 'Chrome'],
     frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
-    files: ['../specs/mount/*.{vue,js}'],
+    files: ['../specs/**/*.+(vue|js)'],
     preprocessors: {
-      '../specs/mount/*.{vue,js}': ['webpack', 'sourcemap'],
+      '../specs/**/*.+(vue|js)': ['webpack', 'sourcemap'],
     },
     webpack: webpackConfig,
     webpackMiddleware: {
