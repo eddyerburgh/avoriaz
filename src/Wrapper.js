@@ -281,9 +281,9 @@ export default class Wrapper {
       throw new Error('wrapper.propsData() can only be called on a Vue instance');
     }
 
-    console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
 
-    return this.vm.$options.propsData;
+    return this.vm.$props;
   }
 
   /**
