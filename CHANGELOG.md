@@ -1,3 +1,7 @@
+1.9.4 / 03-30-2017
+=================
+  * [Fix] Change propsData warning message to give a correct example
+  
 1.9.3 / 03-29-2017
 =================
   * [Docs] Add examples to docs
