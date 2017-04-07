@@ -2,6 +2,7 @@ import mount from '../../../../src/mount';
 import ClickComponent from '../../../resources/components/event-components/ClickComponent.vue';
 import ClickToggleComponent from '../../../resources/components/event-components/ClickToggleComponent.vue';
 import KeydownComponent from '../../../resources/components/event-components/KeydownComponent.vue';
+import KeydownWithModifier from '../../../resources/components/event-components/KeydownWithModifierComponent.vue';
 
 describe('simulate', () => {
   it('causes click handler to fire when wrapper.simulate("click") is called on a child node', () => {
@@ -31,6 +32,16 @@ describe('simulate', () => {
       propsData: { keydownHandler },
     });
     wrapper.simulate('keydown');
+
+    expect(keydownHandler).to.be.calledOnce;
+  });
+
+  it('causes keydown handler to fire when wrapper.simulate("keydown.enter") is fired on root node', () => {
+    const keydownHandler = sinon.stub();
+    const wrapper = mount(KeydownWithModifier, {
+      propsData: { keydownHandler },
+    });
+    wrapper.simulate('keydown.enter');
 
     expect(keydownHandler).to.be.calledOnce;
   });
