@@ -1,3 +1,8 @@
+1.10.0 / 04-09-2017
+=================
+  * [New] Support key modifiers in simulate method
+  * [Docs] Add examples ton docs
+  
 1.9.4 / 03-30-2017
 =================
   * [Fix] Change propsData warning message to give a correct example
