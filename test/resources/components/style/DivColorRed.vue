@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'SlotChild',
+  name: 'DivColorRed',
 };
 </script>
 
