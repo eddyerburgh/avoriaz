@@ -91,6 +91,11 @@ export default class Wrapper {
     if (!this.isVueComponent) {
       throw new Error('wrapper.destroy() can only be called on a Vue instance');
     }
+
+    if (this.vm.$el.parentNode) {
+      this.vm.$el.parentNode.removeChild(this.vm.$el);
+    }
+
     this.vm.$destroy();
   }
 
