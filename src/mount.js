@@ -1,6 +1,6 @@
 import Vue from './lib/vue';
-import './lib/matchesPolyfill';
 import VueWrapper from './VueWrapper';
+import './lib/matchesPolyfill';
 
 function createElem() {
   const elem = document.createElement('div');
