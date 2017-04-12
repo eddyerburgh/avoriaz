@@ -1,5 +1,5 @@
-import findMatchingVNodes from '../../../src/lib/findMatchingVNodes';
-import '../../../src/lib/matchesPolyfill';
+import findMatchingVNodes from '../../../../src/lib/findMatchingVNodes';
+import '../../../../src/lib/matchesPolyfill';
 
 function elementWithAttribute(tag, attributes) {
   const element = document.createElement(tag);
