@@ -11,14 +11,22 @@ function createElem() {
 }
 
 export default function mount(component, options, mounted = false) {
-  const Constructor = Vue.extend(component);
-  const vm = new Constructor(options);
-
   let elem = null;
-  if (mounted) {
+  let mountOptions = options;
+  let mountedToDocument = mounted;
+
+  if (typeof options === 'boolean') {
+    mountedToDocument = options;
+    mountOptions = {};
+  }
+
+  if (mountedToDocument) {
     elem = createElem();
   }
+
+  const Constructor = Vue.extend(component);
+  const vm = new Constructor(mountOptions);
   vm.$mount(elem);
 
-  return new VueWrapper(vm, options);
+  return new VueWrapper(vm, mountOptions);
 }
