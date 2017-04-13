@@ -10,23 +10,18 @@ function createElem() {
   return elem;
 }
 
-export default function mount(component, options, mounted = false) {
+export default function mount(component, options = {}) {
   let elem = null;
-  let mountOptions = options;
-  let mountedToDocument = mounted;
-
-  if (typeof options === 'boolean') {
-    mountedToDocument = options;
-    mountOptions = {};
-  }
+  const mountedToDocument = options.mountToDocument;
 
   if (mountedToDocument) {
     elem = createElem();
+    delete options.mountToDocument; // eslint-disable-line no-param-reassign
   }
 
   const Constructor = Vue.extend(component);
-  const vm = new Constructor(mountOptions);
+  const vm = new Constructor(options);
   vm.$mount(elem);
 
-  return new VueWrapper(vm, mountOptions);
+  return new VueWrapper(vm);
 }

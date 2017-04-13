@@ -17,4 +17,12 @@ describe('mount', () => {
     expect(wrapper.vm).to.be.an('object');
     expect(wrapper.vm.$props.childClickHandler).to.equal(childClickHandler);
   });
+
+  it('mounts component to DOM before returning VueWrapper when passed mountToDocument in options', () => {
+    const compiled = compileToFunctions('<div><input /></div>');
+    const wrapper = mount(compiled, { mountToDocument: true });
+    expect(wrapper.element.querySelector('input')).to.be.instanceOf(HTMLElement);
+    expect(wrapper.vm).to.be.an('object');
+    expect(document.querySelectorAll('input').length).to.equal(1);
+  });
 });
