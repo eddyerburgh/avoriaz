@@ -31,10 +31,11 @@ function isValidSelector(selector) {
 
 export default class Wrapper {
 
-  constructor(vNode, update) {
+  constructor(vNode, update, mountedToDom) {
     this.vNode = vNode;
     this.element = vNode.elm;
     this.update = update;
+    this.mountedToDom = mountedToDom;
   }
 
   /**
@@ -113,12 +114,12 @@ export default class Wrapper {
     if (typeof selector === 'object') {
       const vm = this.vm || this.vNode.context.$root;
       const components = findVueComponents(vm, selector.name);
-      return components.map(component => new VueWrapper(component));
+      return components.map(component => new VueWrapper(component, undefined, this.mounted));
     }
 
     const nodes = findMatchingVNodes(this.vNode, selector);
 
-    return nodes.map(node => new Wrapper(node, this.update));
+    return nodes.map(node => new Wrapper(node, this.update, this.mountedToDom));
   }
 
   /**
@@ -174,15 +175,17 @@ export default class Wrapper {
     if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
       console.warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported');
     }
-
     const body = document.querySelector('body');
-    const node = body.insertBefore(this.element, null);
-    const mockDiv = document.createElement('div');
-    const mockNode = body.insertBefore(mockDiv, null);
+    const mockElement = document.createElement('div');
+    const mockNode = body.insertBefore(mockElement, null);
+    mockElement.style[style] = value;
 
-    mockDiv.style[style] = value;
-
-    return window.getComputedStyle(node)[style] === window.getComputedStyle(mockNode)[style];
+    if (!this.mountedToDom) {
+      body.insertBefore(this.element, null);
+    }
+    const elStyle = window.getComputedStyle(this.element)[style];
+    const mockNodeStyle = window.getComputedStyle(mockNode)[style];
+    return elStyle === mockNodeStyle;
   }
 
   /**
