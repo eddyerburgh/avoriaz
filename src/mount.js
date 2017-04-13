@@ -12,16 +12,16 @@ function createElem() {
 
 export default function mount(component, options = {}) {
   let elem = null;
-  const mountedToDocument = options.mountToDocument;
+  const mountToDom = options.mountToDom;
 
-  if (mountedToDocument) {
+  if (mountToDom) {
     elem = createElem();
-    delete options.mountToDocument; // eslint-disable-line no-param-reassign
+    delete options.mountToDom; // eslint-disable-line no-param-reassign
   }
 
   const Constructor = Vue.extend(component);
   const vm = new Constructor(options);
   vm.$mount(elem);
 
-  return new VueWrapper(vm);
+  return new VueWrapper(vm, mountToDom);
 }
