@@ -21,7 +21,7 @@ describe('hasStyle', () => {
     if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
       return;
     }
-    const wrapper = mount(DivColorRed, { mountToDom: true });
+    const wrapper = mount(DivColorRed, { attachToDocument: true });
     expect(wrapper.find('p')[0].hasStyle('color', 'red')).to.equal(true);
     expect(wrapper.find('span')[0].hasStyle('color', 'red')).to.equal(true);
     expect(wrapper.find('span')[0].hasStyle('color', 'orange')).to.equal(false);

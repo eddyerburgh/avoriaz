@@ -17,7 +17,7 @@ describe('destory', () => {
 
   it('remove element from document.body', () => {
     const compiled = compileToFunctions('<div></div>');
-    const wrapper = mount(compiled, { mountToDom: true });
+    const wrapper = mount(compiled, { attachToDocument: true });
     expect(wrapper.vm.$el.parentNode).to.equal(document.body);
 
     wrapper.destroy();
