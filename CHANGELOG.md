@@ -1,7 +1,15 @@
+1.11.0 / 04-14-2017
+=================
+  * [New] Add attachToDocument option
+  * [New] Use getters to retrieve vNode
+  * [Fix] Remove duplicate vNodes by comparing element node
+  * [Docs] Standardize docs
+  * [Docs] Add guide to using with vuex
+  
 1.10.0 / 04-09-2017
 =================
   * [New] Support key modifiers in simulate method
-  * [Docs] Add examples ton docs
+  * [Docs] Add examples to docs
   
 1.9.4 / 03-30-2017
 =================
