@@ -24,4 +24,8 @@
     * [text](/api/mount/text.md)
     * [update](/api/mount/update.md)
   * [selectors](/api/selectors.md)
-  * [use](/api/use.md)
+  * [use](/api/use.md)    
+  * guides
+    * [using with vuex](/guides/using-with-vuex.md)
+
+
