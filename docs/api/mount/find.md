@@ -4,11 +4,11 @@ Returns a wrapper of a DOM node or Vue component. Use any valid [avoriaz selecto
 
 ### Arguments
 
-selector (String|Component): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors.md).
+`selector` (`String`|`Component`): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors.md).
 
 ### Returns
 
-Array: returns an array of wrappers matching selector. Vue component wrappers have extra methods ([computed](/api/mount/computed.md), [data](/api/mount/data.md), [methods](/api/mount/methods.md), [propsData](/api/mount/propsData.md)). To check if a wrapper is a Vue component wrapper, use wrapper.isVueComponent.
+(`Array`): returns an `array` of wrappers matching selector. Vue component wrappers have extra methods ([computed](/api/mount/computed.md), [data](/api/mount/data.md), [methods](/api/mount/methods.md), [propsData](/api/mount/propsData.md)). To check if a wrapper is a Vue component wrapper, use wrapper.isVueComponent.
 
 ### Example
 

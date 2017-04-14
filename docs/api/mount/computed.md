@@ -4,7 +4,7 @@ Returns a Vue instances computed object. Can only be called on a Vue component w
 
 ### Returns
 
-Object: computed object
+(`Object`): computed object
 
 ### Example
 

@@ -8,7 +8,7 @@ Returns true if wrapper contains selector. Use any valid [avoriaz selector](/api
 
 ### Returns
 
-Boolean: returns true if wrapper contains selector.
+(`Boolean`): returns `true` if wrapper contains selector.
 
 ### Example
 

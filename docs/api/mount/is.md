@@ -4,11 +4,11 @@ Returns true if wrapper node matches selector. Use any valid [avoriaz selector](
 
 ### Arguments
 
-selector (String|Component): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors.md).
+`selector` (`String`|`Component`): a CSS selector ('#id', '.class-name', 'tag') or a Vue component. See [selectors](/api/selectors.md).
 
 ### Returns
 
-Boolean: returns true if wrapper node matches selector.
+(`Boolean`): returns true if wrapper node matches selector.
 
 ### Example
 

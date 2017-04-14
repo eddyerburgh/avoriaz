@@ -6,7 +6,7 @@ The methods object contains the methods of a Vue instance.
 
 ### Returns
 
-(Object): methods object 
+(`Object`): methods `object` 
 
 ### Example
 

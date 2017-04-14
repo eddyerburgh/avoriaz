@@ -4,7 +4,7 @@ Simulate an event on the wrapper
 
 ### Arguments
 
-event (String): type of event (e.g. click).
+event (`String`): type of event (e.g. click).
 
 ## Example
 

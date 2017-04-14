@@ -4,7 +4,7 @@ Returns a Vue instances data object. Can only be called on a Vue component wrapp
 
 ### Returns
 
-`Object`: data object
+(`Object`): data object
 
 ### Example
 

@@ -6,7 +6,7 @@ The propsData object contains the data of an instances props. If a Vue component
 
 ### Returns
 
-(Object): propsData object 
+(`Object`): propsData `object` 
 
 ### Example
 

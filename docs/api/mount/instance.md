@@ -4,7 +4,7 @@ Returns components Vue instance. Can only be called on a Vue component wrapper.
 
 ### Returns
 
-`Object`: Vue instance
+(`Object`): Vue instance
 
 ### Example
 

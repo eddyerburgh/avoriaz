@@ -4,7 +4,7 @@ Sets Vue instance data and forces update. Can only be called on a Vue component 
 
 ### Arguments
 
-data (Object): Data properties and corresponding value to set
+data (`Object`): Data properties and corresponding value to set
 
 ### Example
 
