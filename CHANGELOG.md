@@ -1,3 +1,7 @@
+1.11.1 / 04-14-2017
+=================
+  * [Fix] Mount entire component in hasStyle to accurately detect CSS
+  
 1.11.0 / 04-14-2017
 =================
   * [New] Add attachToDocument option
