@@ -7,6 +7,7 @@ import Transition from '../../../resources/components/nested-components/Transiti
 import SlotParent from '../../../resources/components/slots/SlotParent.vue';
 import Form from '../../../resources/components/form/Form.vue';
 import Submit from '../../../resources/components/form/Submit.vue';
+import Items from '../../../resources/components/v-for/Items.vue';
 
 describe('find', () => {
   it('returns an array of Wrappers of elements matching tag selector passed', () => {
@@ -85,6 +86,11 @@ describe('find', () => {
     const wrapper = mount(Parent);
     const secondChildComponents = wrapper.find(SecondChild);
     expect(secondChildComponents.length).to.equal(6);
+  });
+
+  it('returns correct number of Vue Wrapper when component has a v-for', () => {
+    const wrapper = mount(Items, { propsData: { list: [{}, {}, {}] } });
+    expect(wrapper.find('.item').length).to.equal(3);
   });
 
   it('returns array of VueWrappers of Vue Components matching component if component name in parent is different to filename', () => {

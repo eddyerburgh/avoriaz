@@ -1,5 +1,3 @@
-import { isEqual } from 'lodash';
-
 function getSelectors(selector) {
   const selectors = selector.split(' ');
   return selectors.reduce((list, sel) => list.concat(sel), []);
@@ -57,17 +55,14 @@ function recurseGetMatchingVNodes(vNodes, selectors, ignoreFirstNode) {
 }
 
 function removeDuplicateNodes(vNodes) {
-  const nodes = [];
+  const uniqueNodes = [];
   vNodes.forEach((vNode) => {
-    for (let i = 0; i < nodes.length; i++) { // eslint-disable-line no-plusplus
-      if (isEqual(nodes[i], vNode)) {
-        return false;
-      }
+    const exists = uniqueNodes.some(node => vNode.elm === node.elm);
+    if (!exists) {
+      uniqueNodes.push(vNode);
     }
-    nodes.push(vNode);
-    return true;
   });
-  return nodes;
+  return uniqueNodes;
 }
 
 export default function findMatchingVNodes(vNode, selector) {
