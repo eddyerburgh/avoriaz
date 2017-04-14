@@ -17,7 +17,17 @@ describe('hasStyle', () => {
     expect(wrapper.hasStyle('color', 'red')).to.equal(true);
   });
 
-  it('returns true when element contains styles, set in stylesheet with multiple selectors', () => {
+  it('returns true when element contains styles, set in stylesheet with multiple selectors when not attached to document', () => {
+    if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
+      return;
+    }
+    const wrapper = mount(DivColorRed);
+    expect(wrapper.find('p')[0].hasStyle('color', 'red')).to.equal(true);
+    expect(wrapper.find('span')[0].hasStyle('color', 'red')).to.equal(true);
+    expect(wrapper.find('span')[0].hasStyle('color', 'orange')).to.equal(false);
+  });
+
+  it('returns true when element contains styles, set in stylesheet with multiple selectors when attached to document', () => {
     if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
       return;
     }

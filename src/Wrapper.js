@@ -181,8 +181,10 @@ export default class Wrapper {
     mockElement.style[style] = value;
 
     if (!this.mountedToDom) {
-      body.insertBefore(this.element, null);
+      const vm = this.vm || this.vNode.context.$root;
+      body.insertBefore(vm.$root._vnode.elm, null);
     }
+
     const elStyle = window.getComputedStyle(this.element)[style];
     const mockNodeStyle = window.getComputedStyle(mockNode)[style];
     return elStyle === mockNodeStyle;
