@@ -1,3 +1,7 @@
+1.11.2 / 04-28-2017
+=================
+  * [Fix] Add undocumented options argument to use method
+
 1.11.1 / 04-14-2017
 =================
   * [Fix] Mount entire component in hasStyle to accurately detect CSS
