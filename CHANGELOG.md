@@ -1,3 +1,7 @@
+1.12.0 / 05-05-2017
+=================
+  * [New] Add slots mount option
+  
 1.11.2 / 04-28-2017
 =================
   * [Fix] Add undocumented options argument to use method
