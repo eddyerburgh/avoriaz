@@ -21,6 +21,13 @@ export default function mount(component, options = {}) {
 
   const Constructor = Vue.extend(component);
   const vm = new Constructor(options);
+
+  if (options.slots) {
+    Object.keys(options.slots).forEach((key) => {
+      vm.$slots[key] = vm.$createElement(options.slots[key]);
+    });
+  }
+
   vm.$mount(elem);
 
   return new VueWrapper(vm, attachToDocument);
