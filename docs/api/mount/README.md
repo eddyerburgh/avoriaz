@@ -10,6 +10,10 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.attachToDocument` (`Boolean`): Component will attach to DOM when rendered. This can be used with [`hasStyle`](/api/mount/hasStyle.md) to check multi element CSS selectors
 
+`options.slots` (`Object`): Render component with slots.
+`options.slots.default` (`Component`): Default slot object to render
+`options.slots.name` (`Component`): Named slots. i.e. slots.name will match a <slot name="name" />
+
 ### Examples
 
 #### Without options
@@ -54,6 +58,26 @@ describe('Foo', () => {
   it('renders a div', () => {
     const wrapper = mount(Foo, { 
         attachToDocument: true
+    });
+    expect(wrapper.props(div)).to.equal(true);
+  });
+});
+```
+#### Default and named slots
+```js
+import { mount } from 'avoriaz';
+import { expect } from 'chai';]
+import Foo from './Foo.vue';
+import Bar from './Bar.vue';
+import FooBar from './FooBar.vue';
+
+describe('Foo', () => {
+  it('renders a div', () => {
+    const wrapper = mount(Foo, { 
+        slots: {
+            default: Bar,
+            fooBar: FooBar // Will match <slot name="FooBar" />
+        }
     });
     expect(wrapper.props(div)).to.equal(true);
   });
