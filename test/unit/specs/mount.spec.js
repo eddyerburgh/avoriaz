@@ -36,18 +36,18 @@ describe.only('mount', () => {
     expect(document.querySelectorAll('input').length).to.equal(1);
   });
 
-  it.only('mounts component with default slot if passed component in slot object', () => {
+  it('mounts component with default slot if passed component in slot object', () => {
     const wrapper = mount(SlotChild, { slots: { default: ClickComponent } });
     expect(wrapper.contains(ClickComponent)).to.equal(true);
   });
 
-  it.only('mounts component with default slot if passed object with template prop in slot object', () => {
+  it('mounts component with default slot if passed object with template prop in slot object', () => {
     const compiled = compileToFunctions('<div id="div" />');
     const wrapper = mount(SlotChild, { slots: { default: compiled } });
     expect(wrapper.contains('#div')).to.equal(true);
   });
 
-  it.only('mounts component with named slot if passed component in slot object', () => {
+  it('mounts component with named slot if passed component in slot object', () => {
     const wrapper = mount(SlotChild, { slots: { header: ClickComponent, footer: ClickComponent } });
     expect(wrapper.find(ClickComponent).length).to.equal(2);
   });
