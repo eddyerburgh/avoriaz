@@ -11,8 +11,12 @@ module.exports = {
     sourceType: 'module'
   },
   extends: 'airbnb',
+  "plugins": [
+    "mocha"
+  ],
   rules: {
     "import/no-extraneous-dependencies": 0,
-    "no-unused-expressions": 0
-  }
+    "no-unused-expressions": 0,
+    "mocha/no-exclusive-tests": "error"
+  },
 };

@@ -3,7 +3,7 @@ import mount from '../../../src/mount';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import SlotChild from '../../resources/components/slots/SlotChild.vue';
 
-describe.only('mount', () => {
+describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
     if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
       return;
