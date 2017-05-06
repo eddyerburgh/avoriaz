@@ -79,7 +79,7 @@
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",
     "rimraf": "^2.5.4",
-    "sinon": "^2.0.0-pre.6",
+    "sinon": "^2.2.0",
     "sinon-chai": "^2.8.0",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
