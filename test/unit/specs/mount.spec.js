@@ -57,18 +57,28 @@ describe('mount', () => {
     expect(wrapper.find(ClickComponent).length).to.equal(2);
   });
 
+  it('mounts component with named slot if passed component in slot object', () => {
+    const wrapper = mount(SlotChild, {
+      slots: {
+        header: ClickComponent,
+      },
+    });
+    expect(wrapper.find(ClickComponent).length).to.equal(1);
+    expect(Array.isArray(wrapper.vm.$slots.header)).to.equal(true);
+  });
+
   it('returns VueWrapper with mountedToDom set to true when passed attachToDocument in options', () => {
     const compiled = compileToFunctions('<div><input /></div>');
     const wrapper = mount(compiled, { attachToDocument: true });
     expect(wrapper.mountedToDom).to.equal(true);
   });
 
-  it('throws error if slots[key] is not an array', () => {
-    const message = 'slots[key] must be an array of vNodes - see https://vuejs.org/v2/api/#vm-slots';
+  it('throws error if slots[key] is not an array or object', () => {
+    const message = 'slots[key] must be a Component or an array of Components';
     expect(() => mount(SlotChild, {
       slots:
       {
-        header: ClickComponent,
+        header: 'ClickComponent',
         footer: [ClickComponent],
       },
     })).to.throw(Error, message);
