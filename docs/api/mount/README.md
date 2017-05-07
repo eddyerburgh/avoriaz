@@ -14,6 +14,8 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 `options.slots.default` (`Array[Component]|Component`): Default slot object to render, can be a Vue component or array of Vue components
 `options.slots.name` (`Array[Component]|Component`): Named slots. i.e. slots.name will match a <slot name="name" />, can be a Vue component or array of Vue components
 
+`options.globals` (`Object`): Add globals to Vue instance.
+
 ### Examples
 
 #### Without options
@@ -80,6 +82,25 @@ describe('Foo', () => {
         }
     });
     expect(wrapper.props(div)).to.equal(true);
+  });
+});
+```
+
+#### Adding globals
+```js
+import { mount } from 'avoriaz';
+import { expect } from 'chai';]
+import Foo from './Foo.vue';
+
+describe('Foo', () => {
+  it('renders a div', () => {
+    const $route = {path: 'http://www.example-path.com'};
+    const wrapper = mount(Foo, { 
+        globals: {
+            $route
+        }
+    });
+    expect(wrapper.vm.$route.path).to.equal($route.path);
   });
 });
 ```
