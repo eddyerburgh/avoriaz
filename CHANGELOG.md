@@ -1,7 +1,8 @@
-1.12.1 / 05-07-2017
+1.12.2 / 05-07-2017
 =================
   * [New] Remove development mode warning log
-  
+  * [Fix] Handle slots as arrays
+
 1.12.0 / 05-05-2017
 =================
   * [New] Add slots mount option
