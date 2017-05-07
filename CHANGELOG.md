@@ -1,3 +1,7 @@
+1.12.1 / 05-07-2017
+=================
+  * [New] Remove development mode warning log
+  
 1.12.0 / 05-05-2017
 =================
   * [New] Add slots mount option
