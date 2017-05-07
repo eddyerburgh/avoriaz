@@ -2,6 +2,8 @@ import Vue from './lib/vue';
 import VueWrapper from './VueWrapper';
 import './lib/matchesPolyfill';
 
+Vue.config.productionTip = false;
+
 function createElem() {
   const elem = document.createElement('div');
 
