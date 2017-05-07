@@ -1,7 +1,6 @@
 function addSlots(vm, slots) {
   Object.keys(slots).forEach((key) => {
     const slotsObj = slots[key];
-    console.log(slotsObj);
     if (!(Array.isArray(slots[key])) && !(slotsObj !== null && typeof slotsObj === 'object')) {
       throw new Error('slots[key] must be a Component or an array of Components');
     }
