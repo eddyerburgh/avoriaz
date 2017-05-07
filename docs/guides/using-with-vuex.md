@@ -42,14 +42,15 @@ In this tutorial we will be using avoriaz, which has a mount method. We can pass
 Let’s see what this looks like:
 
 ```js
-import avoriaz, { mount } from 'avoriaz';
+import Vue from 'vue'
+import { mount } from 'avoriaz';
 import sinon from 'sinon';
 import { expect } from 'chai';
 import Vuex from 'vuex';
 import 'babel-polyfill';
 import Actions from '../../../src/components/Actions';
 
-avoriaz.use(Vuex);
+Vue.use(Vuex);
 
 describe('Actions.vue', () => {
   let actions;
@@ -89,7 +90,7 @@ describe('Actions.vue', () => {
   });
 });
 ```
-What’s happening here? First we tell Vue to use Vuex with the avoriaz.use method. This is just a wrapper around Vue.use.
+What’s happening here? First we tell Vue to use Vuex with the Vue.use method. This is just a wrapper around Vue.use.
 
 We then make a mock store by calling new Vuex.store with our mock values. We only pass it the actions, since that’s all we care about.
 
@@ -134,12 +135,13 @@ Let’s see the test:
 
 ```javascript
 import 'babel-polyfill';
-import avoriaz, { mount } from 'avoriaz';
+import Vue from 'vue';
+import { mount } from 'avoriaz';
 import { expect } from 'chai';
 import Vuex from 'vuex';
 import Actions from '../../../src/components/Getters';
 
-avoriaz.use(Vuex);
+Vue.use(Vuex);
 
 describe('Getters.vue', () => {
   let state;
@@ -209,7 +211,8 @@ Simple component that includes one action and one getter.
 And the test:
 
 ```javascript
-import avoriaz, { mount } from 'avoriaz';
+import Vue from 'vue';
+import { mount } from 'avoriaz';
 import sinon from 'sinon';
 import { expect } from 'chai';
 import Vuex from 'vuex';
@@ -217,7 +220,7 @@ import 'babel-polyfill';
 import Modules from '../../../src/components/Modules';
 import module from '../../../src/store/module';
 
-avoriaz.use(Vuex);
+Vue.use(Vuex);
 
 describe('Modules.vue', () => {
   let actions;
