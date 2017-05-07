@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import addGlobals from 'vue-add-globals';
 import VueWrapper from './VueWrapper';
 import './lib/matchesPolyfill';
 import addSlots from './lib/addSlots';
@@ -27,6 +28,11 @@ export default function mount(component, options = {}) {
 
   if (options.slots) {
     addSlots(vm, options.slots);
+  }
+
+  if (options.globals) {
+    const globals = addGlobals(options.globals);
+    Vue.use(globals);
   }
 
   vm.$mount(elem);

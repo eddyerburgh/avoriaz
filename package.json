@@ -87,6 +87,7 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "vue": "^2.2.1"
+    "vue": "^2.2.1",
+    "vue-add-globals": "^1.0.1"
   }
 }

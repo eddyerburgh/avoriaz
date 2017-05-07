@@ -76,11 +76,23 @@ describe('mount', () => {
   it('throws error if slots[key] is not an array or object', () => {
     const message = 'slots[key] must be a Component or an array of Components';
     expect(() => mount(SlotChild, {
-      slots:
-      {
+      slots: {
         header: 'ClickComponent',
         footer: [ClickComponent],
       },
     })).to.throw(Error, message);
+  });
+
+  it('injects global variables when passed as inject object', () => {
+    const $store = { store: true };
+    const $route = { path: 'http://avoriaz.com' };
+    const wrapper = mount(SlotChild, {
+      globals: {
+        $store,
+        $route,
+      },
+    });
+    expect(wrapper.vm.$store).to.equal($store);
+    expect(wrapper.vm.$route).to.equal($route);
   });
 });
