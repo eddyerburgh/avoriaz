@@ -1,3 +1,7 @@
+1.13.0 / 05-07-2017
+=================
+  * [New] Add option to pass Components to slots
+  
 1.12.1 / 05-07-2017
 =================
   * [New] Remove development mode warning log
