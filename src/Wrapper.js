@@ -307,7 +307,7 @@ export default class Wrapper {
     }
 
     Object.keys(data).forEach((key) => {
-      this.vm._data[key] = data[key];
+      this.vm.$set(this.vm, [key], data[key]);
     });
     this.update();
     this.vNode = this.vm._vnode;
