@@ -1,6 +1,7 @@
 import Vue from './lib/vue';
 import VueWrapper from './VueWrapper';
 import './lib/matchesPolyfill';
+import addSlots from './lib/addSlots';
 
 Vue.config.productionTip = false;
 
@@ -25,9 +26,7 @@ export default function mount(component, options = {}) {
   const vm = new Constructor(options);
 
   if (options.slots) {
-    Object.keys(options.slots).forEach((key) => {
-      vm.$slots[key] = vm.$createElement(options.slots[key]);
-    });
+    addSlots(vm, options.slots);
   }
 
   vm.$mount(elem);

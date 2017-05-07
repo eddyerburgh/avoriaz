@@ -37,18 +37,23 @@ describe('mount', () => {
   });
 
   it('mounts component with default slot if passed component in slot object', () => {
-    const wrapper = mount(SlotChild, { slots: { default: ClickComponent } });
+    const wrapper = mount(SlotChild, { slots: { default: [ClickComponent] } });
     expect(wrapper.contains(ClickComponent)).to.equal(true);
   });
 
   it('mounts component with default slot if passed object with template prop in slot object', () => {
     const compiled = compileToFunctions('<div id="div" />');
-    const wrapper = mount(SlotChild, { slots: { default: compiled } });
+    const wrapper = mount(SlotChild, { slots: { default: [compiled] } });
     expect(wrapper.contains('#div')).to.equal(true);
   });
 
   it('mounts component with named slot if passed component in slot object', () => {
-    const wrapper = mount(SlotChild, { slots: { header: ClickComponent, footer: ClickComponent } });
+    const wrapper = mount(SlotChild, {
+      slots: {
+        header: [ClickComponent],
+        footer: [ClickComponent],
+      },
+    });
     expect(wrapper.find(ClickComponent).length).to.equal(2);
   });
 
@@ -56,5 +61,16 @@ describe('mount', () => {
     const compiled = compileToFunctions('<div><input /></div>');
     const wrapper = mount(compiled, { attachToDocument: true });
     expect(wrapper.mountedToDom).to.equal(true);
+  });
+
+  it('throws error if slots[key] is not an array', () => {
+    const message = 'slots[key] must be an array of vNodes - see https://vuejs.org/v2/api/#vm-slots';
+    expect(() => mount(SlotChild, {
+      slots:
+      {
+        header: ClickComponent,
+        footer: [ClickComponent],
+      },
+    })).to.throw(Error, message);
   });
 });
