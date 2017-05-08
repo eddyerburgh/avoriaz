@@ -1,3 +1,7 @@
+1.13.1 / 05-08-2017
+=================
+  * [Fix] Delete cached Ctor before mount
+
 1.13.0 / 05-08-2017
 =================
   * [New] Add option to pass Components to slots
