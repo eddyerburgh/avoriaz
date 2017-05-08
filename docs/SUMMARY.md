@@ -19,6 +19,7 @@
     * [name](/api/mount/name.md)
     * [propsData](/api/mount/propsData.md)
     * [setData](/api/mount/setData.md)
+    * [setProps](/api/mount/setProps.md)
     * [simulate](/api/mount/simulate.md)
     * [style](/api/mount/style.md)
     * [text](/api/mount/text.md)
