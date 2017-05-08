@@ -1,4 +1,4 @@
-1.13.0 / 05-07-2017
+1.13.0 / 05-08-2017
 =================
   * [New] Add option to pass Components to slots
   * [New] Add option to pass globals in mount method
