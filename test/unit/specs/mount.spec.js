@@ -2,6 +2,7 @@ import { compileToFunctions } from 'vue-template-compiler';
 import mount from '../../../src/mount';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import SlotChild from '../../resources/components/slots/SlotChild.vue';
+import MixinComponent from '../../resources/components/mixins/MixinComponent.vue';
 
 describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
@@ -94,5 +95,14 @@ describe('mount', () => {
     });
     expect(wrapper.vm.$store).to.equal($store);
     expect(wrapper.vm.$route).to.equal($route);
+  });
+
+  it('does not use cached component', () => {
+    MixinComponent.methods.someMethod = sinon.stub();
+    mount(MixinComponent);
+    expect(MixinComponent.methods.someMethod.callCount).to.equal(1);
+    MixinComponent.methods.someMethod = sinon.stub();
+    mount(MixinComponent);
+    expect(MixinComponent.methods.someMethod.callCount).to.equal(1);
   });
 });

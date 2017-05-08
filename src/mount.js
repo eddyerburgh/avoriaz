@@ -27,7 +27,7 @@ export default function mount(component, options = {}) {
     const globals = addGlobals(options.globals);
     Vue.use(globals);
   }
-
+  delete component._Ctor; // eslint-disable-line no-param-reassign
   const Constructor = Vue.extend(component);
   const vm = new Constructor(options);
 
