@@ -2,6 +2,7 @@
 =================
   * [New] Add option to pass Components to slots
   * [New] Add option to pass globals in mount method
+  * [New] Add setProps wrapper method
 
 1.12.1 / 05-07-2017
 =================
