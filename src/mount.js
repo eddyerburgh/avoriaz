@@ -23,16 +23,16 @@ export default function mount(component, options = {}) {
     delete options.attachToDocument; // eslint-disable-line no-param-reassign
   }
 
+  if (options.globals) {
+    const globals = addGlobals(options.globals);
+    Vue.use(globals);
+  }
+
   const Constructor = Vue.extend(component);
   const vm = new Constructor(options);
 
   if (options.slots) {
     addSlots(vm, options.slots);
-  }
-
-  if (options.globals) {
-    const globals = addGlobals(options.globals);
-    Vue.use(globals);
   }
 
   vm.$mount(elem);
