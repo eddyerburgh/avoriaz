@@ -1,4 +1,4 @@
-# data()
+# destroy()
 
 Destroys Vue instance. Can only be called on a Vue component
 
