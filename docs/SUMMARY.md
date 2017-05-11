@@ -15,6 +15,7 @@
     * [instance](/api/mount/instance.md)
     * [is](/api/mount/is.md)
     * [isEmpty](/api/mount/isEmpty.md)
+    * [isVueComponent](/api/mount/isVueComponent.md)
     * [methods](/api/mount/methods.md)
     * [name](/api/mount/name.md)
     * [propsData](/api/mount/propsData.md)
