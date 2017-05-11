@@ -13,6 +13,6 @@ import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
-wrapper.setData({foo: 'bar'});
+wrapper.setProps({foo: 'bar'});
 expect(wrapper.props().foo).to.equal('bar');
 ```
