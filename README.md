@@ -41,7 +41,7 @@ expect(wrapper.hasStyle('color', 'red')).to.equal(true)
 ```js
 const clickHandler = sinon.stub()
 const wrapper = mount(Foo, {
-  propsData: { clickHandler },
+  propsData: { clickHandler }
 })
 wrapper.find('div .bar')[0].simulate('click')
 expect(clickHandler.called).to.equal(true)
@@ -76,7 +76,7 @@ const wrapper = mount(Foo, {
 ##### Set data
 ```js
 wrapper.setData({
-  someData: 'some data',
+  someData: 'some data'
 })
 
 expect(wrapper.data().someData).to.equal('some data')
@@ -86,7 +86,7 @@ expect(wrapper.data().someData).to.equal('some data')
 ```js
 wrapper.setProps({
   someProp: 'some prop',
-  anotherProp: 'another prop
+  anotherProp: 'another prop'
 })
 ```
 
