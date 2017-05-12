@@ -79,7 +79,7 @@ wrapper.setData({
   someData: 'some data'
 })
 
-expect(wrapper.data().someData).to.equal('some data')
+expect(wrapper.vm.someData).to.equal('some data')
 ```
 
 ##### Update props
