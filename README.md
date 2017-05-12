@@ -10,7 +10,7 @@
 npm install --save-dev avoriaz
 ```
 
-## Docs
+## Documentation
 
 [Visit the docs](https://eddyerburgh.gitbooks.io/avoriaz/content/)
 
@@ -24,49 +24,70 @@ npm install --save-dev avoriaz
 
 ##### Assert wrapper contains a child
 ```js
-import { mount } from 'avoriaz';
-import Foo from './Foo.vue';
+import { mount } from 'avoriaz'
+import Foo from './Foo.vue'
 
-const wrapper = mount(Foo);
+const wrapper = mount(Foo)
+expect(wrapper.contains('.bar')).to.equal(true)
+```
 
-expect(wrapper.contains('.bar')).to.equal(true);
+##### Assert style is rendered
+```js
+const button = wrapper.find('div > button .button-child')[0]
+expect(wrapper.hasStyle('color', 'red')).to.equal(true)
+```
+
+##### Assert method is called when DOM event is triggered
+```js
+const clickHandler = sinon.stub()
+const wrapper = mount(Foo, {
+  propsData: { clickHandler },
+})
+wrapper.find('div .bar')[0].simulate('click')
+expect(clickHandler.called).to.equal(true)
 ```
 
 ##### Assert wrapper contains text
 ```js
-import { mount } from 'avoriaz';
-import Foo from './Foo.vue';
-
-const wrapper = mount(Foo);
-const button = wrapper.find('div > button')[0];
-
-expect(wrapper.text()).to.equal('some text');
+const title = wrapper.find('h1.title')[0]
+expect(title.text()).to.equal('some text')
 ```
 
-##### Check style is rendered
+##### Inject globals
 ```js
-import { mount } from 'avoriaz';
-import Foo from './Foo.vue';
-
-const wrapper = mount(Foo);
-
-wrapper.hasStyle('color', 'red');
+const $route = { path: 'http://www.example-path.com' }
+const wrapper = mount(Foo, { 
+    globals: {
+        $route
+    }
+})
+expect(wrapper.vm.$route.path).to.equal($route.path)
 ```
 
-##### Call DOM events on a child
+##### Inject slots
 ```js
-import { mount } from 'avoriaz';
-import Foo from './Foo.vue';
-
-clickHandler = sinon.stub();
-
-const wrapper = mount(Foo, {
-  propsData: { clickHandler },
-});
-
-const bar = wrapper.find('div .bar')[0];
-
-bar.simulate('click');
-
-expect(clickHandler.called()).to.equal(true)
+const wrapper = mount(Foo, { 
+    slots: {
+        default: Foo
+    }
+})
 ```
+
+##### Set data
+```js
+wrapper.setData({
+  someData: 'some data',
+})
+
+expect(wrapper.data().someData).to.equal('some data')
+```
+
+##### Update props
+```js
+wrapper.setProps({
+  someProp: 'some prop',
+  anotherProp: 'another prop
+})
+```
+
+For more examples, [see the docs](https://eddyerburgh.gitbooks.io/avoriaz/content/)
