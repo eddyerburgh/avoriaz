@@ -1,3 +1,7 @@
+1.13.2 / 05-13-2017
+=================
+  * [Docs] Add improved examples to README
+
 1.13.1 / 05-08-2017
 =================
   * [Fix] Delete cached Ctor before mount
