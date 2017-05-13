@@ -3,31 +3,10 @@ import {
   findVueComponents,
   vmCtorMatchesName,
 } from './lib/vm';
+import {
+  isValidSelector,
+} from './lib/validators';
 import VueWrapper from './VueWrapper';
-import isDomSelector from './lib/isDomSelector';
-
-function isValidSelector(selector) {
-  if (isDomSelector(selector)) {
-    return true;
-  }
-  if (typeof selector === 'function') {
-    return false;
-  }
-
-  if (selector === null) {
-    return false;
-  }
-
-  if (typeof selector !== 'object') {
-    return false;
-  }
-
-  if (typeof selector.name !== 'string') {
-    return false;
-  }
-
-  return true;
-}
 
 export default class Wrapper {
 

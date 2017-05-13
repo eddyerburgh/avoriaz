@@ -1,4 +1,4 @@
-function isDomSelector(str) {
+export function isDomSelector(str) {
   if (typeof str !== 'string') {
     return false;
   }
@@ -19,4 +19,25 @@ function isDomSelector(str) {
   }
 }
 
-module.exports = isDomSelector;
+export function isValidSelector(selector) {
+  if (isDomSelector(selector)) {
+    return true;
+  }
+  if (typeof selector === 'function') {
+    return false;
+  }
+
+  if (selector === null) {
+    return false;
+  }
+
+  if (typeof selector !== 'object') {
+    return false;
+  }
+
+  if (typeof selector.name !== 'string') {
+    return false;
+  }
+
+  return true;
+}
