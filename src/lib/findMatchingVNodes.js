@@ -12,10 +12,10 @@ function findAllVNodes(vNode, nodes = [], ignoreFirstNode, depth) {
     return;
   }
 
-  if (vNode.children && vNode.children.length > 0) {
-    for (let i = 0; i < vNode.children.length; i++) { // eslint-disable-line no-plusplus
-      findAllVNodes(vNode.children[i], nodes, false, depth ? depth - 1 : undefined);
-    }
+  if (vNode.children) {
+    vNode.children.forEach((childVNode) => {
+      findAllVNodes(childVNode, nodes, false, depth ? depth - 1 : undefined);
+    });
   }
 
   if (vNode.child) {

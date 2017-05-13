@@ -1,11 +1,9 @@
 function findAllVueComponents(vm, components = []) {
   components.push(vm);
 
-  if (vm.$children.length > 0) {
-    for (let i = 0; i < vm.$children.length; i++) { // eslint-disable-line no-plusplus
-      findAllVueComponents(vm.$children[i], components);
-    }
-  }
+  vm.$children.forEach((child) => {
+    findAllVueComponents(child, components);
+  });
 
   return components;
 }
