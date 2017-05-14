@@ -1,3 +1,7 @@
+1.13.3 / 05-14-2017
+=================
+  * [Fix] Improve error handling of unnamed components used in .find()
+
 1.13.2 / 05-13-2017
 =================
   * [Docs] Add improved examples to README
