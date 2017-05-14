@@ -8,6 +8,8 @@ import SlotParent from '../../../resources/components/slots/SlotParent.vue';
 import Form from '../../../resources/components/form/Form.vue';
 import Submit from '../../../resources/components/form/Submit.vue';
 import Items from '../../../resources/components/v-for/Items.vue';
+import UnnamedParent from '../../../resources/components/unnamed-components/UnnamedParent.vue';
+import UnnamedChild from '../../../resources/components/unnamed-components/UnnamedChild.vue';
 
 describe('find', () => {
   it('returns an array of Wrappers of elements matching tag selector passed', () => {
@@ -104,6 +106,12 @@ describe('find', () => {
     const div = wrapper.find('div')[0];
     const secondChildComponents = div.find(SecondChild);
     expect(secondChildComponents.length).to.equal(6);
+  });
+
+  it('throws an error if component does not have a name property', () => {
+    const wrapper = mount(UnnamedParent);
+    const message = '.find() requires component to have a name property';
+    expect(() => wrapper.find(UnnamedChild)).to.throw(Error, message);
   });
 
   it('returns an empty array if no nodes matching selector are found', () => {

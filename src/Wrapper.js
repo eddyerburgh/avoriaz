@@ -91,6 +91,9 @@ export default class Wrapper {
     }
 
     if (typeof selector === 'object') {
+      if (!selector.name) {
+        throw new Error('.find() requires component to have a name property');
+      }
       const vm = this.vm || this.vNode.context.$root;
       const components = findVueComponents(vm, selector.name);
       return components.map(component => new VueWrapper(component, undefined, this.mounted));
