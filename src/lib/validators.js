@@ -19,25 +19,26 @@ export function isDomSelector(str) {
   }
 }
 
+export function isVueComponent(component) {
+  if (typeof component === 'function') {
+    return false;
+  }
+
+  if (component === null) {
+    return false;
+  }
+
+  if (typeof component !== 'object') {
+    return false;
+  }
+
+  return typeof component.render === 'function';
+}
+
 export function isValidSelector(selector) {
   if (isDomSelector(selector)) {
     return true;
   }
-  if (typeof selector === 'function') {
-    return false;
-  }
 
-  if (selector === null) {
-    return false;
-  }
-
-  if (typeof selector !== 'object') {
-    return false;
-  }
-
-  if (typeof selector.name !== 'string') {
-    return false;
-  }
-
-  return true;
+  return isVueComponent(selector);
 }
