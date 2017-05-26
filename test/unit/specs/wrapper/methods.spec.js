@@ -8,7 +8,7 @@ describe('methods', () => {
   });
 
   afterEach(() => {
-    console.warn.restore();
+    console.warn.restore(); // eslint-disable-line no-console
   });
 
   it('returns the methods object of the Vue instance', () => {
@@ -29,6 +29,6 @@ describe('methods', () => {
     const compiled = compileToFunctions('<div><p></p></div>');
     const wrapper = mount(compiled);
     wrapper.methods();
-    expect(console.warn).to.be.calledWith(expectedText);
+    expect(console.warn).to.be.calledWith(expectedText); // eslint-disable-line no-console
   });
 });

@@ -27,7 +27,7 @@ export default class Wrapper {
       throw new Error('wrapper.computed() can only be called on a Vue instance');
     }
 
-    console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
 
     return this.vm.$options.computed;
   }
@@ -190,7 +190,7 @@ export default class Wrapper {
 
     /* istanbul ignore next */
     if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
-      console.warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported');
+      console.warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported'); // eslint-disable-line no-console
     }
     const body = document.querySelector('body');
     const mockElement = document.createElement('div');
@@ -280,7 +280,7 @@ export default class Wrapper {
       throw new Error('wrapper.methods() can only be called on a Vue instance');
     }
 
-    console.warn('warning: functions returned by methods() will not have this bound to the vue instance. Calling a method that uses this will result in an error. You can access methods by using the vue instance. e.g. to call a method function named aMethod, call wrapper.vm.aMethod(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    console.warn('warning: functions returned by methods() will not have this bound to the vue instance. Calling a method that uses this will result in an error. You can access methods by using the vue instance. e.g. to call a method function named aMethod, call wrapper.vm.aMethod(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
 
     return this.vm.$options.methods;
   }
@@ -308,7 +308,7 @@ export default class Wrapper {
       throw new Error('wrapper.propsData() can only be called on a Vue instance');
     }
 
-    console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
 
     return this.vm.$props;
   }
@@ -358,7 +358,7 @@ export default class Wrapper {
       throw new Error('wrapper.simulate() must be passed a string');
     }
 
-    console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html');
+    console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html'); // eslint-disable-line no-console
 
     const modifiers = {
       enter: 13,
@@ -390,7 +390,7 @@ export default class Wrapper {
    * @returns {Object}
    */
   style() {
-    console.warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead');
+    console.warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead'); // eslint-disable-line no-console
     const node = document.querySelector('body').insertBefore(this.element, null);
     return window.getComputedStyle(node);
   }

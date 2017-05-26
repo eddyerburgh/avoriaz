@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     someMethod() {
-      console.log('testMethod');
+      console.log('testMethod'); // eslint-disable-line no-console
     },
   },
 };

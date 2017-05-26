@@ -8,7 +8,7 @@ describe('propsData', () => {
   });
 
   afterEach(() => {
-    console.warn.restore();
+    console.warn.restore(); // eslint-disable-line no-console
   });
 
 
@@ -34,7 +34,7 @@ describe('propsData', () => {
     const compiled = compileToFunctions('<div><p></p></div>');
     const wrapper = mount(compiled);
     wrapper.propsData();
-    expect(console.warn).to.be.calledWith(expectedText);
+    expect(console.warn).to.be.calledWith(expectedText); // eslint-disable-line no-console
   });
 });
 

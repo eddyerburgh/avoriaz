@@ -60,8 +60,8 @@ describe('simulate', () => {
     sinon.spy(console, 'warn');
     mount(ClickToggleComponent).simulate('click');
     const message = 'wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html';
-    expect(console.warn).to.be.calledWith(message);
-    console.warn.restore();
+    expect(console.warn).to.be.calledWith(message); // eslint-disable-line no-console
+    console.warn.restore(); // eslint-disable-line no-console
   });
 
   it('throws an error if type is not a string', () => {
