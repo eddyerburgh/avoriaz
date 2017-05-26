@@ -1,3 +1,9 @@
+1.14.0 / 05-26-2017
+=================
+  * [New] Add dispatch method
+  * [New] Deprecate simulate method
+  * [Fix] List Vue as a peer dependency
+
 1.13.3 / 05-14-2017
 =================
   * [Fix] Improve error handling of unnamed components used in .find()
