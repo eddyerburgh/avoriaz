@@ -1,6 +1,6 @@
-# simulate(eventName)
+# dispatch(eventName)
 
-Simulate an event on the wrapper
+dispatch an event on the wrapper
 
 ### Arguments
 
@@ -18,7 +18,7 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-wrapper.simulate('click');
+wrapper.dispatch('click');
 
 expect(clickHandler.called).to.equal(true)
 ```

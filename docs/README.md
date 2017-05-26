@@ -29,7 +29,7 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-wrapper.simulate('click');
+wrapper.dispatch('click');
 ```
 
 ##### Assert wrapper contains a child
@@ -65,7 +65,7 @@ const wrapper = mount(Foo, {
 
 const bar = wrapper.find('#bar')[0];
 
-bar.simulate('click');
+bar.dispatch('click');
 
 expect(clickHandler.called()).to.equal(true)
 ```

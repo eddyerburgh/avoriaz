@@ -41,9 +41,9 @@ describe('Foo.vue', () => {
 	it('toggles class name on click', () => {
     const wrapper = mount(Foo);
    	expect(wrapper.hasClass('active')).to.equal(false);
-   	wrapper.simulate('click');
+   	wrapper.dispatch('click');
     expect(wrapper.hasClass('active')).to.equal(true);
-    wrapper.simulate('click');
+    wrapper.dispatch('click');
     expect(wrapper.hasClass('active')).to.equal(false);
   });
 });
