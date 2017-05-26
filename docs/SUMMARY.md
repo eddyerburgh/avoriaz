@@ -22,7 +22,6 @@
     * [propsData](/api/mount/propsData.md)
     * [setData](/api/mount/setData.md)
     * [setProps](/api/mount/setProps.md)
-    * [style](/api/mount/style.md)
     * [text](/api/mount/text.md)
     * [update](/api/mount/update.md)
     * [vm](/api/mount/vm.md)    
