@@ -56,6 +56,14 @@ describe('simulate', () => {
     expect(wrapper.hasClass('active')).to.equal(true);
   });
 
+  it('warns that simulate is deprecated and dispatch should be used instead', () => {
+    sinon.spy(console, 'warn');
+    mount(ClickToggleComponent).simulate('click');
+    const message = 'wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html';
+    expect(console.warn).to.be.calledWith(message);
+    console.warn.restore();
+  });
+
   it('throws an error if type is not a string', () => {
     const wrapper = mount(ClickToggleComponent);
     const invalidSelectors = [

@@ -358,6 +358,8 @@ export default class Wrapper {
       throw new Error('wrapper.simulate() must be passed a string');
     }
 
+    console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html');
+
     const modifiers = {
       enter: 13,
       tab: 9,
