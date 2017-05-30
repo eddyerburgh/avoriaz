@@ -17,7 +17,7 @@ import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
-const div = wrapper.find('div');
+const div = wrapper.find('div')[0];
 expect(div.is('div')).to.equal(true);
 ```
 
