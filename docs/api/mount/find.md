@@ -1,6 +1,6 @@
 # find(selector)
 
-Returns a wrapper of a DOM node or Vue component. Use any valid [avoriaz selector](/api/selectors.md).
+Returns an array of wrappers of DOM nodes or Vue components. Use any valid [avoriaz selector](/api/selectors.md).
 
 ### Arguments
 
