@@ -1,6 +1,6 @@
 # find(selector)
 
-Returns a wrapper of a DOM node or Vue component. Use any valid [avoriaz selector](/api/selectors.md).
+Returns an array of wrappers of DOM nodes or Vue components. Use any valid [avoriaz selector](/api/selectors.md).
 
 ### Arguments
 
@@ -17,7 +17,7 @@ import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
-const div = wrapper.find('div');
+const div = wrapper.find('div')[0];
 expect(div.is('div')).to.equal(true);
 ```
 
