@@ -54,7 +54,7 @@ const vNodeMock = {
   ],
 };
 
-describe('findMatchingVNodes', () => {
+describe.skip('findMatchingVNodes', () => {
   it('returns an array of vNodes of elements matching tag selector passed', () => {
     expect(findMatchingVNodes(vNodeMock, 'div').length).to.equal(8);
   });

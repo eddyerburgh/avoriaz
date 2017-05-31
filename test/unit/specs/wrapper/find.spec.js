@@ -84,6 +84,14 @@ describe('find', () => {
     expect(divs.length).to.equal(1);
   });
 
+  it('returns an array of Wrappers of elements matching selector with direct descendant combinator passed', () => {
+    const compiled = compileToFunctions('<div><p></p><p></p></div>');
+    const wrapper = mount(compiled);
+    const divs = wrapper.find('div p:first-of-type');
+    expect(divs[0]).to.be.an.instanceOf(Wrapper);
+    expect(divs.length).to.equal(1);
+  });
+
   it('returns an array of VueWrappers of Vue Components matching component', () => {
     const wrapper = mount(Parent);
     const secondChildComponents = wrapper.find(SecondChild);

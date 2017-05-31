@@ -88,6 +88,7 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
+    "sizzle": "^2.3.3",
     "vue-add-globals": "^1.0.1"
   },
   "peerDependencies": {
