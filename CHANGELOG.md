@@ -1,3 +1,7 @@
+1.15.0 / 05-31-2017
+=================
+  * [New] Use sizzle to match selectors in find
+
 1.14.0 / 05-26-2017
 =================
   * [New] Add dispatch method
