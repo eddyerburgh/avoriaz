@@ -3,7 +3,6 @@ import { matchesSelector } from 'sizzle';
 function findAllVNodes(vNode, nodes = []) {
   nodes.push(vNode);
 
-
   if (Array.isArray(vNode.children)) {
     vNode.children.forEach((childVNode) => {
       findAllVNodes(childVNode, nodes);
