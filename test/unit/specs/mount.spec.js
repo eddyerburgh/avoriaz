@@ -3,6 +3,8 @@ import mount from '../../../src/mount';
 import ClickComponent from '../../resources/components/event-components/ClickComponent.vue';
 import SlotChild from '../../resources/components/slots/SlotChild.vue';
 import MixinComponent from '../../resources/components/mixins/MixinComponent.vue';
+import Table from '../../resources/components/table/Table.vue';
+import Row from '../../resources/components/table/Row.vue';
 
 describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
@@ -104,5 +106,17 @@ describe('mount', () => {
     MixinComponent.methods.someMethod = sinon.stub();
     mount(MixinComponent);
     expect(MixinComponent.methods.someMethod.callCount).to.equal(1);
+  });
+
+  it('mounts tables and sub components', () => {
+    const wrapper = mount(Table);
+    expect(wrapper.html()).to.equal('<table><tbody><tr><td>contents</td></tr></tbody></table>');
+    expect(wrapper.find('td').length).to.be.greaterThan(0);
+  });
+
+  it('mounts sub components of tables', () => {
+    const wrapper = mount(Row);
+    expect(wrapper.html()).to.equal('<tr><td>contents</td></tr>');
+    expect(wrapper.find('td').length).to.be.greaterThan(0);
   });
 });
