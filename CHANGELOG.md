@@ -1,7 +1,7 @@
 1.16.0 / 06-12-2017
 =================
   * [Fix] Emit event on child vue instance
-  * [Refactor] USe matches in place of sizzle
+  * [Refactor] Use matches in place of sizzle
   * [New] Deprecate dispatch method
   * [New] Add trigger method
 
