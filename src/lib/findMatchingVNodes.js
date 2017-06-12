@@ -1,5 +1,3 @@
-import { matchesSelector } from 'sizzle';
-
 function findAllVNodes(vNode, nodes = []) {
   nodes.push(vNode);
 
@@ -28,7 +26,7 @@ function removeDuplicateNodes(vNodes) {
 }
 
 function nodeMatchesSelector(node, selector) {
-  return node.elm && node.elm.getAttribute && matchesSelector(node.elm, selector);
+  return node.elm && node.elm.getAttribute && node.elm.matches(selector);
 }
 
 export default function findMatchingVNodes(vNode, selector) {
