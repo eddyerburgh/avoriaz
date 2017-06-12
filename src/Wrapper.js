@@ -442,10 +442,6 @@ export default class Wrapper {
       eventObject.keyCode = modifiers[event[1]];
     }
 
-    if (this.isVueComponent) {
-      this.vm.$emit(type);
-    }
-
     this.element.dispatchEvent(eventObject);
 
     this.update();
