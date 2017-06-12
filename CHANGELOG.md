@@ -2,6 +2,8 @@
 =================
   * [Fix] Emit event on child vue instance
   * [Refactor] USe matches in place of sizzle
+  * [New] Deprecate dispatch method
+  * [New] Add trigger method
 
 1.15.0 / 05-31-2017
 =================
