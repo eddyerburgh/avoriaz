@@ -1,3 +1,7 @@
+2.0.0 / 06-12-2017
+=================
+  * [Refactor] Remove emit behavior from trigger. Breaking change
+  
 1.16.0 / 06-12-2017
 =================
   * [Fix] Emit event on child vue instance
