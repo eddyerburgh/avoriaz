@@ -26,6 +26,21 @@ describe('dispatch', () => {
     expect(parentClickHandler).to.be.calledOnce;
   });
 
+  it('causes click handler to fire when wrapper.dispatch("click") is fired on root node', () => {
+    const parentClickHandler = sinon.stub();
+    const TestComponent = {
+      render: h => h(ClickComponent, {
+        props: {
+          childClickHandler: () => {}, parentClickHandler,
+        },
+      }),
+    };
+    const wrapper = mount(TestComponent);
+    wrapper.find(ClickComponent)[0].dispatch('click');
+
+    expect(parentClickHandler).to.be.calledOnce;
+  });
+
   it('causes keydown handler to fire when wrapper.dispatch("keydown") is fired on root node', () => {
     const keydownHandler = sinon.stub();
     const wrapper = mount(KeydownComponent, {

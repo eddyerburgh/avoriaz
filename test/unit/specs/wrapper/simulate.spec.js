@@ -26,6 +26,16 @@ describe('simulate', () => {
     expect(parentClickHandler).to.be.calledOnce;
   });
 
+  it('causes click handler to fire when wrapper.simulate("click") is fired on component', () => {
+    const parentClickHandler = sinon.stub();
+    const wrapper = mount(ClickComponent, {
+      propsData: { childClickHandler: () => {}, parentClickHandler },
+    });
+    wrapper.simulate('click');
+
+    expect(parentClickHandler).to.be.calledOnce;
+  });
+
   it('causes keydown handler to fire when wrapper.simulate("keydown") is fired on root node', () => {
     const keydownHandler = sinon.stub();
     const wrapper = mount(KeydownComponent, {
