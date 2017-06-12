@@ -1,3 +1,8 @@
+1.16.0 / 06-12-2017
+=================
+  * [Fix] Emit event on child vue instance
+  * [Refactor] USe matches in place of sizzle
+
 1.15.0 / 05-31-2017
 =================
   * [New] Use sizzle to match selectors in find
