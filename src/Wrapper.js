@@ -40,7 +40,7 @@ export default class Wrapper {
    */
   contains(selector) {
     if (!isValidSelector(selector)) {
-      throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
+      throw new Error('wrapper.contains() must be passed a valid CSS selector or a Vue constructor');
     }
 
     if (typeof selector === 'object') {
