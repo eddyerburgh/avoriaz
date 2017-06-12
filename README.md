@@ -43,7 +43,7 @@ const clickHandler = sinon.stub()
 const wrapper = mount(Foo, {
   propsData: { clickHandler }
 })
-wrapper.find('div .bar')[0].dispatch('click')
+wrapper.find('div .bar')[0].trigger('click')
 expect(clickHandler.called).to.equal(true)
 ```
 

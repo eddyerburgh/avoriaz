@@ -90,6 +90,8 @@ export default class Wrapper {
       throw new Error('wrapper.dispatch() must be passed a string');
     }
 
+    console.warn('wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html'); // eslint-disable-line no-console
+
     const modifiers = {
       enter: 13,
       tab: 9,
@@ -363,7 +365,7 @@ export default class Wrapper {
       throw new Error('wrapper.simulate() must be passed a string');
     }
 
-    console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.dispatch() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/dispatch.html'); // eslint-disable-line no-console
+    console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html'); // eslint-disable-line no-console
 
     const modifiers = {
       enter: 13,
@@ -407,5 +409,45 @@ export default class Wrapper {
    */
   text() {
     return this.element.textContent;
+  }
+
+    /**
+     * Triggers a DOM event on wrapper
+     *
+     * @param {String} type - type of event
+     * @returns {Boolean}
+     */
+  trigger(type) {
+    if (typeof type !== 'string') {
+      throw new Error('wrapper.trigger() must be passed a string');
+    }
+
+    const modifiers = {
+      enter: 13,
+      tab: 9,
+      delete: 46,
+      esc: 27,
+      space: 32,
+      up: 38,
+      down: 40,
+      left: 37,
+      right: 39,
+    };
+
+    const event = type.split('.');
+
+    const eventObject = new window.Event(event[0]);
+
+    if (event.length === 2) {
+      eventObject.keyCode = modifiers[event[1]];
+    }
+
+    if (this.isVueComponent) {
+      this.vm.$emit(type);
+    }
+
+    this.element.dispatchEvent(eventObject);
+
+    this.update();
   }
 }

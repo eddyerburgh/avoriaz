@@ -4,61 +4,59 @@ import ClickToggleComponent from '../../../resources/components/event-components
 import KeydownComponent from '../../../resources/components/event-components/KeydownComponent.vue';
 import KeydownWithModifier from '../../../resources/components/event-components/KeydownWithModifierComponent.vue';
 
-describe('simulate', () => {
-  beforeEach(() => {
-    sinon.spy(console, 'warn');
-  });
-
-  afterEach(() => {
-    console.warn.restore(); // eslint-disable-line no-console
-  });
-  it('causes click handler to fire when wrapper.simulate("click") is called on a child node', () => {
+describe('trigger', () => {
+  it('causes click handler to fire when wrapper.trigger("click") is called on a child node', () => {
     const childClickHandler = sinon.stub();
     const wrapper = mount(ClickComponent, {
       propsData: { childClickHandler, parentClickHandler: () => {} },
     });
     const button = wrapper.find('#button')[0];
-    button.simulate('click');
+    button.trigger('click');
 
     expect(childClickHandler).to.be.calledOnce;
   });
 
-  it('causes click handler to fire when wrapper.simulate("click") is fired on root node', () => {
+  it('causes click handler to fire when wrapper.trigger("click") is fired on root node', () => {
     const parentClickHandler = sinon.stub();
     const wrapper = mount(ClickComponent, {
       propsData: { childClickHandler: () => {}, parentClickHandler },
     });
-    wrapper.simulate('click');
+    wrapper.trigger('click');
 
     expect(parentClickHandler).to.be.calledOnce;
   });
 
-  it('causes click handler to fire when wrapper.simulate("click") is fired on component', () => {
+  it('causes click handler to fire when wrapper.trigger("click") is fired on root node', () => {
     const parentClickHandler = sinon.stub();
-    const wrapper = mount(ClickComponent, {
-      propsData: { childClickHandler: () => {}, parentClickHandler },
-    });
-    wrapper.simulate('click');
+    const TestComponent = {
+      render: h => h(ClickComponent, {
+        props: {
+          childClickHandler: () => {}, parentClickHandler,
+        },
+      }),
+    };
+    const wrapper = mount(TestComponent);
+    wrapper.find(ClickComponent)[0].trigger('click');
 
     expect(parentClickHandler).to.be.calledOnce;
   });
 
-  it('causes keydown handler to fire when wrapper.simulate("keydown") is fired on root node', () => {
+  it('causes keydown handler to fire when wrapper.trigger("keydown") is fired on root node', () => {
     const keydownHandler = sinon.stub();
     const wrapper = mount(KeydownComponent, {
       propsData: { keydownHandler },
     });
-    wrapper.simulate('keydown');
+    wrapper.trigger('keydown');
 
     expect(keydownHandler).to.be.calledOnce;
   });
 
-  it('causes keydown handler to fire when wrapper.simulate("keydown.enter") is fired on root node', () => {
+  it('causes keydown handler to fire when wrapper.trigger("keydown.enter") is fired on root node', () => {
     const keydownHandler = sinon.stub();
     const wrapper = mount(KeydownWithModifier, {
       propsData: { keydownHandler },
     });
-    wrapper.simulate('keydown.enter');
+    wrapper.trigger('keydown.enter');
 
     expect(keydownHandler).to.be.calledOnce;
   });
@@ -68,15 +66,9 @@ describe('simulate', () => {
 
     expect(wrapper.hasClass('active')).to.equal(false);
 
-    wrapper.simulate('click');
+    wrapper.trigger('click');
 
     expect(wrapper.hasClass('active')).to.equal(true);
-  });
-
-  it('warns that simulate is deprecated and dispatch should be used instead', () => {
-    mount(ClickToggleComponent).simulate('click');
-    const message = 'wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html';
-    expect(console.warn).to.be.calledWith(message); // eslint-disable-line no-console
   });
 
   it('throws an error if type is not a string', () => {
@@ -85,8 +77,8 @@ describe('simulate', () => {
       undefined, null, NaN, 0, 2, true, false, () => {}, {}, [],
     ];
     invalidSelectors.forEach((invalidSelector) => {
-      const message = 'wrapper.simulate() must be passed a string';
-      expect(() => wrapper.simulate(invalidSelector)).to.throw(Error, message);
+      const message = 'wrapper.trigger() must be passed a string';
+      expect(() => wrapper.trigger(invalidSelector)).to.throw(Error, message);
     });
   });
 });

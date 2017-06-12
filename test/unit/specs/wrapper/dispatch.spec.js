@@ -5,6 +5,14 @@ import KeydownComponent from '../../../resources/components/event-components/Key
 import KeydownWithModifier from '../../../resources/components/event-components/KeydownWithModifierComponent.vue';
 
 describe('dispatch', () => {
+  beforeEach(() => {
+    sinon.spy(console, 'warn');
+  });
+
+  afterEach(() => {
+    console.warn.restore(); // eslint-disable-line no-console
+  });
+
   it('causes click handler to fire when wrapper.dispatch("click") is called on a child node', () => {
     const childClickHandler = sinon.stub();
     const wrapper = mount(ClickComponent, {
@@ -69,6 +77,12 @@ describe('dispatch', () => {
     wrapper.dispatch('click');
 
     expect(wrapper.hasClass('active')).to.equal(true);
+  });
+
+  it('warns that dispatch is deprecated and dispatch should be used instead', () => {
+    mount(ClickToggleComponent).dispatch('click');
+    const message = 'wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html';
+    expect(console.warn).to.be.calledWith(message); // eslint-disable-line no-console
   });
 
   it('throws an error if type is not a string', () => {
