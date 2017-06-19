@@ -1,3 +1,7 @@
+2.1.0 / 06-19-2017
+=================
+  * [New] Add shallow method
+  
 2.0.0 / 06-12-2017
 =================
   * [Refactor] Remove emit behavior from trigger. Breaking change
