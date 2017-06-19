@@ -31,6 +31,16 @@ const wrapper = mount(Foo)
 expect(wrapper.contains('.bar')).to.equal(true)
 ```
 
+##### Shallow render components
+```js
+import { shallow } from 'avoriaz'
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
+
+const wrapper = shallow(Foo)
+expect(wrapper.contains(Bar)).to.equal(true)
+```
+
 ##### Assert style is rendered
 ```js
 const button = wrapper.find('div > button .button-child')[0]
