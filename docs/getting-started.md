@@ -31,17 +31,17 @@ const wrapper = mount(Foo);
 const bar = wrapper.find(Bar);
 
 describe('Foo.vue', () => {
-	it('renders Bar', () => {
-		const wrapper = mount(Foo);
-		
+  it('renders Bar', () => {
+    const wrapper = mount(Foo);
+
     const bar = wrapper.find(Bar);
     expect(bar.isVueComponent).to.equal(true);
-	});
+  });
 	
-	it('toggles class name on click', () => {
+  it('toggles class name on click', () => {
     const wrapper = mount(Foo);
-   	expect(wrapper.hasClass('active')).to.equal(false);
-   	wrapper.dispatch('click');
+    expect(wrapper.hasClass('active')).to.equal(false);
+    wrapper.dispatch('click');
     expect(wrapper.hasClass('active')).to.equal(true);
     wrapper.dispatch('click');
     expect(wrapper.hasClass('active')).to.equal(false);
