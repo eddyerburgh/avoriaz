@@ -1,3 +1,7 @@
+2.1.1 / 06-20-2017
+=================
+  * [Fix] Stub child lifecycle methods in shallow method
+
 2.1.0 / 06-19-2017
 =================
   * [New] Add shallow method
