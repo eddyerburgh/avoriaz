@@ -1,3 +1,7 @@
+2.1.3 / 06-21-2017
+=================
+  * [Fix] Run watchers in setProps
+
 2.1.2 / 06-21-2017
 =================
   * [Fix] Don't stub root vm lifecycle hooks
