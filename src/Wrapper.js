@@ -147,6 +147,22 @@ export default class Wrapper {
   }
 
   /**
+   * Returns the first node in the mount tree of the current wrapper that matches the provided selector.
+   *
+   * @param {String|Object} selector
+   * @returns {VueWrapper}
+   */
+  first(selector) {
+    const nodes = this.find(selector);
+
+    if (!nodes.length) {
+      throw new Error('wrapper.first() has no matches with the given selector');
+    }
+
+    return nodes[0];
+  }
+
+  /**
    * Checks if wrapper has an attribute with matching value
    *
    * @param {String} attribute - attribute to assert
