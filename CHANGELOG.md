@@ -1,6 +1,10 @@
+2.1.2 / 06-21-2017
+=================
+  * [Fix] Don't stub root vm lifecycle hooks
+
 2.1.1 / 06-20-2017
 =================
-  * [Fix] Stub child lifecycle methods in shallow method
+  * [Fix] Stub child lifecycle hooks in shallow method
 
 2.1.0 / 06-19-2017
 =================
