@@ -12,7 +12,8 @@ module.exports = {
   },
   extends: 'airbnb',
   "plugins": [
-    "mocha"
+    "mocha",
+    "vue"
   ],
   rules: {
     "import/no-extraneous-dependencies": 0,

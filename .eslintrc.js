@@ -9,7 +9,7 @@ module.exports = {
   },
   extends: 'airbnb',
   plugins: [
-    'html'
+    'vue'
   ],
   rules: {
     'import/extensions': ['error', 'always', {
