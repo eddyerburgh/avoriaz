@@ -147,7 +147,7 @@ export default class Wrapper {
   }
 
   /**
-   * Returns the first node in the mount tree of the current wrapper that matches the provided selector.
+   * Returns the first node that matches the provided selector.
    *
    * @param {String|Object} selector
    * @returns {VueWrapper}
