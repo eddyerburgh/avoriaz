@@ -1,6 +1,7 @@
 import { compileToFunctions } from 'vue-template-compiler';
 import mount from '../../../../src/mount';
 import PropsComponent from '../../../resources/components/data-components/PropsComponent.vue';
+import Watch from '../../../resources/components/watch/Watch.vue';
 
 describe('setProps', () => {
   it('sets component props and updates DOM when called on Vue instance', () => {
@@ -20,6 +21,13 @@ describe('setProps', () => {
     wrapper.setProps({ prop1, prop2 });
     expect(wrapper.find('.prop-1')[0].text()).to.equal(prop1);
     expect(wrapper.find('.prop-2')[0].text()).to.equal(prop2);
+  });
+
+  it('runs watch function when updating a prop', () => {
+    const wrapper = mount(Watch);
+    const prop1 = 'testest';
+    wrapper.setProps({ prop1 });
+    expect(wrapper.vm.prop2).to.equal(prop1);
   });
 
   it('throws an error if node is not a Vue instance', () => {
