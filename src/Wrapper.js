@@ -27,7 +27,7 @@ export default class Wrapper {
       throw new Error('wrapper.computed() can only be called on a Vue instance');
     }
 
-    console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
+    console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc. See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
 
     return this.vm.$options.computed;
   }

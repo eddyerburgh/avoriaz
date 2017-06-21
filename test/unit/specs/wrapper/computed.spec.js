@@ -25,7 +25,7 @@ describe('computed', () => {
   });
 
   it('calls console.warn with information on unbound this', () => {
-    const expectedText = 'warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15';
+    const expectedText = 'warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc. See https://github.com/eddyerburgh/avoriaz/issues/15';
     const compiled = compileToFunctions('<div><p></p></div>');
     const wrapper = mount(compiled);
     wrapper.computed();
