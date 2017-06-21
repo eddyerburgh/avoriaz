@@ -38,8 +38,6 @@ export default function shallow(component, options) {
     replaceComponents(component);
   }
 
-  stubLifeCycleEvents(component);
-
   return mount(component, options);
 }
 

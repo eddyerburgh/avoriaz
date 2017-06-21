@@ -23,4 +23,14 @@ describe('shallow', () => {
     expect(log.called).to.equal(false);
     log.restore();
   });
+
+  it('does not stub root lifecycle methods', () => {
+    if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
+      return;
+    }
+    const log = sinon.stub(console, 'log');
+    shallow(FirstChild);
+    expect(log.called).to.equal(true);
+    log.restore();
+  });
 });
