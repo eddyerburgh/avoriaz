@@ -8,6 +8,7 @@
     * [data](/api/mount/data.md)
     * [destroy](/api/mount/destroy.md)
     * [find](/api/mount/find.md)
+    * [first](/api/mount/first.md)
     * [hasAttribute](/api/mount/hasAttribute.md)
     * [hasClass](/api/mount/hasClass.md)
     * [hasStyle](/api/mount/hasStyle.md)
