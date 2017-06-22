@@ -1,3 +1,6 @@
+2.2.0 / 06-22-2017
+  * [New] Add first method
+
 2.1.3 / 06-21-2017
 =================
   * [Fix] Run watchers in setProps
