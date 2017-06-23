@@ -1,8 +1,14 @@
+2.3.0 / 06-23-2017
+=================
+  * [New] Add `mount.options.context` to handle functional components
+
 2.2.1 / 06-23-2017
+=================
   * [Fix] Clone components before stubbing in `shallow`
   * [Fix] Update before calling trigger on element
 
 2.2.0 / 06-22-2017
+=================
   * [New] Add first method
 
 2.1.3 / 06-21-2017
