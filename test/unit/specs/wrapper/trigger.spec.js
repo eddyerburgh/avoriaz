@@ -1,5 +1,6 @@
 import mount from '../../../../src/mount';
 import ClickComponent from '../../../resources/components/event-components/ClickComponent.vue';
+import ClickMethodComponent from '../../../resources/components/event-components/ClickMethodComponent.vue';
 import ClickToggleComponent from '../../../resources/components/event-components/ClickToggleComponent.vue';
 import KeydownComponent from '../../../resources/components/event-components/KeydownComponent.vue';
 import KeydownWithModifier from '../../../resources/components/event-components/KeydownWithModifierComponent.vue';
@@ -14,6 +15,14 @@ describe('trigger', () => {
     button.trigger('click');
 
     expect(childClickHandler).to.be.calledOnce;
+  });
+
+  it('calls clickHandler', () => {
+    const wrapper = mount(ClickMethodComponent);
+    wrapper.vm.clickHandler = sinon.stub();
+    wrapper.find('button')[0].trigger('click');
+      // wrapper.find('button')[0].trigger('click'); // test only passes when uncommented
+    expect(wrapper.vm.clickHandler.called).to.equal(true);
   });
 
   it('causes click handler to fire when wrapper.trigger("click") is fired on root node', () => {

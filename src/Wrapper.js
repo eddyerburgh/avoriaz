@@ -438,6 +438,8 @@ export default class Wrapper {
       throw new Error('wrapper.trigger() must be passed a string');
     }
 
+    this.update();
+
     const modifiers = {
       enter: 13,
       tab: 9,
