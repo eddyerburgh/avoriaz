@@ -10,6 +10,8 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.attachToDocument` (`Boolean`): Component will attach to DOM when rendered. This can be used with [`hasStyle`](/api/mount/hasStyle.md) to check multi element CSS selectors
 
+`options.context` (`Object`): Context option to be passed to a functional component
+
 `options.slots` (`Object`): Render component with slots.
 
 `options.slots.default` (`Array[Component]|Component`): Default slot object to render, can be a Vue component or array of Vue components

@@ -119,4 +119,21 @@ describe('mount', () => {
     expect(wrapper.html()).to.equal('<tr><td>contents</td></tr>');
     expect(wrapper.find('td').length).to.be.greaterThan(0);
   });
+
+  it('mounts functional component when passed context object', () => {
+    const Component = {
+      functional: true,
+      render(h, { props }) { // eslint-disable-line no-unused-vars
+        return h('div');
+      },
+      name: 'common',
+    };
+    const context = {
+      data: { hellpo: true },
+      props: { show: true },
+    };
+
+    const wrapper = mount(Component, { context });
+    expect(wrapper.is(Component)).to.equal(true);
+  });
 });

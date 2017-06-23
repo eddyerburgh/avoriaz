@@ -9,7 +9,8 @@ function findAllVueComponents(vm, components = []) {
 }
 
 export function vmCtorMatchesName(vm, name) {
-  return vm.$vnode.componentOptions.Ctor.options.name === name;
+  return (vm.$vnode && vm.$vnode.componentOptions.Ctor.options.name === name) ||
+      (vm._vnode && vm._vnode.functionalOptions && vm._vnode.functionalOptions.name === name);
 }
 
 export function findVueComponents(vm, componentName) {
