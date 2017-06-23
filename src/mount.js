@@ -31,6 +31,13 @@ export default function mount(component, options = {}) {
   delete component._Ctor; // eslint-disable-line no-param-reassign
 
   if (options.context) {
+    if (!component.functional) {
+      throw new Error('mount.context can only be used when mounting a functional component');
+    }
+
+    if (typeof options.context !== 'object') {
+      throw new Error('mount.context must be an object');
+    }
     const clonedComponent = cloneDeep(component);
     component = { // eslint-disable-line no-param-reassign
       render(h) {
