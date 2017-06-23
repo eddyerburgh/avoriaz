@@ -6,7 +6,7 @@
     export default {
       methods: {
         clickHandler() {
-          console.log('Clicked');
+          console.log('Clicked'); // eslint-disable-line no-console
         },
       },
     };

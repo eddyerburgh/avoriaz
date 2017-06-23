@@ -89,6 +89,7 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "vue-add-globals": "^1.0.1"
   },
   "peerDependencies": {

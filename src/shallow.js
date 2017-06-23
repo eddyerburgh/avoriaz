@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { cloneDeep } from 'lodash';
 import mount from './mount';
 
 const LIFECYCLE_HOOKS = [
@@ -34,10 +35,12 @@ function replaceComponents(component) {
 }
 
 export default function shallow(component, options) {
-  if (component.components) {
-    replaceComponents(component);
+  const clonedComponent = cloneDeep(component);
+
+  if (clonedComponent.components) {
+    replaceComponents(clonedComponent);
   }
 
-  return mount(component, options);
+  return mount(clonedComponent, options);
 }
 
