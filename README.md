@@ -44,7 +44,7 @@ expect(wrapper.contains(Bar)).to.equal(true)
 ##### Assert style is rendered
 ```js
 const button = wrapper.find('div > button .button-child')[0]
-expect(wrapper.hasStyle('color', 'red')).to.equal(true)
+expect(button.hasStyle('color', 'red')).to.equal(true)
 ```
 
 ##### Assert method is called when DOM event is triggered
