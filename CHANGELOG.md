@@ -1,3 +1,7 @@
+2.4.0 / 06-26-2017
+=================
+  * [New] Add `mount.options.instance` to pass scoped instance
+
 2.3.0 / 06-23-2017
 =================
   * [New] Add `mount.options.context` to handle functional components
