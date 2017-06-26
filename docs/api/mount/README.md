@@ -20,6 +20,8 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.globals` (`Object`): Add globals to Vue instance.
 
+`options.instance` (`Object`): Pass an instance for avoriaz to use as a base. Ensures global instance does not get polluted when using rules like `global`
+
 ### Examples
 
 #### Without options

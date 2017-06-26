@@ -24,10 +24,6 @@ export default function mount(component, options = {}) {
     delete options.attachToDocument; // eslint-disable-line no-param-reassign
   }
 
-  if (options.globals) {
-    const globals = addGlobals(options.globals);
-    Vue.use(globals);
-  }
   delete component._Ctor; // eslint-disable-line no-param-reassign
 
   if (options.context) {
@@ -45,9 +41,18 @@ export default function mount(component, options = {}) {
       },
     };
   }
+  let Constructor;
 
+  if (options.instance) {
+    Constructor = options.instance.extend(component);
+  } else {
+    Constructor = Vue.extend(component);
+  }
 
-  const Constructor = Vue.extend(component);
+  if (options.globals) {
+    const globals = addGlobals(options.globals);
+    Constructor.use(globals);
+  }
   const vm = new Constructor(options);
 
   if (options.slots) {
