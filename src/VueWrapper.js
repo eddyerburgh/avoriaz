@@ -3,7 +3,6 @@ import Wrapper from './Wrapper';
 function update() {
   this.$forceUpdate.call(this);
   this._update(this._render());
-  this._watchers.forEach(watcher => watcher.run());
 }
 
 export default class VueWrapper extends Wrapper {

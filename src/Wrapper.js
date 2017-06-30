@@ -362,11 +362,16 @@ export default class Wrapper {
     if (!this.isVueComponent) {
       throw new Error('wrapper.setProps() can only be called on a Vue instance');
     }
+    const vm = this.vm || this.vNode.context.$root;
 
     Object.keys(data).forEach((key) => {
       this.vm._props[key] = data[key];
+      vm._watchers.forEach((watcher) => {
+        if (watcher.expression === key) { watcher.run(); }
+      });
     });
     this.update();
+
     this.vNode = this.vm._vnode;
   }
 
