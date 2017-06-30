@@ -1,3 +1,7 @@
+2.4.1 / 06-30-2017
+=================
+  * [Fix] Only run watcher for relevant expression in `setProps`
+
 2.4.0 / 06-26-2017
 =================
   * [New] Add `mount.options.instance` to pass scoped instance
