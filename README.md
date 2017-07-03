@@ -18,6 +18,7 @@ npm install --save-dev avoriaz
 
 - [Example using karma and mocha](https://github.com/eddyerburgh/avoriaz-karma-mocha-example)
 - [Example using karma and jasmine](https://github.com/eddyerburgh/avoriaz-karma-jasmine-example)
+- [Example using Jest](https://github.com/eddyerburgh/avoriaz-jest-example)
 - [Example using mocha-webpack](https://github.com/eddyerburgh/avoriaz-mocha-example)
 - [Example using tape](https://github.com/eddyerburgh/avoriaz-tape-example)
 - [Example using ava](https://github.com/eddyerburgh/avoriaz-ava-example)
