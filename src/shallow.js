@@ -23,10 +23,14 @@ function stubLifeCycleEvents(component) {
 
 function replaceComponents(component) {
   Object.keys(component.components).forEach((c) => {
-        // Remove cached constructor
+      // Remove cached constructor
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
     component.components[c] = { // eslint-disable-line no-param-reassign
+      attrs: component.components[c].attrs,
       name: component.components[c].name,
+      on: component.components[c].on,
+      key: component.components[c].key,
+      ref: component.components[c].ref,
       props: component.components[c].props,
       domProps: component.components[c].domProps,
       class: component.components[c].class,
