@@ -5,5 +5,10 @@
 <script>
   export default{
     name: 'Submit',
+    props: {
+      hello: {
+        default: 'world',
+      },
+    },
   };
 </script>

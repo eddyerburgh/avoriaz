@@ -26,7 +26,10 @@ function replaceComponents(component) {
         // Remove cached constructor
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
     component.components[c] = { // eslint-disable-line no-param-reassign
-      ...component.components[c],
+      name: component.components[c].name,
+      props: component.components[c].props,
+      domProps: component.components[c].domProps,
+      class: component.components[c].class,
       render: () => {},
     };
     Vue.config.ignoredElements.push(c);
