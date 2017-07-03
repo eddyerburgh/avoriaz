@@ -1,3 +1,7 @@
+2.4.2 / 07-03-2017
+=================
+  * [Fix] Only keep specific properties from stubbed components in shallow
+
 2.4.1 / 06-30-2017
 =================
   * [Fix] Only run watcher for relevant expression in `setProps`
