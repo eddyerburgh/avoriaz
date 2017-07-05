@@ -37,7 +37,7 @@ describe('Foo', () => {
 #### With Vue options
 ```js
 import { shallow } from 'avoriaz';
-import { expect } from 'chai';]
+import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
@@ -55,7 +55,7 @@ describe('Foo', () => {
 #### Attach to DOM
 ```js
 import { shallow } from 'avoriaz';
-import { expect } from 'chai';]
+import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
@@ -70,7 +70,7 @@ describe('Foo', () => {
 #### Default and named slots
 ```js
 import { shallow } from 'avoriaz';
-import { expect } from 'chai';]
+import { expect } from 'chai';
 import Foo from './Foo.vue';
 import Bar from './Bar.vue';
 import FooBar from './FooBar.vue';
@@ -91,7 +91,7 @@ describe('Foo', () => {
 #### Adding globals
 ```js
 import { shallow } from 'avoriaz';
-import { expect } from 'chai';]
+import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
