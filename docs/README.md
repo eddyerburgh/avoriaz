@@ -29,7 +29,7 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-wrapper.dispatch('click');
+wrapper.trigger('click');
 ```
 
 ##### Assert wrapper contains a child
