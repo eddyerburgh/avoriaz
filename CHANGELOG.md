@@ -1,3 +1,7 @@
+2.4.4 / 07-11-2017
+=================
+  * [Fix] Stub global components in shallow
+
 2.4.2 / 07-03-2017
 =================
   * [Fix] Only keep specific properties from stubbed components in shallow
