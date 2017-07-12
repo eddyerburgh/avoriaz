@@ -1,4 +1,4 @@
-# find(selector)
+# first(selector)
 
 Returns a wrapper of DOM node or Vue component. Use any valid [avoriaz selector](/api/selectors.md).
 
