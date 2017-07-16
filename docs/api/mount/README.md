@@ -12,6 +12,8 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.context` (`Object`): Context option to be passed to a functional component
 
+`options.children` (`Array`): Array of children to be passed to a functional component
+
 `options.slots` (`Object`): Render component with slots.
 
 `options.slots.default` (`Array[Component]|Component`): Default slot object to render, can be a Vue component or array of Vue components

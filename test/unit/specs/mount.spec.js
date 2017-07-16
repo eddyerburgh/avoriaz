@@ -6,6 +6,7 @@ import SlotChild from '../../resources/components/slots/SlotChild.vue';
 import MixinComponent from '../../resources/components/mixins/MixinComponent.vue';
 import Table from '../../resources/components/table/Table.vue';
 import Row from '../../resources/components/table/Row.vue';
+import UnnamedChild from '../../resources/components/unnamed-components/UnnamedChild.vue';
 
 describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
@@ -167,5 +168,28 @@ describe('mount', () => {
     expect(wrapper.vm.globalProp).to.equal(true);
     const freshWrapper = mount(ClickComponent);
     expect(freshWrapper.vm.globalProp).to.be.undefined;
+  });
+
+  it('mounts functional component with children when passed children array', () => {
+    const Component = {
+      functional: true,
+      render(h, { children }) {
+        return h('div', children);
+      },
+      name: 'common',
+    };
+
+    const context = {};
+
+    const child = mount(UnnamedChild);
+    const children = [
+      child.vNode,
+      'hello',
+    ];
+
+    const wrapper = mount(Component, { context, children });
+
+    expect(wrapper.is(Component)).to.equal(true);
+    expect(wrapper.isEmpty()).to.equal(false);
   });
 });
