@@ -366,6 +366,8 @@ export default class Wrapper {
 
     Object.keys(data).forEach((key) => {
       this.vm._props[key] = data[key];
+    });
+    Object.keys(data).forEach((key) => {
       vm._watchers.forEach((watcher) => {
         if (watcher.expression === key) { watcher.run(); }
       });
