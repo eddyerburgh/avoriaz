@@ -1,4 +1,8 @@
-2.4.4 / 07-11-2017
+2.4.4 / 07-16-2017
+=================
+  * [Fix] Update all props before running watchers in setProps
+
+2.4.3 / 07-11-2017
 =================
   * [Fix] Stub global components in shallow
 
