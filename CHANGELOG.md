@@ -1,3 +1,7 @@
+2.5.0 / 07-18-2017
+=================
+  * [New] Add option to pass `attrs` to vm
+
 2.4.4 / 07-16-2017
 =================
   * [Fix] Update all props before running watchers in setProps
