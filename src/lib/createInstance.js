@@ -28,8 +28,7 @@ export default function createInstance(component, options) {
   const Constructor = instance.extend(component);
 
   if (options.globals) {
-    const globals = addGlobals(options.globals);
-    Constructor.use(globals);
+    addGlobals(Constructor, options.globals);
   }
   const vm = new Constructor(options);
 
