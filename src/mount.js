@@ -16,6 +16,8 @@ function createElem() {
 }
 
 export default function mount(component, options = {}) {
+  const instance = options.instance || Vue;
+
   let elem = null;
   const attachToDocument = options.attachToDocument;
 
@@ -41,19 +43,17 @@ export default function mount(component, options = {}) {
       },
     };
   }
-  let Constructor;
-
-  if (options.instance) {
-    Constructor = options.instance.extend(component);
-  } else {
-    Constructor = Vue.extend(component);
-  }
+  const Constructor = instance.extend(component);
 
   if (options.globals) {
     const globals = addGlobals(options.globals);
     Constructor.use(globals);
   }
   const vm = new Constructor(options);
+
+  if (options.attrs) {
+    vm.$attrs = options.attrs;
+  }
 
   if (options.slots) {
     addSlots(vm, options.slots);

@@ -168,4 +168,15 @@ describe('mount', () => {
     const freshWrapper = mount(ClickComponent);
     expect(freshWrapper.vm.globalProp).to.be.undefined;
   });
+
+  it('handles inherit attrs', () => {
+    const wrapper = mount(compileToFunctions('<p :id="anAttr" />'), {
+      attrs: {
+        anAttr: 'an attribute',
+      },
+    });
+    expect(wrapper.vm.$attrs.anAttr).to.equal('an attribute');
+    wrapper.update();
+    expect(wrapper.vm.$attrs.anAttr).to.equal('an attribute');
+  });
 });
