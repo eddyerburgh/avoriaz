@@ -20,7 +20,7 @@ export default function createInstance(component, options) {
     const clonedComponent = cloneDeep(component);
     component = { // eslint-disable-line no-param-reassign
       render(h) {
-        return h(clonedComponent, options.context);
+        return h(clonedComponent, options.context, options.children);
       },
     };
   }
