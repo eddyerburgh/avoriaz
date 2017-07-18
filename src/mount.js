@@ -1,65 +1,24 @@
 import Vue from 'vue';
-import addGlobals from 'vue-add-globals';
-import { cloneDeep } from 'lodash';
 import VueWrapper from './VueWrapper';
+import createInstance from './lib/createInstance';
 import './lib/matchesPolyfill';
-import addSlots from './lib/addSlots';
 
 Vue.config.productionTip = false;
 
 function createElem() {
   const elem = document.createElement('div');
-
   document.body.appendChild(elem);
-
   return elem;
 }
 
 export default function mount(component, options = {}) {
-  const instance = options.instance || Vue;
+  const vm = createInstance(component, options);
 
-  let elem = null;
-  const attachToDocument = options.attachToDocument;
-
-  if (attachToDocument) {
-    elem = createElem();
-    delete options.attachToDocument; // eslint-disable-line no-param-reassign
+  if (options.attachToDocument) {
+    vm.$mount(createElem());
+  } else {
+    vm.$mount();
   }
 
-  delete component._Ctor; // eslint-disable-line no-param-reassign
-
-  if (options.context) {
-    if (!component.functional) {
-      throw new Error('mount.context can only be used when mounting a functional component');
-    }
-
-    if (typeof options.context !== 'object') {
-      throw new Error('mount.context must be an object');
-    }
-    const clonedComponent = cloneDeep(component);
-    component = { // eslint-disable-line no-param-reassign
-      render(h) {
-        return h(clonedComponent, options.context);
-      },
-    };
-  }
-  const Constructor = instance.extend(component);
-
-  if (options.globals) {
-    const globals = addGlobals(options.globals);
-    Constructor.use(globals);
-  }
-  const vm = new Constructor(options);
-
-  if (options.attrs) {
-    vm.$attrs = options.attrs;
-  }
-
-  if (options.slots) {
-    addSlots(vm, options.slots);
-  }
-
-  vm.$mount(elem);
-
-  return new VueWrapper(vm, attachToDocument);
+  return new VueWrapper(vm, options.attachToDocument);
 }
