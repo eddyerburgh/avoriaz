@@ -117,6 +117,14 @@ function isValidSelector(selector) {
   return isVueComponent(selector);
 }
 
+function warn(message) {
+  console.warn(("[avoriaz] WARN: " + message));
+}
+
+function error(message) {
+  throw new Error(("[avoriaz]: " + message));
+}
+
 // 
 
 var Wrapper = function Wrapper(vNode, update, mountedToDom) {
@@ -133,10 +141,10 @@ var Wrapper = function Wrapper(vNode, update, mountedToDom) {
  */
 Wrapper.prototype.computed = function computed () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.computed() can only be called on a Vue instance');
+    error('wrapper.computed() can only be called on a Vue instance');
   }
 
-  console.warn('warning: functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc. See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
+  warn('functions returned by computed() will not have this bound to the vue instance. Calling a computed function that uses this will result in an error. You can access computed functions by using the vue instance. e.g. to call a computed function named compFunc, call wrapper.vm.compFunc. See https://github.com/eddyerburgh/avoriaz/issues/15');
 
   return this.vm.$options.computed;
 };
@@ -149,7 +157,7 @@ Wrapper.prototype.computed = function computed () {
  */
 Wrapper.prototype.contains = function contains (selector) {
   if (!isValidSelector(selector)) {
-    throw new Error('wrapper.contains() must be passed a valid CSS selector or a Vue constructor');
+    error('wrapper.contains() must be passed a valid CSS selector or a Vue constructor');
   }
 
   if (typeof selector === 'object') {
@@ -167,7 +175,7 @@ Wrapper.prototype.contains = function contains (selector) {
  */
 Wrapper.prototype.data = function data () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.data() can only be called on a Vue instance');
+    error('wrapper.data() can only be called on a Vue instance');
   }
 
   return this.vm._data;
@@ -178,7 +186,7 @@ Wrapper.prototype.data = function data () {
  */
 Wrapper.prototype.destroy = function destroy () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.destroy() can only be called on a Vue instance');
+    error('wrapper.destroy() can only be called on a Vue instance');
   }
 
   if (this.vm.$el.parentNode) {
@@ -196,10 +204,10 @@ Wrapper.prototype.destroy = function destroy () {
  */
 Wrapper.prototype.dispatch = function dispatch (type) {
   if (typeof type !== 'string') {
-    throw new Error('wrapper.dispatch() must be passed a string');
+    error('wrapper.dispatch() must be passed a string');
   }
 
-  console.warn('wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html'); // eslint-disable-line no-console
+  warn('wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html');
 
   var modifiers = {
     enter: 13,
@@ -240,12 +248,12 @@ Wrapper.prototype.find = function find (selector) {
     var this$1 = this;
 
   if (!isValidSelector(selector)) {
-    throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
+    error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
   }
 
   if (typeof selector === 'object') {
     if (!selector.name) {
-      throw new Error('.find() requires component to have a name property');
+      error('.find() requires component to have a name property');
     }
     var vm = this.vm || this.vNode.context.$root;
     var components = findVueComponents(vm, selector.name);
@@ -267,7 +275,7 @@ Wrapper.prototype.first = function first (selector) {
   var nodes = this.find(selector);
 
   if (!nodes.length) {
-    throw new Error('wrapper.first() has no matches with the given selector');
+    error('wrapper.first() has no matches with the given selector');
   }
 
   return nodes[0];
@@ -282,11 +290,11 @@ Wrapper.prototype.first = function first (selector) {
  */
 Wrapper.prototype.hasAttribute = function hasAttribute (attribute, value) {
   if (typeof attribute !== 'string') {
-    throw new Error('wrapper.hasAttribute() must be passed attribute as a string');
+    error('wrapper.hasAttribute() must be passed attribute as a string');
   }
 
   if (typeof value !== 'string') {
-    throw new Error('wrapper.hasAttribute() must be passed value as a string');
+    error('wrapper.hasAttribute() must be passed value as a string');
   }
 
   return this.element.getAttribute(attribute) === value;
@@ -300,7 +308,7 @@ Wrapper.prototype.hasAttribute = function hasAttribute (attribute, value) {
  */
 Wrapper.prototype.hasClass = function hasClass (className) {
   if (typeof className !== 'string') {
-    throw new Error('wrapper.hasClass() must be passed a string');
+    error('wrapper.hasClass() must be passed a string');
   }
 
   return this.element.className.split(' ').indexOf(className) !== -1;
@@ -315,16 +323,16 @@ Wrapper.prototype.hasClass = function hasClass (className) {
  */
 Wrapper.prototype.hasStyle = function hasStyle (style, value) {
   if (typeof style !== 'string') {
-    throw new Error('wrapper.hasStyle() must be passed style as a string');
+    error('wrapper.hasStyle() must be passed style as a string');
   }
 
   if (typeof value !== 'string') {
-    throw new Error('wrapper.hasClass() must be passed value as string');
+    error('wrapper.hasClass() must be passed value as string');
   }
 
   /* istanbul ignore next */
   if (navigator.userAgent.includes && navigator.userAgent.includes('node.js')) {
-    console.warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported'); // eslint-disable-line no-console
+    warn('wrapper.hasStyle is not fully supported when running jsdom - only inline styles are supported');
   }
   var body = document.querySelector('body');
   var mockElement = document.createElement('div');
@@ -335,7 +343,7 @@ Wrapper.prototype.hasStyle = function hasStyle (style, value) {
 
   if (!this.mountedToDom) {
     var vm = this.vm || this.vNode.context.$root;
-      // $FlowIgnore
+    // $FlowIgnore
     body.insertBefore(vm.$root._vnode.elm, null);
   }
 
@@ -362,7 +370,7 @@ Wrapper.prototype.html = function html () {
  */
 Wrapper.prototype.instance = function instance () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.instance() can only be called on a Vue instance');
+    error('wrapper.instance() can only be called on a Vue instance');
   }
 
   return this.vm;
@@ -376,7 +384,7 @@ Wrapper.prototype.instance = function instance () {
  */
 Wrapper.prototype.is = function is (selector) {
   if (!isValidSelector(selector)) {
-    throw new Error('wrapper.is() must be passed a valid CSS selector or a Vue constructor');
+    error('wrapper.is() must be passed a valid CSS selector or a Vue constructor');
   }
 
   if (typeof selector === 'object') {
@@ -414,10 +422,10 @@ Wrapper.prototype.isEmpty = function isEmpty () {
  */
 Wrapper.prototype.methods = function methods () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.methods() can only be called on a Vue instance');
+    error('wrapper.methods() can only be called on a Vue instance');
   }
 
-  console.warn('warning: functions returned by methods() will not have this bound to the vue instance. Calling a method that uses this will result in an error. You can access methods by using the vue instance. e.g. to call a method function named aMethod, call wrapper.vm.aMethod(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
+  warn('functions returned by methods() will not have this bound to the vue instance. Calling a method that uses this will result in an error. You can access methods by using the vue instance. e.g. to call a method function named aMethod, call wrapper.vm.aMethod(). See https://github.com/eddyerburgh/avoriaz/issues/15');
 
   return this.vm.$options.methods;
 };
@@ -442,10 +450,10 @@ Wrapper.prototype.name = function name () {
  */
 Wrapper.prototype.propsData = function propsData () {
   if (!this.isVueComponent) {
-    throw new Error('wrapper.propsData() can only be called on a Vue instance');
+    error('wrapper.propsData() can only be called on a Vue instance');
   }
 
-  console.warn('warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15'); // eslint-disable-line no-console
+  warn('functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
 
   return this.vm.$props;
 };
@@ -459,7 +467,7 @@ Wrapper.prototype.setData = function setData (data) {
     var this$1 = this;
 
   if (!this.isVueComponent) {
-    throw new Error('wrapper.setData() can only be called on a Vue instance');
+    error('wrapper.setData() can only be called on a Vue instance');
   }
 
   Object.keys(data).forEach(function (key) {
@@ -478,7 +486,7 @@ Wrapper.prototype.setProps = function setProps (props) {
     var this$1 = this;
 
   if (!this.isVueComponent) {
-    throw new Error('wrapper.setProps() can only be called on a Vue instance');
+    error('wrapper.setProps() can only be called on a Vue instance');
   }
   var vm = this.vm || this.vNode.context.$root;
 
@@ -503,10 +511,10 @@ Wrapper.prototype.setProps = function setProps (props) {
  */
 Wrapper.prototype.simulate = function simulate (type) {
   if (typeof type !== 'string') {
-    throw new Error('wrapper.simulate() must be passed a string');
+    error('wrapper.simulate() must be passed a string');
   }
 
-  console.warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html'); // eslint-disable-line no-console
+  warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html');
 
   var modifiers = {
     enter: 13,
@@ -538,7 +546,7 @@ Wrapper.prototype.simulate = function simulate (type) {
  * @returns {Object}
  */
 Wrapper.prototype.style = function style () {
-  console.warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead'); // eslint-disable-line no-console
+  warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead');
   // $FlowIgnore
   var node = document.querySelector('body').insertBefore(this.element, null);
   return window.getComputedStyle(node);
@@ -553,7 +561,7 @@ Wrapper.prototype.text = function text () {
   return this.element.textContent;
 };
 
-  /**
+/**
    * Triggers a DOM event on wrapper
    *
    * @param {String} type - type of event
@@ -561,7 +569,7 @@ Wrapper.prototype.text = function text () {
    */
 Wrapper.prototype.trigger = function trigger (type) {
   if (typeof type !== 'string') {
-    throw new Error('wrapper.trigger() must be passed a string');
+    error('wrapper.trigger() must be passed a string');
   }
 
   this.update();
@@ -581,6 +589,14 @@ Wrapper.prototype.trigger = function trigger (type) {
   var event = type.split('.');
 
   var eventObject = new window.Event(event[0]);
+
+  // Fallback for IE10,11 - https://stackoverflow.com/questions/26596123
+  if (typeof (Event) === 'function') {
+    eventObject = new Event(event[0]);
+  } else {
+    eventObject = document.createEvent('Event');
+    eventObject.initEvent(event[0], true, true);
+  }
 
   if (event.length === 2) {
     eventObject.keyCode = modifiers[event[1]];
@@ -645,7 +661,7 @@ function addSlots(vm, slots) {
 function createInstance(component, options) {
   var instance = options.instance || Vue;
 
-    // delete cached constructor
+  // delete cached constructor
   delete component._Ctor; // eslint-disable-line no-param-reassign
 
   if (options.context) {
@@ -774,7 +790,7 @@ function replaceGlobalComponents(instance, component) {
 
 function replaceComponents(component) {
   Object.keys(component.components).forEach(function (c) {
-        // Remove cached constructor
+    // Remove cached constructor
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
     component.components[c] = Object.assign({}, extractCoreProps(component.components[c]),
       {render: function () {}});
