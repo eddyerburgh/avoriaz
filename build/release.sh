@@ -21,7 +21,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   git add -A
   git add -f \
     dist/*.js
-  git commit -m "[Build] $VERSION"
+  git commit -m "[Build] $VERSION" || echo "failed to commit, branch is clean"
   npm version $VERSION --message "[Release] $VERSION"
 
   # publish
