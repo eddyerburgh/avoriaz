@@ -30,7 +30,7 @@ describe('propsData', () => {
   });
 
   it('calls console.warn with information on unbound this', () => {
-    const expectedText = 'warning: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15';
+    const expectedText = '[avoriaz] WARN: functions returned by propsData() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15';
     const compiled = compileToFunctions('<div><p></p></div>');
     const wrapper = mount(compiled);
     wrapper.propsData();

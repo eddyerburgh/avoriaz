@@ -81,7 +81,7 @@ describe('dispatch', () => {
 
   it('warns that dispatch is deprecated and dispatch should be used instead', () => {
     mount(ClickToggleComponent).dispatch('click');
-    const message = 'wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html';
+    const message = '[avoriaz] WARN: wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html';
     expect(console.warn).to.be.calledWith(message); // eslint-disable-line no-console
   });
 
