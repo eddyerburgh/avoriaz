@@ -1,21 +1,16 @@
 import Vue from 'vue';
 import VueWrapper from './VueWrapper';
 import createInstance from './lib/createInstance';
+import createElement from './lib/createElement';
 import './lib/matchesPolyfill';
 
 Vue.config.productionTip = false;
-
-function createElem() {
-  const elem = document.createElement('div');
-  document.body.appendChild(elem);
-  return elem;
-}
 
 export default function mount(component, options = {}) {
   const vm = createInstance(component, options);
 
   if (options.attachToDocument) {
-    vm.$mount(createElem());
+    vm.$mount(createElement());
   } else {
     vm.$mount();
   }
