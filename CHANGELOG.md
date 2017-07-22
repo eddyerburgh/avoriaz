@@ -1,3 +1,11 @@
+2.6.1 / 07-22-2017
+=================
+  * [Build] Add correct main file
+
+2.6.0 / 07-22-2017
+=================
+  * [Build] Use rollup for dist file
+
 2.5.0 / 07-18-2017
 =================
   * [New] Add option to pass `attrs` to vm
