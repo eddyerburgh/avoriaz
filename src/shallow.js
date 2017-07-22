@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { cloneDeep } from 'lodash';
 import mount from './mount';
-import { replaceComponents, replaceGlobalComponents } from './lib/stubComponents';
+import { replaceComponents, replaceGlobalComponents } from './lib/stub-components';
 
 export default function shallow(component, options) {
   const clonedComponent = cloneDeep(component);

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueWrapper from './VueWrapper';
-import createInstance from './lib/createInstance';
-import createElement from './lib/createElement';
-import './lib/matchesPolyfill';
+import createInstance from './lib/create-instance';
+import createElement from './lib/create-element';
+import './lib/matches-polyfill';
 
 Vue.config.productionTip = false;
 

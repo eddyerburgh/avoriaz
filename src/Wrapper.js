@@ -1,6 +1,6 @@
 // @flow
 
-import findMatchingVNodes from './lib/findMatchingVNodes';
+import findMatchingVNodes from './lib/find-matching-vnodes';
 import {
   findVueComponents,
   vmCtorMatchesName,
