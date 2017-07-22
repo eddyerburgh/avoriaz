@@ -1,6 +1,6 @@
 {
   "name": "avoriaz",
-  "version": "2.6.1",
+  "version": "2.6.0",
   "description": "a Vue.js testing utility library",
   "main": "dist/avoriaz",
   "scripts": {
@@ -12,7 +12,7 @@
     "flow": "flow check",
     "lint": "eslint  --ext .js,.vue flow src test --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
-    "release": "build/release.sh",
+    "release": "npm run build && bash build/release.sh",
     "test": "npm run lint:fix && npm run test:karma && npm run test:unit",
     "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
     "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js"
