@@ -2,7 +2,7 @@
   "name": "avoriaz",
   "version": "2.6.0",
   "description": "a Vue.js testing utility library",
-  "main": "build",
+  "main": "dist/avoriaz",
   "scripts": {
     "build": "node build/build.js",
     "docs:build": "npm run docs:prepare && rimraf _book && gitbook build",
