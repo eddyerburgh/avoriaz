@@ -4,7 +4,7 @@
   "description": "a Vue.js testing utility library",
   "main": "build",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "node build/build.js",
     "docs:build": "npm run docs:prepare && rimraf _book && gitbook build",
     "docs:prepare": "gitbook install",
     "docs:publish": "npm run docs:build && cd _book && cd docs && git init && git commit --allow-empty -m 'Update docs' && git fetch git@github.com:eddyerburgh/avoriaz.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'update book' && git push git@github.com:eddyerburgh/avoriaz.git gh-pages --force",
@@ -84,6 +84,9 @@
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",
     "rimraf": "^2.5.4",
+    "rollup": "^0.45.2",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-flow-no-whitespace": "^1.0.0",
     "sinon": "^2.2.0",
     "sinon-chai": "^2.8.0",
     "vue": "^2.4.2",
