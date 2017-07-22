@@ -1,6 +1,7 @@
 {
   "presets": ["es2015", "stage-2"],
   "comments": false,
+  "plugins": ["transform-flow-strip-types"],
   "env": {
     "test": {
       "plugins": ["istanbul"]

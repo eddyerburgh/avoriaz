@@ -1,3 +1,5 @@
+// @flow
+
 import Wrapper from './Wrapper';
 
 function update() {
@@ -6,9 +8,10 @@ function update() {
 }
 
 export default class VueWrapper extends Wrapper {
-  constructor(vm, mountedToDom) {
+  constructor(vm: Component, mountedToDom: boolean) {
     super(vm._vnode, update.bind(vm), mountedToDom);
     this.vm = vm;
+    // $FlowIgnore
     Object.defineProperty(this, 'vNode', {
       get: () => this.vm._vnode,
       set: () => {},

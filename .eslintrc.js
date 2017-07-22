@@ -7,9 +7,13 @@ module.exports = {
   parserOptions: {
     sourceType: 'module'
   },
-  extends: 'airbnb',
+  extends: [
+      "plugin:flowtype/recommended",
+      'airbnb'
+  ],
   plugins: [
-    'vue'
+    'vue',
+    'flowtype'
   ],
   rules: {
     'import/extensions': ['error', 'always', {

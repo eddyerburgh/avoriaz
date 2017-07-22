@@ -1,3 +1,5 @@
+// @flow
+
 import findMatchingVNodes from './lib/findMatchingVNodes';
 import {
   findVueComponents,
@@ -8,9 +10,15 @@ import {
 } from './lib/validators';
 import VueWrapper from './VueWrapper';
 
-export default class Wrapper {
+export default class Wrapper implements WrapperInterface {
+  vNode: VNode;
+  vm: Component;
+  element: HTMLElement;
+  update: Function;
+  mountedToDom: boolean;
+  isVueComponent: boolean;
 
-  constructor(vNode, update, mountedToDom) {
+  constructor(vNode: VNode, update: Function, mountedToDom: boolean) {
     this.vNode = vNode;
     this.element = vNode.elm;
     this.update = update;
@@ -38,7 +46,7 @@ export default class Wrapper {
    * @param {String} selector
    * @returns {Boolean}
    */
-  contains(selector) {
+  contains(selector: Selector) {
     if (!isValidSelector(selector)) {
       throw new Error('wrapper.contains() must be passed a valid CSS selector or a Vue constructor');
     }
@@ -85,7 +93,7 @@ export default class Wrapper {
    * @param {String} type - type of event
    * @returns {Boolean}
    */
-  dispatch(type) {
+  dispatch(type: string) {
     if (typeof type !== 'string') {
       throw new Error('wrapper.dispatch() must be passed a string');
     }
@@ -127,7 +135,7 @@ export default class Wrapper {
    * @param {String|Object} selector
    * @returns {VueWrapper||VueWrapper[]}
    */
-  find(selector) {
+  find(selector: Selector) {
     if (!isValidSelector(selector)) {
       throw new Error('wrapper.find() must be passed a valid CSS selector or a Vue constructor');
     }
@@ -138,7 +146,7 @@ export default class Wrapper {
       }
       const vm = this.vm || this.vNode.context.$root;
       const components = findVueComponents(vm, selector.name);
-      return components.map(component => new VueWrapper(component, undefined, this.mounted));
+      return components.map(component => new VueWrapper(component, this.mountedToDom));
     }
 
     const nodes = findMatchingVNodes(this.vNode, selector);
@@ -152,7 +160,7 @@ export default class Wrapper {
    * @param {String|Object} selector
    * @returns {VueWrapper}
    */
-  first(selector) {
+  first(selector: Selector) {
     const nodes = this.find(selector);
 
     if (!nodes.length) {
@@ -169,7 +177,7 @@ export default class Wrapper {
    * @param {String} value - value attribute should contain
    * @returns {Boolean}
    */
-  hasAttribute(attribute, value) {
+  hasAttribute(attribute: string, value: string) {
     if (typeof attribute !== 'string') {
       throw new Error('wrapper.hasAttribute() must be passed attribute as a string');
     }
@@ -187,7 +195,7 @@ export default class Wrapper {
    * @param {String} className - class name to assert
    * @returns {Boolean}
    */
-  hasClass(className) {
+  hasClass(className: string) {
     if (typeof className !== 'string') {
       throw new Error('wrapper.hasClass() must be passed a string');
     }
@@ -202,7 +210,7 @@ export default class Wrapper {
    * @param {String} value - value to assert style contains
    * @returns {Boolean}
    */
-  hasStyle(style, value) {
+  hasStyle(style: string, value: string) {
     if (typeof style !== 'string') {
       throw new Error('wrapper.hasStyle() must be passed style as a string');
     }
@@ -217,11 +225,14 @@ export default class Wrapper {
     }
     const body = document.querySelector('body');
     const mockElement = document.createElement('div');
+    // $FlowIgnore
     const mockNode = body.insertBefore(mockElement, null);
+    // $FlowIgnore
     mockElement.style[style] = value;
 
     if (!this.mountedToDom) {
       const vm = this.vm || this.vNode.context.$root;
+        // $FlowIgnore
       body.insertBefore(vm.$root._vnode.elm, null);
     }
 
@@ -260,7 +271,7 @@ export default class Wrapper {
    * @param {String} selector - selector to check node is
    * @returns {Boolean}
    */
-  is(selector) {
+  is(selector: Selector) {
     if (!isValidSelector(selector)) {
       throw new Error('wrapper.is() must be passed a valid CSS selector or a Vue constructor');
     }
@@ -341,7 +352,7 @@ export default class Wrapper {
    *
    * @param {Object} data - data to set
    */
-  setData(data) {
+  setData(data: Object) {
     if (!this.isVueComponent) {
       throw new Error('wrapper.setData() can only be called on a Vue instance');
     }
@@ -356,18 +367,18 @@ export default class Wrapper {
   /**
    * Sets vm props
    *
-   * @param {Object} data - data to set
+   * @param {Object} props - props to set
    */
-  setProps(data) {
+  setProps(props: Object) {
     if (!this.isVueComponent) {
       throw new Error('wrapper.setProps() can only be called on a Vue instance');
     }
     const vm = this.vm || this.vNode.context.$root;
 
-    Object.keys(data).forEach((key) => {
-      this.vm._props[key] = data[key];
+    Object.keys(props).forEach((key) => {
+      this.vm._props[key] = props[key];
     });
-    Object.keys(data).forEach((key) => {
+    Object.keys(props).forEach((key) => {
       vm._watchers.forEach((watcher) => {
         if (watcher.expression === key) { watcher.run(); }
       });
@@ -383,7 +394,7 @@ export default class Wrapper {
    * @param {String} type - type of event
    * @returns {Boolean}
    */
-  simulate(type) {
+  simulate(type: string) {
     if (typeof type !== 'string') {
       throw new Error('wrapper.simulate() must be passed a string');
     }
@@ -421,6 +432,7 @@ export default class Wrapper {
    */
   style() {
     console.warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead'); // eslint-disable-line no-console
+    // $FlowIgnore
     const node = document.querySelector('body').insertBefore(this.element, null);
     return window.getComputedStyle(node);
   }
@@ -440,7 +452,7 @@ export default class Wrapper {
      * @param {String} type - type of event
      * @returns {Boolean}
      */
-  trigger(type) {
+  trigger(type: string) {
     if (typeof type !== 'string') {
       throw new Error('wrapper.trigger() must be passed a string');
     }
