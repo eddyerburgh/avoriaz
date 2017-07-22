@@ -22,7 +22,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   git add -f \
     dist/*.js
   git commit -m "[Build] $VERSION"
-  npm version $VERSION --message "release: $VERSION"
+  npm version $VERSION --message "[Release] $VERSION"
 
   # publish
   git push origin refs/tags/v$VERSION
