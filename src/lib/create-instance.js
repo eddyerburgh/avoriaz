@@ -6,7 +6,7 @@ import addSlots from './add-slots';
 export default function createInstance(component, options) {
   const instance = options.instance || Vue;
 
-    // delete cached constructor
+  // delete cached constructor
   delete component._Ctor; // eslint-disable-line no-param-reassign
 
   if (options.context) {

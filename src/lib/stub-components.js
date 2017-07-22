@@ -57,7 +57,7 @@ export function replaceGlobalComponents(instance, component) {
 
 export function replaceComponents(component) {
   Object.keys(component.components).forEach((c) => {
-        // Remove cached constructor
+    // Remove cached constructor
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
     component.components[c] = { // eslint-disable-line no-param-reassign
       ...extractCoreProps(component.components[c]),

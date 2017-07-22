@@ -11,7 +11,7 @@ import {
 import VueWrapper from './VueWrapper';
 import {
   error,
-    warn,
+  warn,
 } from './lib/logger';
 
 export default class Wrapper implements WrapperInterface {
@@ -236,7 +236,7 @@ export default class Wrapper implements WrapperInterface {
 
     if (!this.mountedToDom) {
       const vm = this.vm || this.vNode.context.$root;
-        // $FlowIgnore
+      // $FlowIgnore
       body.insertBefore(vm.$root._vnode.elm, null);
     }
 
@@ -450,7 +450,7 @@ export default class Wrapper implements WrapperInterface {
     return this.element.textContent;
   }
 
-    /**
+  /**
      * Triggers a DOM event on wrapper
      *
      * @param {String} type - type of event

@@ -21,7 +21,7 @@ describe('trigger', () => {
     const wrapper = mount(ClickMethodComponent);
     wrapper.vm.clickHandler = sinon.stub();
     wrapper.find('button')[0].trigger('click');
-      // wrapper.find('button')[0].trigger('click'); // test only passes when uncommented
+    // wrapper.find('button')[0].trigger('click'); // test only passes when uncommented
     expect(wrapper.vm.clickHandler.called).to.equal(true);
   });
 
