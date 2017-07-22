@@ -477,7 +477,15 @@ export default class Wrapper implements WrapperInterface {
 
     const event = type.split('.');
 
-    const eventObject = new window.Event(event[0]);
+    let eventObject = new window.Event(event[0]);
+
+    // Fallback for IE10,11 - https://stackoverflow.com/questions/26596123
+    if (typeof (Event) === 'function') {
+      eventObject = new Event(event[0]);
+    } else {
+      eventObject = document.createEvent('Event');
+      eventObject.initEvent(event[0], true, true);
+    }
 
     if (event.length === 2) {
       eventObject.keyCode = modifiers[event[1]];
