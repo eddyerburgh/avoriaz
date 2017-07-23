@@ -1,3 +1,5 @@
+// @flow
+
 import Vue from 'vue';
 import VueWrapper from './VueWrapper';
 import createInstance from './lib/create-instance';
@@ -6,7 +8,7 @@ import './lib/matches-polyfill';
 
 Vue.config.productionTip = false;
 
-export default function mount(component, options = {}) {
+export default function mount(component: Component, options: MountOptions = {}) {
   const vm = createInstance(component, options);
 
   if (options.attachToDocument) {
@@ -15,5 +17,5 @@ export default function mount(component, options = {}) {
     vm.$mount();
   }
 
-  return new VueWrapper(vm, options.attachToDocument);
+  return new VueWrapper(vm, !!options.attachToDocument);
 }

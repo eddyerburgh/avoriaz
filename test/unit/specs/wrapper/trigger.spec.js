@@ -80,6 +80,15 @@ describe('trigger', () => {
     expect(wrapper.hasClass('active')).to.equal(true);
   });
 
+  it('calls console.info with input value on input trigger', () => {
+    const wrapper = mount(ClickToggleComponent);
+    expect(wrapper.hasClass('active')).to.equal(false);
+
+    wrapper.trigger('click');
+
+    expect(wrapper.hasClass('active')).to.equal(true);
+  });
+
   it('throws an error if type is not a string', () => {
     const wrapper = mount(ClickToggleComponent);
     const invalidSelectors = [

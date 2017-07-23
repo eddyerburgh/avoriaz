@@ -24,7 +24,7 @@ declare interface WrapperInterface { // eslint-disable-line no-undef
     setProps(data: Object): void;
     simulate(event: string): void;
     style(): Object;
-    trigger(type: string, options: Object): void;
+    trigger(type: string): void;
     update(): void;
 }
 
