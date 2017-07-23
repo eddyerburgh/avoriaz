@@ -1,4 +1,6 @@
-export function isDomSelector(str) {
+// @flow
+
+export function isDomSelector(str: any) {
   if (typeof str !== 'string') {
     return false;
   }
@@ -19,7 +21,7 @@ export function isDomSelector(str) {
   }
 }
 
-export function isVueComponent(component) {
+export function isVueComponent(component: any) {
   if (typeof component === 'function') {
     return false;
   }
@@ -35,7 +37,7 @@ export function isVueComponent(component) {
   return typeof component.render === 'function';
 }
 
-export function isValidSelector(selector) {
+export function isValidSelector(selector: any) {
   if (isDomSelector(selector)) {
     return true;
   }

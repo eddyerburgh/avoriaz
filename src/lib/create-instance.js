@@ -1,9 +1,11 @@
+// @flow
+
 import Vue from 'vue';
 import { cloneDeep } from 'lodash';
 import addGlobals from 'vue-add-globals';
 import addSlots from './add-slots';
 
-export default function createInstance(component, options) {
+export default function createInstance(component: Component, options: MountOptions) {
   const instance = options.instance || Vue;
 
   // delete cached constructor
