@@ -1,22 +1,25 @@
-function addSlots(vm, slots) {
+// @flow
+
+function addSlots(vm: Component, slots: Slots) {
   Object.keys(slots).forEach((key) => {
-    const slotsObj = slots[key];
-    if (!(Array.isArray(slots[key])) && !(slotsObj !== null && typeof slotsObj === 'object')) {
+    if (!(Array.isArray(slots[key])) && !(slots[key] !== null && typeof slots[key] === 'object')) {
       throw new Error('slots[key] must be a Component or an array of Components');
     }
-    const isArray = Array.isArray(slotsObj);
-    if (isArray) {
-      Object.keys(slotsObj).forEach((objKey) => {
+
+    if (Array.isArray(slots[key])) {
+      slots[key].forEach((objKey) => {
         if (Array.isArray(vm.$slots[key])) {
-          vm.$slots[key].push(vm.$createElement(slotsObj[objKey]));
+          // $FlowIgnore
+          vm.$slots[key].push(vm.$createElement(slots[key][objKey]));
         } else {
-          vm.$slots[key] = [vm.$createElement(slotsObj[objKey])]; // eslint-disable-line no-param-reassign,max-len
+          // $FlowIgnore
+          vm.$slots[key] = [vm.$createElement(slots[key][objKey])]; // eslint-disable-line no-param-reassign,max-len
         }
       });
     } else if (Array.isArray(vm.$slots[key])) {
-      vm.$slots[key].push(vm.$createElement(slotsObj));
+      vm.$slots[key].push(vm.$createElement(slots[key]));
     } else {
-      vm.$slots[key] = [vm.$createElement(slotsObj)]; // eslint-disable-line no-param-reassign,max-len
+      vm.$slots[key] = [vm.$createElement(slots[key])]; // eslint-disable-line no-param-reassign,max-len
     }
   });
 }
