@@ -13,9 +13,6 @@ node_modules/
 reports
 coverage
 
-# Build
-dist
-
 # Docs
 _book
 .tmp
