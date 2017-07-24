@@ -1,3 +1,11 @@
+2.6.5 / 07-24-2017
+=================
+  * [Build] Revert to previous build
+
+2.6.1-4 / 07-22-2017
+=================
+  * [Fix] Fixing broken build system
+
 2.6.0 / 07-22-2017
 =================
   * [Build] Use rollup for dist file
