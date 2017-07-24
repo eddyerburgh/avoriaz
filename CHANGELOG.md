@@ -2,7 +2,11 @@
 =================
   * [Build] Revert to previous build
 
-2.6.1-4 / 07-22-2017
+2.6.3 / 07-22-2017
+=================
+  * [Fix] Add polyfill for Event in IE10, 11
+
+2.6.2 / 07-22-2017
 =================
   * [Fix] Fixing broken build system
 
