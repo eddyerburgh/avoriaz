@@ -25,6 +25,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   npm version $VERSION --message "[Release] $VERSION"
 
   # publish
+  git push origin refs/tags/v$VERSION
   git push
   npm publish
 fi
