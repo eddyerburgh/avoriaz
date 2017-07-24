@@ -6,6 +6,8 @@ var Vue = _interopDefault(require('vue'));
 var lodash = require('lodash');
 var addGlobals = _interopDefault(require('vue-add-globals'));
 
+// 
+
 function findAllVNodes(vNode, nodes) {
   if ( nodes === void 0 ) nodes = [];
 
@@ -45,6 +47,8 @@ function findMatchingVNodes(vNode, selector) {
   return removeDuplicateNodes(matchingNodes);
 }
 
+// 
+
 function findAllVueComponents(vm, components) {
   if ( components === void 0 ) components = [];
 
@@ -71,6 +75,8 @@ function findVueComponents(vm, componentName) {
     return vmCtorMatchesName(component, componentName);
   });
 }
+
+// 
 
 function isDomSelector(str) {
   if (typeof str !== 'string') {
@@ -116,6 +122,8 @@ function isValidSelector(selector) {
 
   return isVueComponent(selector);
 }
+
+// 
 
 function warn(message) {
   console.warn(("[avoriaz] WARN: " + message));
@@ -588,17 +596,18 @@ Wrapper.prototype.trigger = function trigger (type) {
 
   var event = type.split('.');
 
-  var eventObject = new window.Event(event[0]);
+  var eventObject;
 
   // Fallback for IE10,11 - https://stackoverflow.com/questions/26596123
   if (typeof (Event) === 'function') {
-    eventObject = new Event(event[0]);
+    eventObject = new window.Event(event[0]);
   } else {
     eventObject = document.createEvent('Event');
     eventObject.initEvent(event[0], true, true);
   }
 
   if (event.length === 2) {
+    // $FlowIgnore
     eventObject.keyCode = modifiers[event[1]];
   }
 
@@ -635,28 +644,32 @@ var VueWrapper = (function (Wrapper$$1) {
   return VueWrapper;
 }(Wrapper));
 
+// 
+
+function addSlotToVm(vm, slotName, slotValue) {
+  if (Array.isArray(vm.$slots[slotName])) {
+    vm.$slots[slotName].push(vm.$createElement(slotValue)); // eslint-disable-line no-param-reassign
+  } else {
+    vm.$slots[slotName] = [vm.$createElement(slotValue)]; // eslint-disable-line no-param-reassign
+  }
+}
 function addSlots(vm, slots) {
   Object.keys(slots).forEach(function (key) {
-    var slotsObj = slots[key];
-    if (!(Array.isArray(slots[key])) && !(slotsObj !== null && typeof slotsObj === 'object')) {
+    if (!(Array.isArray(slots[key])) && !(slots[key] !== null && typeof slots[key] === 'object')) {
       throw new Error('slots[key] must be a Component or an array of Components');
     }
-    var isArray = Array.isArray(slotsObj);
-    if (isArray) {
-      Object.keys(slotsObj).forEach(function (objKey) {
-        if (Array.isArray(vm.$slots[key])) {
-          vm.$slots[key].push(vm.$createElement(slotsObj[objKey]));
-        } else {
-          vm.$slots[key] = [vm.$createElement(slotsObj[objKey])]; // eslint-disable-line no-param-reassign,max-len
-        }
+
+    if (Array.isArray(slots[key])) {
+      slots[key].forEach(function (slotValue) {
+        addSlotToVm(vm, key, slotValue);
       });
-    } else if (Array.isArray(vm.$slots[key])) {
-      vm.$slots[key].push(vm.$createElement(slotsObj));
     } else {
-      vm.$slots[key] = [vm.$createElement(slotsObj)]; // eslint-disable-line no-param-reassign,max-len
+      addSlotToVm(vm, key, slots[key]);
     }
   });
 }
+
+// 
 
 function createInstance(component, options) {
   var instance = options.instance || Vue;
@@ -720,6 +733,8 @@ if (global.Element && !global.Element.prototype.matches) {
     };
 }
 
+// 
+
 Vue.config.productionTip = false;
 
 function mount(component, options) {
@@ -733,7 +748,7 @@ function mount(component, options) {
     vm.$mount();
   }
 
-  return new VueWrapper(vm, options.attachToDocument);
+  return new VueWrapper(vm, !!options.attachToDocument);
 }
 
 var LIFECYCLE_HOOKS = [
@@ -799,11 +814,14 @@ function replaceComponents(component) {
   });
 }
 
+// 
+
 function shallow(component, options) {
   var clonedComponent = lodash.cloneDeep(component);
   if (clonedComponent.components) {
     replaceComponents(clonedComponent);
   }
+
   replaceGlobalComponents(Vue, clonedComponent);
 
   return mount(clonedComponent, options);
