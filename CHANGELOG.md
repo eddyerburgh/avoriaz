@@ -1,3 +1,11 @@
+3.0.0 / 07-29-2017
+=================
+  * [Fix] Remove update from trigger method
+  * Remove style method
+  * Remove use method
+  * Remove dispatch method
+  * Remove simulate method
+
 2.6.5 / 07-24-2017
 =================
   * [Build] Revert to previous build
