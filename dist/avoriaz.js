@@ -205,48 +205,6 @@ Wrapper.prototype.destroy = function destroy () {
 };
 
 /**
- * Dispatches a DOM event on wrapper
- *
- * @param {String} type - type of event
- * @returns {Boolean}
- */
-Wrapper.prototype.dispatch = function dispatch (type) {
-  if (typeof type !== 'string') {
-    error('wrapper.dispatch() must be passed a string');
-  }
-
-  warn('wrapper.dispatch() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html');
-
-  var modifiers = {
-    enter: 13,
-    tab: 9,
-    delete: 46,
-    esc: 27,
-    space: 32,
-    up: 38,
-    down: 40,
-    left: 37,
-    right: 39,
-  };
-
-  var event = type.split('.');
-
-  var eventObject = new window.Event(event[0]);
-
-  if (event.length === 2) {
-    eventObject.keyCode = modifiers[event[1]];
-  }
-
-  if (this.isVueComponent) {
-    this.vm.$emit(type);
-  }
-
-  this.element.dispatchEvent(eventObject);
-
-  this.update();
-};
-
-/**
  * Finds every node in the mount tree of the current wrapper that matches the provided selector.
  *
  * @param {String|Object} selector
@@ -512,55 +470,6 @@ Wrapper.prototype.setProps = function setProps (props) {
 };
 
 /**
- * Simulates a DOM event on wrapper
- *
- * @param {String} type - type of event
- * @returns {Boolean}
- */
-Wrapper.prototype.simulate = function simulate (type) {
-  if (typeof type !== 'string') {
-    error('wrapper.simulate() must be passed a string');
-  }
-
-  warn('wrapper.simulate() is deprecated and will be removed from future versions. Use wrapper.trigger() instead - https://eddyerburgh.gitbooks.io/avoriaz/content/api/mount/trigger.html');
-
-  var modifiers = {
-    enter: 13,
-    tab: 9,
-    delete: 46,
-    esc: 27,
-    space: 32,
-    up: 38,
-    down: 40,
-    left: 37,
-    right: 39,
-  };
-
-  var event = type.split('.');
-
-  var eventObject = new window.Event(event[0]);
-
-  if (event.length === 2) {
-    eventObject.keyCode = modifiers[event[1]];
-  }
-
-  this.element.dispatchEvent(eventObject);
-  this.update();
-};
-
-/**
- * Returns element style object
- *
- * @returns {Object}
- */
-Wrapper.prototype.style = function style () {
-  warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead');
-  // $FlowIgnore
-  var node = document.querySelector('body').insertBefore(this.element, null);
-  return window.getComputedStyle(node);
-};
-
-/**
  * Return text of wrapper element
  *
  * @returns {Boolean}
@@ -579,8 +488,6 @@ Wrapper.prototype.trigger = function trigger (type) {
   if (typeof type !== 'string') {
     error('wrapper.trigger() must be passed a string');
   }
-
-  this.update();
 
   var modifiers = {
     enter: 13,
@@ -612,7 +519,6 @@ Wrapper.prototype.trigger = function trigger (type) {
   }
 
   this.element.dispatchEvent(eventObject);
-
   this.update();
 };
 
@@ -827,14 +733,9 @@ function shallow(component, options) {
   return mount(clonedComponent, options);
 }
 
-var use = function (plugin, options) {
-  Vue.use(plugin, options);
-};
-
 var avoriaz = {
   mount: mount,
   shallow: shallow,
-  use: use,
 };
 
 module.exports = avoriaz;
