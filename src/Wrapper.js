@@ -393,18 +393,6 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
-   * Returns element style object
-   *
-   * @returns {Object}
-   */
-  style() {
-    warn('wrapper.style() is deprecated and will be removed from future versions. Use wrapper.hasStyle() instead');
-    // $FlowIgnore
-    const node = document.querySelector('body').insertBefore(this.element, null);
-    return window.getComputedStyle(node);
-  }
-
-  /**
    * Return text of wrapper element
    *
    * @returns {Boolean}

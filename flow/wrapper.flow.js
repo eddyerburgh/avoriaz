@@ -22,7 +22,6 @@ declare interface WrapperInterface { // eslint-disable-line no-undef
     text(): string;
     setData(data: Object): void;
     setProps(data: Object): void;
-    style(): Object;
     trigger(type: string): void;
     update(): void;
 }
