@@ -461,8 +461,6 @@ export default class Wrapper implements WrapperInterface {
       error('wrapper.trigger() must be passed a string');
     }
 
-    this.update();
-
     const modifiers = {
       enter: 13,
       tab: 9,
@@ -493,7 +491,6 @@ export default class Wrapper implements WrapperInterface {
     }
 
     this.element.dispatchEvent(eventObject);
-
     this.update();
   }
 }

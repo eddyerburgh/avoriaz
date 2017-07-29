@@ -4,6 +4,7 @@ import ClickMethodComponent from '../../../resources/components/event-components
 import ClickToggleComponent from '../../../resources/components/event-components/ClickToggleComponent.vue';
 import KeydownComponent from '../../../resources/components/event-components/KeydownComponent.vue';
 import KeydownWithModifier from '../../../resources/components/event-components/KeydownWithModifierComponent.vue';
+import SearchForm from '../../../resources/components/event-components/SearchForm.vue';
 
 describe('trigger', () => {
   it('causes click handler to fire when wrapper.trigger("click") is called on a child node', () => {
@@ -20,8 +21,8 @@ describe('trigger', () => {
   it('calls clickHandler', () => {
     const wrapper = mount(ClickMethodComponent);
     wrapper.vm.clickHandler = sinon.stub();
+    wrapper.update();
     wrapper.find('button')[0].trigger('click');
-    // wrapper.find('button')[0].trigger('click'); // test only passes when uncommented
     expect(wrapper.vm.clickHandler.called).to.equal(true);
   });
 
@@ -87,6 +88,14 @@ describe('trigger', () => {
     wrapper.trigger('click');
 
     expect(wrapper.hasClass('active')).to.equal(true);
+  });
+
+  it('changes input with trigger()', () => {
+    const component = mount(SearchForm);
+    const searchInput = component.find('input#query')[0];
+    searchInput.element.value = 'hello';
+    searchInput.trigger('input');
+    expect(searchInput.element.value).to.eq('hello');
   });
 
   it('throws an error if type is not a string', () => {
