@@ -7,7 +7,6 @@ declare interface WrapperInterface { // eslint-disable-line no-undef
     contains(selector: Selector): boolean;
     data(): Object;
     destroy(): void;
-    dispatch(event: string): void;
     hasAttribute(attribute: string, value: string): boolean;
     hasClass(className: string): boolean;
     hasStyle(style: string, value: string): boolean;
