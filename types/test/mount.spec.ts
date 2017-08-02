@@ -1,40 +1,40 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
-import { mount } from '../'
-import { functionalOptions, ClassComponent } from './resources'
+import Vue from "vue";
+import Vuex from "vuex";
+import { mount } from "../";
+import { ClassComponent, functionalOptions } from "./resources";
 
 /**
  * Test for mount options
  */
-const localVue = Vue
-localVue.use(Vuex)
+const localVue = Vue;
+localVue.use(Vuex);
 
-const store = new Vuex.Store({})
+const store = new Vuex.Store({});
 
 mount<ClassComponent>(ClassComponent, {
     attachToDocument: true,
-    instance: localVue,
     globals: {
-        $store: store
+        $store: store,
     },
+    instance: localVue,
     slots: {
         default: ClassComponent,
         foo: [ClassComponent],
     },
-})
+});
 
 mount(functionalOptions, {
+    children: ["child", ClassComponent],
     context: {
-        props: { foo: 'test' }
+        props: { foo: "test" },
     },
-    children: ['child', ClassComponent],
-})
+});
 
 /**
  * MountOptions should receive Vue's component options
  */
 mount<ClassComponent>(ClassComponent, {
     propsData: {
-        test: 'test'
-    }
-})
+        test: "test",
+    },
+});
