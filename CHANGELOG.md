@@ -1,3 +1,7 @@
+3.1.0 / 08-02-2017
+=================
+  * [New] Add Types support
+
 3.0.0 / 07-29-2017
 =================
   * [Fix] Remove update from trigger method
