@@ -3,8 +3,10 @@
   "version": "3.0.0",
   "description": "a Vue.js testing utility library",
   "main": "dist/avoriaz.js",
+  "types": "types/index.d.ts",
   "files": [
-    "dist/*.js"
+    "dist/*.js",
+    "types/index.d.ts"
   ],
   "scripts": {
     "build": "rimraf dist && node build/build.js",
@@ -18,7 +20,8 @@
     "release": "npm run build && bash build/release.sh",
     "test": "npm run lint:fix && npm run test:karma && npm run test:unit",
     "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
-    "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js"
+    "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js",
+    "test:types": "tsc -p types"
   },
   "repository": {
     "type": "git",
@@ -91,10 +94,12 @@
     "rollup-plugin-flow-no-whitespace": "^1.0.0",
     "sinon": "^2.2.0",
     "sinon-chai": "^2.8.0",
+    "typescript": "^2.4.2",
     "vue": "^2.4.2",
     "vue-loader": "^12.1.1",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.4.2",
+    "vuex": "^2.3.1",
     "webpack": "^1.14.0"
   },
   "dependencies": {
