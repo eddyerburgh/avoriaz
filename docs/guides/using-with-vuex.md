@@ -25,7 +25,7 @@ This is the component we want to test. It calls Vuex actions.
       actionInputIfTrue: function actionInputIfTrue(event) {
         const inputValue = event.target.value;
         if (inputValue === 'input') {
-          this.$store.trigger('actionInput', { inputValue });
+          this.$store.dispatch('actionInput', { inputValue });
         }
       },
     },
