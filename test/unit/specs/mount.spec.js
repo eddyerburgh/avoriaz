@@ -6,6 +6,7 @@ import SlotChild from '../../resources/components/slots/SlotChild.vue';
 import MixinComponent from '../../resources/components/mixins/MixinComponent.vue';
 import Table from '../../resources/components/table/Table.vue';
 import Row from '../../resources/components/table/Row.vue';
+import PropsComponent from '../../resources/components/data-components/PropsComponent.vue';
 
 describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
@@ -178,5 +179,19 @@ describe('mount', () => {
     expect(wrapper.vm.$attrs.anAttr).to.equal('an attribute');
     wrapper.update();
     expect(wrapper.vm.$attrs.anAttr).to.equal('an attribute');
+  });
+
+  it('mounts component with default slot if passed wrapper in slot object', () => {
+    const slotWrapper = mount(PropsComponent, {
+      propsData: {
+        prop1: 'asd',
+      },
+    });
+
+    const wrapper = mount(SlotChild, { slots: { default: [slotWrapper] } });
+
+    expect(wrapper.find('p.prop-1')[0].text()).to.equal('asd');
+    slotWrapper.setProps({ prop1: 'zxc' });
+    expect(wrapper.find('p.prop-1')[0].text()).to.equal('zxc');
   });
 });
