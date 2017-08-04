@@ -11,6 +11,12 @@ localVue.use(Vuex);
 
 const store = new Vuex.Store({});
 
+const slotWrapper = mount(ClassComponent, {
+    propsData: {
+        prop1: "asd",
+    },
+});
+
 mount<ClassComponent>(ClassComponent, {
     attachToDocument: true,
     globals: {
@@ -18,6 +24,7 @@ mount<ClassComponent>(ClassComponent, {
     },
     instance: localVue,
     slots: {
+        bar: slotWrapper,
         default: ClassComponent,
         foo: [ClassComponent],
     },

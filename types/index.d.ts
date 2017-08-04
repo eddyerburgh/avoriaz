@@ -14,7 +14,7 @@ type Selector = string | Component;
  * Utility type for slots
  */
 interface Slots {
-    [key: string]: Component[] | Component;
+    [key: string]: Component[] | Component | Wrapper | Wrapper[];
 }
 
 /**
