@@ -1,12 +1,14 @@
 // @flow
 
 function addSlotToVm(vm, slotName, slotValue) {
+  const elem = slotValue.vNode || vm.$createElement(slotValue);
   if (Array.isArray(vm.$slots[slotName])) {
-    vm.$slots[slotName].push(vm.$createElement(slotValue)); // eslint-disable-line no-param-reassign
+    vm.$slots[slotName].push(elem); // eslint-disable-line no-param-reassign
   } else {
-    vm.$slots[slotName] = [vm.$createElement(slotValue)]; // eslint-disable-line no-param-reassign
+    vm.$slots[slotName] = [elem]; // eslint-disable-line no-param-reassign
   }
 }
+
 function addSlots(vm: Component, slots: Slots) {
   Object.keys(slots).forEach((key) => {
     if (!(Array.isArray(slots[key])) && !(slots[key] !== null && typeof slots[key] === 'object')) {
