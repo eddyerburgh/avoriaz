@@ -1,3 +1,7 @@
+3.2.0 / 08-04-2017
+=================
+  * [New] Add option to pass Wrappers to slots
+
 3.1.0 / 08-02-2017
 =================
   * [New] Add Types support
