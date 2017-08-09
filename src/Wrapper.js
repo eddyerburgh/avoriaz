@@ -133,22 +133,35 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
-   * Checks if wrapper has an attribute with matching value
+   * Returns value of specified attribute of wrapper
    *
    * @param {String} attribute - attribute to assert
-   * @param {String} value - value attribute should contain
+   * @returns {String}
+   */
+  getAttribute(attribute: string) {
+    if (typeof attribute !== 'string') {
+      error('wrapper.getAttribute() must be passed a string');
+    }
+
+    if (!this.hasAttribute(attribute)) {
+      error(`wrapper has no attribute called ${attribute}`);
+    }
+
+    return this.element.getAttribute(attribute);
+  }
+
+  /**
+   * Asserts wrapper has an attribute
+   *
+   * @param {String} attribute - attribute to assert
    * @returns {Boolean}
    */
-  hasAttribute(attribute: string, value: string) {
+  hasAttribute(attribute: string) {
     if (typeof attribute !== 'string') {
-      error('wrapper.hasAttribute() must be passed attribute as a string');
+      error('wrapper.hasAttribute() must be passed a string');
     }
 
-    if (typeof value !== 'string') {
-      error('wrapper.hasAttribute() must be passed value as a string');
-    }
-
-    return this.element.getAttribute(attribute) === value;
+    return this.element.hasAttribute(attribute);
   }
 
   /**
