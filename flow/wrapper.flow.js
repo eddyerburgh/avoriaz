@@ -8,6 +8,7 @@ declare interface WrapperInterface { // eslint-disable-line no-undef
     data(): Object;
     destroy(): void;
     getAttribute(attribute: string): string;
+    getProp(propName: string): any;
     hasAttribute(attribute: string): boolean;
     hasClass(className: string): boolean;
     hasStyle(style: string, value: string): boolean;

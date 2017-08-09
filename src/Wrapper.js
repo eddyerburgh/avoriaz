@@ -151,6 +151,28 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
+   * Returns prop value of a Vue instance
+   *
+   * @param {String} propName - prop name to assert
+   * @returns {*}
+   */
+  getProp(propName: string) {
+    if (!this.isVueComponent) {
+      error('wrapper.getProp() can only be called on a Vue instance');
+    }
+
+    if (typeof propName !== 'string') {
+      error('wrapper.getProp() must be passed a string');
+    }
+
+    const propValue = this.vm.$props[propName];
+    if (typeof propValue === 'function') {
+      warn('functions returned by getProp() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    }
+    return propValue;
+  }
+
+  /**
    * Asserts wrapper has an attribute
    *
    * @param {String} attribute - attribute to assert

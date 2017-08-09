@@ -40,6 +40,7 @@ interface Wrapper {
     data(): object;
     destroy(): void;
     getAttribute(attribute: string): string;
+    getProp(propName: string): any;
     hasAttribute(attribute: string): boolean;
     hasClass(className: string): boolean;
     hasStyle(style: string, value: string): boolean;
