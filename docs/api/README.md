@@ -1,3 +1,3 @@
-## [mount](/docs/api/mount/README.md)
-## [shallow](/docs/api/shallow/README.md)
-## [selectors](/docs/api/selectors.md)
+## [mount](/docs/api/mount)
+## [shallow](/docs/api/shallow)
+## [selectors](/docs/api/selectors.html)
