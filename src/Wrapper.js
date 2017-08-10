@@ -178,12 +178,22 @@ export default class Wrapper implements WrapperInterface {
    * @param {String} attribute - attribute to assert
    * @returns {Boolean}
    */
-  hasAttribute(attribute: string) {
+  hasAttribute(attribute: string, value?: string) {
     if (typeof attribute !== 'string') {
-      error('wrapper.hasAttribute() must be passed a string');
+      error('wrapper.hasAttribute() must be passed attribute as a string');
     }
 
-    return this.element.hasAttribute(attribute);
+    if (arguments.length === 1) {
+      return this.element.hasAttribute(attribute);
+    }
+
+    if (typeof value !== 'string') {
+      error('wrapper.hasAttribute() must be passed value as a string');
+    }
+
+    warn('wrapper.hasAttribute(attribute, value) is deprecated in place of a new syntax and the old syntax will be removed from future versions. Instead, we encourage you to use getAttribute(attribute) === value to assert attribute value for better error report. For detailed information, see: https://github.com/eddyerburgh/avoriaz/issues/100');
+
+    return this.element.getAttribute(attribute) === value;
   }
 
   /**
