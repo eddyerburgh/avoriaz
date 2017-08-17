@@ -106,6 +106,7 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
+    "create-event": "^1.0.9",
     "lodash": "^4.17.4",
     "vue-add-globals": "^2.0.0"
   },
