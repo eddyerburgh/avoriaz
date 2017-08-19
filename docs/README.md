@@ -55,6 +55,7 @@ expect(wrapper.text()).to.equal('some text');
 ##### Call DOM events on a child 
 ```js
 import { mount } from 'avoriaz';
+import sinon from 'sinon';
 import Foo from './Foo.vue';
 
 clickHandler = sinon.stub();
