@@ -1,3 +1,7 @@
+3.3.1 / 08-20-2017
+=================
+  * [Fix] Add correct return from find in type definitions
+
 3.3.0 / 08-20-2017
 =================
   * [New] Add value method
