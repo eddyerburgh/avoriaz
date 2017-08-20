@@ -479,6 +479,16 @@ Wrapper.prototype.text = function text () {
 };
 
 /**
+* Return value of wrapper element
+*
+* @returns {String | Boolean}
+*/
+Wrapper.prototype.value = function value () {
+  if (!this.element.value) { return false; }
+  return this.element.value;
+};
+
+/**
    * Triggers a DOM event on wrapper
    *
    * @param {String} type - type of event
