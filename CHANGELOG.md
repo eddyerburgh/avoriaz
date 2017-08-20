@@ -1,3 +1,7 @@
+3.3.0 / 08-20-2017
+=================
+  * [New] Add value method
+
 3.2.1 / 08-20-2017
 =================
   * [New] Add attrs object by default
