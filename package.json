@@ -19,7 +19,7 @@
     "lint:ts": "tslint -c tslint.json types/**/*.ts",
     "lint:ts:fix": "npm run lint:ts -- --fix",
     "release": "npm run build && bash build/release.sh",
-    "test": "npm run lint:fix && npm run test:types && npm run test:karma && npm run test:unit",
+    "test": "npm run lint && npm run test:types && npm run test:karma && npm run test:unit",
     "test:karma": "cross-env BABEL_ENV=test karma start test/unit/setup/karma.conf.js --single-run",
     "test:unit": "mocha-webpack --webpack-config test/unit/setup/webpack.config.js test/unit/specs --recursive --require test/unit/setup/.mocha-webpack-setup.js",
     "test:types": "tsc -p types"
