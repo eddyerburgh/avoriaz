@@ -181,6 +181,11 @@ describe('mount', () => {
     expect(wrapper.vm.$attrs.anAttr).to.equal('an attribute');
   });
 
+  it('defines attrs as empty object even when not passed', () => {
+    const wrapper = mount(compileToFunctions('<p />'));
+    expect(wrapper.vm.$attrs).to.deep.equal({});
+  });
+
   it('mounts component with default slot if passed wrapper in slot object', () => {
     const slotWrapper = mount(PropsComponent, {
       propsData: {

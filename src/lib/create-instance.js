@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 // @flow
 
 import Vue from 'vue';
@@ -5,11 +7,22 @@ import { cloneDeep } from 'lodash';
 import addGlobals from 'vue-add-globals';
 import addSlots from './add-slots';
 
+function addAttrs(vm, attrs) {
+  const consoleWarnSave = console.error;
+  console.error = () => {};
+  if (attrs) {
+    vm.$attrs = attrs;
+  } else {
+    vm.$attrs = {};
+  }
+  console.error = consoleWarnSave;
+}
+
 export default function createInstance(component: Component, options: MountOptions) {
   const instance = options.instance || Vue;
 
   // delete cached constructor
-  delete component._Ctor; // eslint-disable-line no-param-reassign
+  delete component._Ctor;
 
   if (options.context) {
     if (!component.functional) {
@@ -20,7 +33,7 @@ export default function createInstance(component: Component, options: MountOptio
       throw new Error('mount.context must be an object');
     }
     const clonedComponent = cloneDeep(component);
-    component = { // eslint-disable-line no-param-reassign
+    component = {
       render(h) {
         return h(clonedComponent, options.context, options.children);
       },
@@ -34,9 +47,7 @@ export default function createInstance(component: Component, options: MountOptio
   }
   const vm = new Constructor(options);
 
-  if (options.attrs) {
-    vm.$attrs = options.attrs;
-  }
+  addAttrs(vm, options.attrs);
 
   if (options.slots) {
     addSlots(vm, options.slots);
