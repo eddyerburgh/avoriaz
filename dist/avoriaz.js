@@ -577,13 +577,26 @@ function addSlots(vm, slots) {
   });
 }
 
+/* eslint-disable no-param-reassign */
+
 // 
+
+function addAttrs(vm, attrs) {
+  var consoleWarnSave = console.error;
+  console.error = function () {};
+  if (attrs) {
+    vm.$attrs = attrs;
+  } else {
+    vm.$attrs = {};
+  }
+  console.error = consoleWarnSave;
+}
 
 function createInstance(component, options) {
   var instance = options.instance || Vue;
 
   // delete cached constructor
-  delete component._Ctor; // eslint-disable-line no-param-reassign
+  delete component._Ctor;
 
   if (options.context) {
     if (!component.functional) {
@@ -594,7 +607,7 @@ function createInstance(component, options) {
       throw new Error('mount.context must be an object');
     }
     var clonedComponent = lodash.cloneDeep(component);
-    component = { // eslint-disable-line no-param-reassign
+    component = {
       render: function render(h) {
         return h(clonedComponent, options.context, options.children);
       },
@@ -608,9 +621,7 @@ function createInstance(component, options) {
   }
   var vm = new Constructor(options);
 
-  if (options.attrs) {
-    vm.$attrs = options.attrs;
-  }
+  addAttrs(vm, options.attrs);
 
   if (options.slots) {
     addSlots(vm, options.slots);
