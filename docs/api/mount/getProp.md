@@ -1,6 +1,6 @@
-# propsData()
+# getProp()
 
-Returns value of specified prop of Vue instances. Can only be called on a Vue component wrapper.
+Returns value of specified prop of Vue instance. Can only be called on a Vue component wrapper.
 
 ### Returns
 
