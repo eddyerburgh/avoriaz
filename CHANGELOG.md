@@ -1,3 +1,7 @@
+3.2.1 / 08-20-2017
+=================
+  * [New] Add attrs object by default
+
 3.2.0 / 08-04-2017
 =================
   * [New] Add option to pass Wrappers to slots
