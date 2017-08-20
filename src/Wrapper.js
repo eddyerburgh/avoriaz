@@ -360,6 +360,16 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
+  * Return value of wrapper element
+  *
+  * @returns {String | Boolean}
+  */
+  value() {
+    if (!this.element.value) return false;
+    return this.element.value;
+  }
+
+  /**
      * Triggers a DOM event on wrapper
      *
      * @param {String} type - type of event

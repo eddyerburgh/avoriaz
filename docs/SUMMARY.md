@@ -25,8 +25,9 @@
     * [text](/api/mount/text.md)
     * [trigger](/api/mount/trigger.md)  
     * [update](/api/mount/update.md)
-    * [vm](/api/mount/vm.md)    
-  * [shallow](/api/shallow/README.md)   
+    * [value](/api/mount/value.md)
+    * [vm](/api/mount/vm.md)
+  * [shallow](/api/shallow/README.md)
   * [selectors](/api/selectors.md)
   * guides
     * [using with vuex](/guides/using-with-vuex.md)
