@@ -45,3 +45,29 @@ mount<ClassComponent>(ClassComponent, {
         test: "test",
     },
 });
+
+const wrapper = mount(ClassComponent);
+
+wrapper.contains("hello");
+wrapper.destroy();
+wrapper.hasAttribute("attr", 1);
+wrapper.hasClass("className");
+wrapper.hasStyle("color", "red");
+wrapper.find("div");
+wrapper.find(ClassComponent);
+wrapper.find("div")[0].is("div");
+wrapper.find(ClassComponent);
+wrapper.html();
+wrapper.is("div");
+wrapper.isEmpty();
+wrapper.methods();
+wrapper.name();
+wrapper.propsData();
+wrapper.text();
+wrapper.value();
+wrapper.data();
+wrapper.computed();
+wrapper.update();
+wrapper.setData({data: true});
+wrapper.setProps({props: true});
+wrapper.trigger("click");

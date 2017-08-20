@@ -39,10 +39,10 @@ interface Wrapper {
     contains(selector: Selector): boolean;
     data(): object;
     destroy(): void;
-    hasAttribute(attribute: string, value: string): boolean;
+    hasAttribute(attribute: string, value: any): boolean;
     hasClass(className: string): boolean;
     hasStyle(style: string, value: string): boolean;
-    find(selector: Selector): Wrapper;
+    find(selector: Selector): Wrapper[];
     html(): string;
     is(selector: Selector): boolean;
     isEmpty(): boolean;
@@ -55,6 +55,7 @@ interface Wrapper {
     setProps(props: object): void;
     trigger(eventName: string): void;
     update(): void;
+    value(): string | boolean;
 }
 
 interface MountOptions<V extends Vue> extends ComponentOptions<V> {
