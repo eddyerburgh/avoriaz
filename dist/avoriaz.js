@@ -410,6 +410,26 @@ Wrapper.prototype.name = function name () {
 };
 
 /**
+ * Sets vm methods
+ *
+ * @param {Object} methods - methods to set
+ */
+Wrapper.prototype.setMethods = function setMethods (methods) {
+    var this$1 = this;
+
+  if (!this.isVueComponent) {
+    error('wrapper.setMethods() can only be called on a Vue instance');
+  }
+
+  Object.keys(methods).forEach(function (key) {
+    this$1.vm[key] = methods[key];
+    this$1.vm.$options.methods[key] = methods[key];
+  });
+  this.update();
+  this.vNode = this.vm._vnode;
+};
+
+/**
  * Returns instances propsData object
  *
  * @returns {String}
