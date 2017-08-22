@@ -70,4 +70,5 @@ wrapper.computed();
 wrapper.update();
 wrapper.setData({data: true});
 wrapper.setProps({props: true});
+wrapper.setMethods({methods: true});
 wrapper.trigger("click");
