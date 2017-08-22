@@ -294,12 +294,12 @@ export default class Wrapper implements WrapperInterface {
     return this.vNode.tag;
   }
 
-/**
- * Sets vm methods
- *
- * @param {Object} methods - methods to set
- */
-  setMethods (methods: Object) {
+  /**
+   * Sets vm methods
+   *
+   * @param {Object} methods - methods to set
+   */
+  setMethods(methods: Object) {
     if (!this.isVueComponent) {
       error('wrapper.setMethods() can only be called on a Vue instance');
     }
@@ -307,7 +307,7 @@ export default class Wrapper implements WrapperInterface {
     Object.keys(methods).forEach((key) => {
       this.vm[key] = methods[key];
       this.vm.$options.methods[key] = methods[key];
-    })
+    });
     this.update();
     this.vNode = this.vm._vnode;
   }

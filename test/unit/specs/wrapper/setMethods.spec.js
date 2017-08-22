@@ -13,7 +13,7 @@ describe('setMethods', () => {
   });
 
   it('throws an error if node is not a Vue instance', () => {
-    const message = 'wrapper.setMethods() can only be called on a Vue instance'
+    const message = 'wrapper.setMethods() can only be called on a Vue instance';
     const compiled = compileToFunctions('<div><p></p></div>');
     const wrapper = mount(compiled);
     const input = wrapper.find('p')[0];
