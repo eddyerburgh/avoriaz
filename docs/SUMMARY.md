@@ -22,6 +22,7 @@
     * [propsData](/api/mount/propsData.md)
     * [setData](/api/mount/setData.md)
     * [setProps](/api/mount/setProps.md)
+    * [setMethods](/api/mount/setMethods.md)
     * [text](/api/mount/text.md)
     * [trigger](/api/mount/trigger.md)  
     * [update](/api/mount/update.md)
@@ -31,5 +32,3 @@
   * [selectors](/api/selectors.md)
   * guides
     * [using with vuex](/guides/using-with-vuex.md)
-
-
