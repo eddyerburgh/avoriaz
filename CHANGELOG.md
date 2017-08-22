@@ -1,3 +1,7 @@
+3.4.0 / 08-22-2017
+=================
+  * [New] Add setMethods method
+
 3.3.1 / 08-20-2017
 =================
   * [Fix] Add correct return from find in type definitions
