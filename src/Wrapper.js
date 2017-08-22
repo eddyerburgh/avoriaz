@@ -295,6 +295,24 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
+   * Sets vm methods
+   *
+   * @param {Object} methods - methods to set
+   */
+  setMethods(methods: Object) {
+    if (!this.isVueComponent) {
+      error('wrapper.setMethods() can only be called on a Vue instance');
+    }
+
+    Object.keys(methods).forEach((key) => {
+      this.vm[key] = methods[key];
+      this.vm.$options.methods[key] = methods[key];
+    });
+    this.update();
+    this.vNode = this.vm._vnode;
+  }
+
+  /**
    * Returns instances propsData object
    *
    * @returns {String}

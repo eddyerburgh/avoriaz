@@ -53,6 +53,7 @@ interface Wrapper {
     update(): void;
     setData(data: object): void;
     setProps(props: object): void;
+    setMethods(methods: object): void;
     trigger(eventName: string): void;
     update(): void;
     value(): string | boolean;
