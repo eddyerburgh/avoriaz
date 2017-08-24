@@ -1,3 +1,7 @@
+3.5.0 / 08-24-2017
+=================
+  * [New] Add .amd and .umd builds
+
 3.4.0 / 08-22-2017
 =================
   * [New] Add setMethods method
