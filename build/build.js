@@ -6,6 +6,15 @@ const resolve = require('path').resolve;
 const buble = require('rollup-plugin-buble');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
+const chalk = require('chalk');
+
+function success(text) {
+  console.log(chalk.green(`${text} ✔`));
+}
+
+function error(text) {
+  console.log(chalk.red(`${text} ✘`));
+}
 
 rollup({
   entry: resolve('src/avoriaz.js'),
@@ -21,9 +30,9 @@ rollup({
     format: 'cjs',
   });
 })
-  .then(() => console.log('commonjs build successful'))
+  .then(() => success('commonjs build successful'))
   .catch((err) => {
-    console.error(err);
+    error(err);
   });
 
 rollup({
@@ -43,10 +52,9 @@ rollup({
     format: 'amd',
   });
 })
-
-  .then(() => console.log('AMD build successful'))
+  .then(() => success('AMD build successful'))
   .catch((err) => {
-    console.error(err);
+    error(err);
   });
 
 rollup({
@@ -67,7 +75,7 @@ rollup({
     moduleName: 'avoriaz',
   });
 })
-  .then(() => console.log('UMD build successful'))
+  .then(() => success('UMD build successful'))
   .catch((err) => {
-    console.error(err);
+    error(err);
   });
