@@ -23,7 +23,10 @@ npm install --save-dev avoriaz
 
 ```js
 import { mount } from 'avoriaz';
+import sinon from 'sinon';
 import Foo from './Foo.vue';
+
+const clickHandler = sinon.stub();
 
 const wrapper = mount(Foo, {
   propsData: { clickHandler },
@@ -58,7 +61,7 @@ import { mount } from 'avoriaz';
 import sinon from 'sinon';
 import Foo from './Foo.vue';
 
-clickHandler = sinon.stub();
+const clickHandler = sinon.stub();
 
 const wrapper = mount(Foo, {
   propsData: { clickHandler },
