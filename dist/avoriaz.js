@@ -3,7 +3,7 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var Vue = _interopDefault(require('vue'));
-var lodash = require('lodash');
+var cloneDeep = _interopDefault(require('lodash/cloneDeep'));
 var addGlobals = _interopDefault(require('vue-add-globals'));
 
 // 
@@ -636,7 +636,7 @@ function createInstance(component, options) {
     if (typeof options.context !== 'object') {
       throw new Error('mount.context must be an object');
     }
-    var clonedComponent = lodash.cloneDeep(component);
+    var clonedComponent = cloneDeep(component);
     component = {
       render: function render(h) {
         return h(clonedComponent, options.context, options.children);
@@ -766,7 +766,7 @@ function replaceComponents(component) {
 // 
 
 function shallow(component, options) {
-  var clonedComponent = lodash.cloneDeep(component);
+  var clonedComponent = cloneDeep(component);
   if (clonedComponent.components) {
     replaceComponents(clonedComponent);
   }

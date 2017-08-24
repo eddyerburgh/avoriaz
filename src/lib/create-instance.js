@@ -3,7 +3,7 @@
 // @flow
 
 import Vue from 'vue';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import addGlobals from 'vue-add-globals';
 import addSlots from './add-slots';
 
