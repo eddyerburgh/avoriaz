@@ -1,4 +1,4 @@
-import { assign } from 'lodash';
+import assign from 'lodash/assign';
 
 function addProvide(component, options) {
   const provide = typeof options.provide === 'function'
