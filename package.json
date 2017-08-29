@@ -107,7 +107,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "lodash-es": "^4.17.4",
     "vue-add-globals": "^2.0.0"
   },
   "peerDependencies": {
