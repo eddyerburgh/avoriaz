@@ -1,3 +1,7 @@
+3.5.0 / 08-29-2017
+=================
+  * [New] Add provide option to mount
+
 3.5.0 / 08-24-2017
 =================
   * [New] Add .amd and .umd builds
@@ -102,11 +106,11 @@
 2.1.0 / 06-19-2017
 =================
   * [New] Add shallow method
-  
+
 2.0.0 / 06-12-2017
 =================
   * [Refactor] Remove emit behavior from trigger. Breaking change
-  
+
 1.16.0 / 06-12-2017
 =================
   * [Fix] Emit event on child vue instance
@@ -150,7 +154,7 @@
 1.12.0 / 05-05-2017
 =================
   * [New] Add slots mount option
-  
+
 1.11.2 / 04-28-2017
 =================
   * [Fix] Add undocumented options argument to use method
@@ -158,7 +162,7 @@
 1.11.1 / 04-14-2017
 =================
   * [Fix] Mount entire component in hasStyle to accurately detect CSS
-  
+
 1.11.0 / 04-14-2017
 =================
   * [New] Add attachToDocument option
@@ -166,16 +170,16 @@
   * [Fix] Remove duplicate vNodes by comparing element node
   * [Docs] Standardize docs
   * [Docs] Add guide to using with vuex
-  
+
 1.10.0 / 04-09-2017
 =================
   * [New] Support key modifiers in simulate method
   * [Docs] Add examples to docs
-  
+
 1.9.4 / 03-30-2017
 =================
   * [Fix] Change propsData warning message to give a correct example
-  
+
 1.9.3 / 03-29-2017
 =================
   * [Docs] Add examples to docs
