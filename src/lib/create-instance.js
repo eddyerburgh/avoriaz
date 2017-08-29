@@ -6,6 +6,7 @@ import Vue from 'vue';
 import cloneDeep from 'lodash/cloneDeep';
 import addGlobals from 'vue-add-globals';
 import addSlots from './add-slots';
+import addProvide from './add-provide';
 
 function addAttrs(vm, attrs) {
   const consoleWarnSave = console.error;
@@ -38,6 +39,10 @@ export default function createInstance(component: Component, options: MountOptio
         return h(clonedComponent, options.context, options.children);
       },
     };
+  }
+
+  if (options.provide) {
+    addProvide(component, options);
   }
 
   const Constructor = instance.extend(component);

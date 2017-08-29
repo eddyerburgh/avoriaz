@@ -7,6 +7,7 @@ import MixinComponent from '../../resources/components/mixins/MixinComponent.vue
 import Table from '../../resources/components/table/Table.vue';
 import Row from '../../resources/components/table/Row.vue';
 import PropsComponent from '../../resources/components/data-components/PropsComponent.vue';
+import Inject from '../../resources/components/inject/Inject.vue';
 
 describe('mount', () => {
   it('returns new VueWrapper with mounted Vue instance if no options are passed', () => {
@@ -198,5 +199,33 @@ describe('mount', () => {
     expect(wrapper.find('p.prop-1')[0].text()).to.equal('asd');
     slotWrapper.setProps({ prop1: 'zxc' });
     expect(wrapper.find('p.prop-1')[0].text()).to.equal('zxc');
+  });
+
+  it('provides objects which is injected by mounted component', () => {
+    const wrapper = mount(Inject, {
+      provide: { fromMount: 'objectValue' },
+    });
+
+    expect(wrapper.text()).to.contain('objectValue');
+  });
+
+  it('provides function which is injected by mounted component', () => {
+    const wrapper = mount(Inject, {
+      provide() {
+        return {
+          fromMount: 'functionValue',
+        };
+      },
+    });
+
+    expect(wrapper.text()).to.contain('functionValue');
+  });
+
+  it('supports beforeCreate in component', () => {
+    const wrapper = mount(Inject, {
+      provide: { fromMount: '_' },
+    });
+
+    expect(wrapper.vm.setInBeforeCreate).to.equal('created');
   });
 });
