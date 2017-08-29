@@ -18,6 +18,8 @@ Create a Vue component with all child components stubbed. Returns a wrapper that
 
 `options.globals` (`Object`): Add globals to Vue instance.
 
+`options.provide` (`Object`): Provide values to Vue instance
+
 ### Examples
 
 #### Without options
@@ -42,8 +44,8 @@ import Foo from './Foo.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = shallow(Foo, { 
-        propsData: { 
+    const wrapper = shallow(Foo, {
+        propsData: {
             color: 'red',
         },
     });
@@ -60,7 +62,7 @@ import Foo from './Foo.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = shallow(Foo, { 
+    const wrapper = shallow(Foo, {
         attachToDocument: true
     });
     expect(wrapper.props(div)).to.equal(true);
@@ -77,7 +79,7 @@ import FooBar from './FooBar.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = shallow(Foo, { 
+    const wrapper = shallow(Foo, {
         slots: {
             default: [Bar, FoorBar],
             fooBar: FooBar // Will match <slot name="FooBar" />
@@ -97,7 +99,7 @@ import Foo from './Foo.vue';
 describe('Foo', () => {
   it('renders a div', () => {
     const $route = {path: 'http://www.example-path.com'};
-    const wrapper = shallow(Foo, { 
+    const wrapper = shallow(Foo, {
         globals: {
             $route
         }

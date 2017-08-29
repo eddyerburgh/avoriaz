@@ -22,6 +22,8 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.globals` (`Object`): Add globals to Vue instance.
 
+`options.provide` (`Object`): Provide values to Vue instance
+
 `options.instance` (`Object`): Pass an instance for avoriaz to use as a base. Ensures global instance does not get polluted when using rules like `global`
 
 ### Examples
@@ -48,8 +50,8 @@ import Foo from './Foo.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = mount(Foo, { 
-        propsData: { 
+    const wrapper = mount(Foo, {
+        propsData: {
             color: 'red',
         },
     });
@@ -66,7 +68,7 @@ import Foo from './Foo.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = mount(Foo, { 
+    const wrapper = mount(Foo, {
         attachToDocument: true
     });
     expect(wrapper.props(div)).to.equal(true);
@@ -83,7 +85,7 @@ import FooBar from './FooBar.vue';
 
 describe('Foo', () => {
   it('renders a div', () => {
-    const wrapper = mount(Foo, { 
+    const wrapper = mount(Foo, {
         slots: {
             default: [Bar, FoorBar],
             fooBar: FooBar // Will match <slot name="FooBar" />
@@ -103,7 +105,7 @@ import Foo from './Foo.vue';
 describe('Foo', () => {
   it('renders a div', () => {
     const $route = {path: 'http://www.example-path.com'};
-    const wrapper = mount(Foo, { 
+    const wrapper = mount(Foo, {
         globals: {
             $route
         }
