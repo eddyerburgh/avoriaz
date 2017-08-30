@@ -133,20 +133,65 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
-   * Checks if wrapper has an attribute with matching value
+   * Returns value of specified attribute of wrapper
    *
    * @param {String} attribute - attribute to assert
-   * @param {String} value - value attribute should contain
+   * @returns {String}
+   */
+  getAttribute(attribute: string) {
+    if (typeof attribute !== 'string') {
+      error('wrapper.getAttribute() must be passed a string');
+    }
+
+    if (!this.hasAttribute(attribute)) {
+      error(`wrapper has no attribute called ${attribute}`);
+    }
+
+    return this.element.getAttribute(attribute);
+  }
+
+  /**
+   * Returns prop value of a Vue instance
+   *
+   * @param {String} propName - prop name to assert
+   * @returns {*}
+   */
+  getProp(propName: string) {
+    if (!this.isVueComponent) {
+      error('wrapper.getProp() can only be called on a Vue instance');
+    }
+
+    if (typeof propName !== 'string') {
+      error('wrapper.getProp() must be passed a string');
+    }
+
+    const propValue = this.vm.$props[propName];
+    if (typeof propValue === 'function') {
+      warn('functions returned by getProp() will not have this bound to the vue instance. Calling a propsData function that uses this will result in an error. You can access propsData functions by using the vue instance. e.g. to call a method function named propsDataFunc, call wrapper.vm.$props.propsDataFunc(). See https://github.com/eddyerburgh/avoriaz/issues/15');
+    }
+    return propValue;
+  }
+
+  /**
+   * Asserts wrapper has an attribute
+   *
+   * @param {String} attribute - attribute to assert
    * @returns {Boolean}
    */
-  hasAttribute(attribute: string, value: string) {
+  hasAttribute(attribute: string, value?: string) {
     if (typeof attribute !== 'string') {
       error('wrapper.hasAttribute() must be passed attribute as a string');
+    }
+
+    if (arguments.length === 1) {
+      return this.element.hasAttribute(attribute);
     }
 
     if (typeof value !== 'string') {
       error('wrapper.hasAttribute() must be passed value as a string');
     }
+
+    warn('wrapper.hasAttribute(attribute, value) is deprecated in place of a new syntax and the old syntax will be removed from future versions. Instead, we encourage you to use getAttribute(attribute) === value to assert attribute value for better error report. For detailed information, see: https://github.com/eddyerburgh/avoriaz/issues/100');
 
     return this.element.getAttribute(attribute) === value;
   }

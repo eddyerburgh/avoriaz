@@ -1,17 +1,14 @@
-# hasAttribute(attribute, value)
+# hasAttribute(attribute)
 
-Check if wrapper DOM node has attribute matching value
+Check if wrapper DOM node has specified attribute
 
 ### Arguments
 
-`attribute` (`String`): attribute name to assert value of.
-
-`value` (`String`): the value attribute should hold.
+`attribute` (`String`): attribute name to assert.
 
 ### Returns
 
-(`Boolean`): `true` if element contains attribute
-with matching value, `false` otherwise.
+(`Boolean`): `true` if element contains specified attribute, `false` otherwise.
 
 ## Example
 
@@ -36,5 +33,5 @@ import { mount } from 'avoriaz';
 import Foo from './Foo.vue';
 
 const wrapper = mount(Foo);
-expect(wrapper.hasAttribute('id', 'foo')).to.equal(true);
+expect(wrapper.hasAttribute('id')).to.equal(true);
 ```

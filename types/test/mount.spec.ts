@@ -50,7 +50,8 @@ const wrapper = mount(ClassComponent);
 
 wrapper.contains("hello");
 wrapper.destroy();
-wrapper.hasAttribute("attr", 1);
+wrapper.hasAttribute("attr");
+wrapper.hasAttribute("attr", "value");
 wrapper.hasClass("className");
 wrapper.hasStyle("color", "red");
 wrapper.find("div");
