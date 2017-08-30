@@ -1,4 +1,4 @@
-4.1.0 / 08-30-2017
+4.0.0 / 08-30-2017
 =================
 * [New] Add getAttribute method
 * [New] Add getProp method
