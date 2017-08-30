@@ -58,6 +58,8 @@ wrapper.find("div");
 wrapper.find(ClassComponent);
 wrapper.find("div")[0].is("div");
 wrapper.find(ClassComponent);
+wrapper.getAttribute("attribute");
+wrapper.getProp("prop");
 wrapper.html();
 wrapper.is("div");
 wrapper.isEmpty();
