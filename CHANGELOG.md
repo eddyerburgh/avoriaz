@@ -1,4 +1,9 @@
-3.666666.0 / 08-29-2017
+4.1.0 / 08-30-2017
+=================
+* [New] Add getAttribute method
+* [New] Add getProp method
+
+3.6.0 / 08-29-2017
 =================
   * [New] Add provide option to mount
 
