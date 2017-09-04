@@ -1,3 +1,7 @@
+4.1.0 / 09-04-2017
+=================
+* [New] Add listeners option
+
 4.0.0 / 08-30-2017
 =================
 * [New] Add getAttribute method
