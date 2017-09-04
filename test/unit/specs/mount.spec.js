@@ -187,6 +187,23 @@ describe('mount', () => {
     expect(wrapper.vm.$attrs).to.deep.equal({});
   });
 
+  it('handles inherit listeners', () => {
+    const aListener = 'a Listener';
+    const wrapper = mount(compileToFunctions('<p />'), {
+      listeners: {
+        aListener,
+      },
+    });
+    expect(wrapper.vm.$listeners.aListener).to.equal(aListener);
+    wrapper.update();
+    expect(wrapper.vm.$listeners.aListener).to.equal(aListener);
+  });
+
+  it('defines listeners as empty object even when not passed', () => {
+    const wrapper = mount(compileToFunctions('<p />'));
+    expect(wrapper.vm.$listeners).to.deep.equal({});
+  });
+
   it('mounts component with default slot if passed wrapper in slot object', () => {
     const slotWrapper = mount(PropsComponent, {
       propsData: {

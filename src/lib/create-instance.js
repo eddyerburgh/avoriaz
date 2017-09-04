@@ -19,6 +19,17 @@ function addAttrs(vm, attrs) {
   console.error = consoleWarnSave;
 }
 
+function addListeners(vm, listeners) {
+  const consoleWarnSave = console.error;
+  console.error = () => {};
+  if (listeners) {
+    vm.$listeners = listeners;
+  } else {
+    vm.$listeners = {};
+  }
+  console.error = consoleWarnSave;
+}
+
 export default function createInstance(component: Component, options: MountOptions) {
   const instance = options.instance || Vue;
 
@@ -53,6 +64,7 @@ export default function createInstance(component: Component, options: MountOptio
   const vm = new Constructor(options);
 
   addAttrs(vm, options.attrs);
+  addListeners(vm, options.listeners);
 
   if (options.slots) {
     addSlots(vm, options.slots);
