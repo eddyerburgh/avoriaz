@@ -10,6 +10,10 @@ Create a Vue component with all child components stubbed. Returns a wrapper that
 
 `options.attachToDocument` (`Boolean`): Component will attach to DOM when rendered. This can be used with [`hasStyle`](/api/shallow/hasStyle.md) to check multi element CSS selectors
 
+`options.attrs` (`Object`): Make available as $attrs
+
+`options.listeners` (`Object`): Make available as $listeners
+
 `options.slots` (`Object`): Render component with slots.
 
 `options.slots.default` (`Array[Component]|Component|Wrapper|Array[Wrapper]`): Default slot object to render, can be a Vue component or array of Vue components

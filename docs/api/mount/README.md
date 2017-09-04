@@ -16,6 +16,10 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 `options.slots` (`Object`): Render component with slots.
 
+`options.attrs` (`Object`): Make available as $attrs
+
+`options.listeners` (`Object`): Make available as $listeners
+
 `options.slots.default` (`Array[Component]|Component|Wrapper|Array[Wrapper]`): Default slot object to render, can be a Vue component or array of Vue components
 
 `options.slots.name` (`Array[Component]|Component|Wrapper|Array[Wrapper]`): Named slots. i.e. slots.name will match a <slot name="name" />, can be a Vue component or array of Vue components
