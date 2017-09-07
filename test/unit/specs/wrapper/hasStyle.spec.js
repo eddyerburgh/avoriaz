@@ -1,10 +1,18 @@
 import { compileToFunctions } from 'vue-template-compiler';
 import mount from '../../../../src/mount';
+import { stubTransitions } from '../../../../src/utils';
 import DivColorRed from '../../../resources/components/style/DivColorRed.vue';
 
 describe('hasStyle', () => {
   it('returns true when element contains styles, set inline', () => {
     const compiled = compileToFunctions('<div style="color:red;"></div>');
+    const wrapper = mount(compiled);
+    expect(wrapper.hasStyle('color', 'red')).to.equal(true);
+  });
+
+  it('returns true when element contains styles, set inline and stubbing transitions', () => {
+    stubTransitions();
+    const compiled = compileToFunctions('<transition><div style="color:red;"></div></transition>');
     const wrapper = mount(compiled);
     expect(wrapper.hasStyle('color', 'red')).to.equal(true);
   });
