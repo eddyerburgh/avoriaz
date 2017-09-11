@@ -308,7 +308,7 @@ export default class Wrapper implements WrapperInterface {
    * @returns {Boolean}
    */
   isEmpty() {
-    return this.vNode.children === undefined;
+    return this.vNode.children === undefined || this.vNode.children.length === 0;
   }
 
   /**
