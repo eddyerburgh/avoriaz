@@ -8,6 +8,7 @@ import ChildProps from '../../resources/components/data-components/ChildProps.vu
 import Submit from '../../resources/components/form/Submit.vue';
 import LogMountedParent from '../../resources/components/lifecycle/LogMountedParent.vue';
 import LogMounted from '../../resources/components/lifecycle/LogMounted.vue';
+import Global from '../../resources/components/slots/Global.vue';
 
 describe('shallow', () => {
   it('returns mounted wrapper with stubbed components', () => {
@@ -49,6 +50,22 @@ describe('shallow', () => {
   it('returns wrapper that you can test props of', () => {
     const wrapper = shallow(ChildProps);
     expect(wrapper.find(Submit)[0].vm.$props.hello).to.equal('hello');
+  });
+
+  it('renders default slot in global components', () => {
+    const wrapper = shallow(Global, {
+      renderDefaultSlot: true,
+    });
+    const container = wrapper.first('#container');
+    expect(container.text()).to.equal('HELLO');
+  });
+
+  it('does not render default slot in global components', () => {
+    const wrapper = shallow(Global, {
+      renderDefaultSlot: false,
+    });
+    const container = wrapper.first('#container');
+    expect(container.text()).to.equal('');
   });
 });
 
