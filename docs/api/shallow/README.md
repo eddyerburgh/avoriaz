@@ -20,6 +20,8 @@ Create a Vue component with all child components stubbed. Returns a wrapper that
 
 `options.slots.name` (`Array[Component]|Component|Wrapper|Array[Wrapper]`): Named slots. i.e. slots.name will match a <slot name="name" />, can be a Vue component or array of Vue components
 
+`options.renderDefaultSlot` (`Boolean`): Render global components with default slot.
+
 `options.globals` (`Object`): Add globals to Vue instance.
 
 `options.provide` (`Object`): Provide values to Vue instance

@@ -68,6 +68,7 @@ interface MountOptions<V extends Vue> extends ComponentOptions<V> {
     slots?: Slots;
     globals?: object;
     instance?: typeof Vue;
+    renderDefaultSlot?: boolean;
 }
 
 
