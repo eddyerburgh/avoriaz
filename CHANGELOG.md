@@ -1,3 +1,7 @@
+4.2.0 / 09-17-2017
+=================
+* [New] Add renderDefaultSlot option to shallow
+
 4.1.0 / 09-04-2017
 =================
 * [New] Add listeners option
