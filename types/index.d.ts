@@ -68,9 +68,11 @@ interface MountOptions<V extends Vue> extends ComponentOptions<V> {
     slots?: Slots;
     globals?: object;
     instance?: typeof Vue;
+    renderDefaultSlot?: boolean;
 }
 
 
+export declare function shallow<V extends Vue, Ctor extends VueClass<V> = VueClass<V>>(component: Ctor, options?: MountOptions<Vue>): Wrapper;
 export declare function mount<V extends Vue, Ctor extends VueClass<V> = VueClass<V>>(component: Ctor, options?: MountOptions<Vue>): Wrapper;
 export declare function mount<V extends Vue>(component: ComponentOptions<V>, options?: MountOptions<Vue>): Wrapper;
 export declare function mount(component: FunctionalComponentOptions, options?: MountOptions<Vue>): Wrapper;

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { mount } from "../";
+import { mount, shallow } from "../";
 import { ClassComponent, functionalOptions } from "./resources";
 
 /**
@@ -28,6 +28,10 @@ mount<ClassComponent>(ClassComponent, {
         default: ClassComponent,
         foo: [ClassComponent],
     },
+});
+
+shallow<ClassComponent>(ClassComponent, {
+    renderDefaultSlot: true,
 });
 
 mount(functionalOptions, {

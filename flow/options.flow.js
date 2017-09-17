@@ -10,5 +10,6 @@ declare type MountOptions = { // eslint-disable-line no-undef
     children?: Array<string | Component>,
     slots?: Slots,
     globals?: Object,
-    instance?: Component
+    instance?: Component,
+    renderDefaultSlot?: boolean,
 }

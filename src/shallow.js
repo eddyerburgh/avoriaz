@@ -10,8 +10,8 @@ export default function shallow(component: Component, options: MountOptions) {
   if (clonedComponent.components) {
     replaceComponents(clonedComponent);
   }
-
-  replaceGlobalComponents(Vue, clonedComponent);
+  const renderDefaultSlot = options ? options.renderDefaultSlot : false;
+  replaceGlobalComponents(Vue, clonedComponent, renderDefaultSlot);
 
   return mount(clonedComponent, options);
 }

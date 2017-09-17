@@ -37,7 +37,7 @@ function extractCoreProps(component) {
     style: component.style,
   };
 }
-export function replaceGlobalComponents(instance, component) {
+export function replaceGlobalComponents(instance, component, renderDefaultSlot) {
   Object.keys(instance.options.components).forEach((c) => {
     if (isRequired(c)) {
       return;
@@ -46,7 +46,10 @@ export function replaceGlobalComponents(instance, component) {
       component.components = {}; // eslint-disable-line no-param-reassign
     }
     component.components[c] = { // eslint-disable-line no-param-reassign
-      render: () => {},
+      render(h) {
+        if (renderDefaultSlot) return h('div', this.$slots.default);
+        return {};
+      },
       ...extractCoreProps(instance.options.components[c]),
     };
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
