@@ -23,12 +23,12 @@ mount<ClassComponent>(ClassComponent, {
         $store: store,
     },
     instance: localVue,
+    renderDefaultSlot: true,
     slots: {
         bar: slotWrapper,
         default: ClassComponent,
         foo: [ClassComponent],
     },
-    renderDefaultSlot: true,
 });
 
 mount(functionalOptions, {
