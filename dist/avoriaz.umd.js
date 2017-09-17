@@ -2956,7 +2956,7 @@ Wrapper.prototype.is = function is (selector) {
  * @returns {Boolean}
  */
 Wrapper.prototype.isEmpty = function isEmpty () {
-  return this.vNode.children === undefined;
+  return this.vNode.children === undefined || this.vNode.children.length === 0;
 };
 
 /**
@@ -3522,6 +3522,17 @@ function addAttrs(vm, attrs) {
   console.error = consoleWarnSave;
 }
 
+function addListeners(vm, listeners) {
+  var consoleWarnSave = console.error;
+  console.error = function () {};
+  if (listeners) {
+    vm.$listeners = listeners;
+  } else {
+    vm.$listeners = {};
+  }
+  console.error = consoleWarnSave;
+}
+
 function createInstance(component, options) {
   var instance = options.instance || Vue;
 
@@ -3556,6 +3567,7 @@ function createInstance(component, options) {
   var vm = new Constructor(options);
 
   addAttrs(vm, options.attrs);
+  addListeners(vm, options.listeners);
 
   if (options.slots) {
     addSlots(vm, options.slots);
@@ -3640,7 +3652,7 @@ function extractCoreProps(component) {
     style: component.style,
   };
 }
-function replaceGlobalComponents(instance, component) {
+function replaceGlobalComponents(instance, component, renderDefaultSlot) {
   Object.keys(instance.options.components).forEach(function (c) {
     if (isRequired(c)) {
       return;
@@ -3648,7 +3660,10 @@ function replaceGlobalComponents(instance, component) {
     if (!component.components) {
       component.components = {}; // eslint-disable-line no-param-reassign
     }
-    component.components[c] = Object.assign({}, {render: function () {}},
+    component.components[c] = Object.assign({}, {render: function render(h) {
+        if (renderDefaultSlot) { return h('div', this.$slots.default); }
+        return {};
+      }},
       extractCoreProps(instance.options.components[c]));
     delete component.components[c]._Ctor; // eslint-disable-line no-param-reassign
     stubLifeCycleEvents(component.components[c]);
@@ -3674,8 +3689,8 @@ function shallow(component, options) {
   if (clonedComponent.components) {
     replaceComponents(clonedComponent);
   }
-
-  replaceGlobalComponents(Vue, clonedComponent);
+  var renderDefaultSlot = options ? options.renderDefaultSlot : false;
+  replaceGlobalComponents(Vue, clonedComponent, renderDefaultSlot);
 
   return mount(clonedComponent, options);
 }
