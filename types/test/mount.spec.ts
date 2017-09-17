@@ -28,6 +28,7 @@ mount<ClassComponent>(ClassComponent, {
         default: ClassComponent,
         foo: [ClassComponent],
     },
+    renderDefaultSlot: true,
 });
 
 mount(functionalOptions, {
