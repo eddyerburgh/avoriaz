@@ -139,7 +139,7 @@ import Vue from 'vue';
 import { mount } from 'avoriaz';
 import { expect } from 'chai';
 import Vuex from 'vuex';
-import Actions from '../../../src/components/Getters';
+import Getters from '../../../src/components/Getters';
 
 Vue.use(Vuex);
 
