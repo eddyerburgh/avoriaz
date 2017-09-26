@@ -2,7 +2,7 @@
 
 Returns a Vue instances propData object. Can only be called on a Vue component wrapper.
 
-The propsData object contains the data of an instances props. If a Vue component passed props to a child component, the data will be accessible in propsData.
+The propsData object contains the data of an instance's props. If a Vue component passed props to a child component, the data will be accessible in propsData.
 
 ### Returns
 
