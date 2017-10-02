@@ -1,7 +1,8 @@
 // @flow
 
 import { compileToFunctions } from 'vue-template-compiler';
+import assign from 'lodash/assign';
 
 export default function compileTemplate(component: Component) {
-  Object.assign(component, compileToFunctions(component.template));
+  assign(component, compileToFunctions(component.template));
 }
