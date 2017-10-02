@@ -303,12 +303,13 @@ export default class Wrapper implements WrapperInterface {
   }
 
   /**
-   * Checks if node is empty
+   * Checks if node is empty or all children are comment nodes
    *
    * @returns {Boolean}
    */
   isEmpty() {
-    return this.vNode.children === undefined || this.vNode.children.length === 0;
+    return this.vNode.children === undefined || this.vNode.children.length === 0 ||
+      this.vNode.children.every(child => child.elm.nodeName === '#comment');
   }
 
   /**
