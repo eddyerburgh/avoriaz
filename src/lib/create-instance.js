@@ -7,6 +7,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import addGlobals from 'vue-add-globals';
 import addSlots from './add-slots';
 import addProvide from './add-provide';
+import compileTemplate from './compile-template';
 
 function addAttrs(vm, attrs) {
   const consoleWarnSave = console.error;
@@ -50,6 +51,10 @@ export default function createInstance(component: Component, options: MountOptio
         return h(clonedComponent, options.context, options.children);
       },
     };
+  }
+
+  if (!component.render && component.template && !component.functional) {
+    compileTemplate(component);
   }
 
   if (options.provide) {

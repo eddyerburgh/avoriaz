@@ -199,6 +199,14 @@ describe('mount', () => {
     expect(wrapper.vm.$listeners.aListener).to.equal(aListener);
   });
 
+  it('compiles inline templates', () => {
+    const wrapper = mount({
+      template: '<div>foo</div>',
+    });
+    expect(wrapper.vm).to.be.an('object');
+    expect(wrapper.html()).to.equal('<div>foo</div>');
+  });
+
   it('defines listeners as empty object even when not passed', () => {
     const wrapper = mount(compileToFunctions('<p />'));
     expect(wrapper.vm.$listeners).to.deep.equal({});
