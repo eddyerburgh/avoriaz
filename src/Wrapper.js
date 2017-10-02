@@ -254,9 +254,7 @@ export default class Wrapper implements WrapperInterface {
    * @returns {String} HTML of wrapper element
    */
   html() {
-    const tmp = document.createElement('div');
-    tmp.appendChild(this.element);
-    return tmp.innerHTML;
+    return this.element.outerHTML;
   }
 
   /**
