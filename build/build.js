@@ -37,7 +37,7 @@ rollup({
 
 rollup({
   entry: resolve('src/avoriaz.js'),
-  external: ['vue'],
+  external: ['vue', 'vue-template-compiler'],
   plugins: [
     flow(),
     buble({
@@ -59,7 +59,7 @@ rollup({
 
 rollup({
   entry: resolve('src/avoriaz.js'),
-  external: ['vue'],
+  external: ['vue', 'vue-template-compiler'],
   plugins: [
     flow(),
     buble({
