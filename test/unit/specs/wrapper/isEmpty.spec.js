@@ -9,15 +9,36 @@ describe('isEmpty', () => {
     expect(wrapper.isEmpty()).to.equal(true);
   });
 
-  it('returns true contains empty slot', () => {
+  it('returns true if node has whitespace', () => {
+    const compiled = compileToFunctions('<div>  </div>');
+    const wrapper = mount(compiled);
+
+    expect(wrapper.isEmpty()).to.equal(true);
+  });
+
+  it('returns true if node contains removed element', () => {
+    const compiled = compileToFunctions('<div><p v-if="false"></p></div>');
+    const wrapper = mount(compiled);
+
+    expect(wrapper.isEmpty()).to.equal(true);
+  });
+
+  it('returns true if node contains empty slot', () => {
     const compiled = compileToFunctions('<div><slot></slot></div>');
     const wrapper = mount(compiled);
 
     expect(wrapper.isEmpty()).to.equal(true);
   });
 
-  it('returns false if node contains other nodes', () => {
+  it('returns false if node contains element nodes', () => {
     const compiled = compileToFunctions('<div><p /></div>');
+    const wrapper = mount(compiled);
+
+    expect(wrapper.isEmpty()).to.equal(false);
+  });
+
+  it('returns false if node contains text nodes', () => {
+    const compiled = compileToFunctions('<div>Text content</div>');
     const wrapper = mount(compiled);
 
     expect(wrapper.isEmpty()).to.equal(false);
