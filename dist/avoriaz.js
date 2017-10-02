@@ -6,6 +6,7 @@ var Vue = _interopDefault(require('vue'));
 var cloneDeep = _interopDefault(require('lodash/cloneDeep'));
 var addGlobals = _interopDefault(require('vue-add-globals'));
 var assign = _interopDefault(require('lodash/assign'));
+var vueTemplateCompiler = require('vue-template-compiler');
 
 // 
 
@@ -370,9 +371,7 @@ Wrapper.prototype.hasStyle = function hasStyle (style, value) {
  * @returns {String} HTML of wrapper element
  */
 Wrapper.prototype.html = function html () {
-  var tmp = document.createElement('div');
-  tmp.appendChild(this.element);
-  return tmp.innerHTML;
+  return this.element.outerHTML;
 };
 
 /**
@@ -419,12 +418,13 @@ Wrapper.prototype.is = function is (selector) {
 };
 
 /**
- * Checks if node is empty
+ * Checks if node is empty or all children are comment nodes
  *
  * @returns {Boolean}
  */
 Wrapper.prototype.isEmpty = function isEmpty () {
-  return this.vNode.children === undefined || this.vNode.children.length === 0;
+  return this.vNode.children === undefined || this.vNode.children.length === 0 ||
+    this.vNode.children.every(function (child) { return child.elm.nodeName === '#comment'; });
 };
 
 /**
@@ -667,6 +667,12 @@ function addProvide(component, options) {
   };
 }
 
+// 
+
+function compileTemplate(component) {
+  assign(component, vueTemplateCompiler.compileToFunctions(component.template));
+}
+
 /* eslint-disable no-param-reassign */
 
 // 
@@ -713,6 +719,10 @@ function createInstance(component, options) {
         return h(clonedComponent, options.context, options.children);
       },
     };
+  }
+
+  if (!component.render && component.template && !component.functional) {
+    compileTemplate(component);
   }
 
   if (options.provide) {
