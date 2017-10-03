@@ -11,9 +11,10 @@ Returns a Vue instances computed object. Can only be called on a Vue component w
 `Foo.vue`
 
 ```js
-<template>
+<template lang="html">
     <div></div>
 </template>
+
 <script>
 export default {
     name: 'foo',
@@ -22,7 +23,7 @@ export default {
             return 'f' + 'o' + 'o';
         }
     }
-};
+}
 </script>
 ```
 
