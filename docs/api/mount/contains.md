@@ -16,7 +16,9 @@ Returns true if wrapper contains selector. Use any valid [avoriaz selector](/api
 
 ```js
 <template lang="html">
-    <div><p></p></div>
+    <div>
+        <p></p>
+    </div>
 </template>
 
 <script>
@@ -48,7 +50,8 @@ expect(wrapper.contains('p')).to.equal(true);
 </template>
 
 <script>
-import Baz from './Baz.vue'
+import Baz from './Baz.vue';
+
 export default {
     name: 'bar',
     components: {
@@ -75,9 +78,9 @@ export default {
 `Bar.spec.js`
 
 ```js
-import { mount } from 'avoriaz'
-import Bar from './Bar.vue'
-import Baz from './Baz.vue'
+import { mount } from 'avoriaz';
+import Bar from './Bar.vue';
+import Baz from './Baz.vue';
 
 const wrapper = mount(Bar)
 expect(wrapper.contains(Baz)).to.equal(true)
