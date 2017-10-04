@@ -36,7 +36,6 @@ Create a fully rendered Vue component. Returns a wrapper that includes methods t
 
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
@@ -49,7 +48,6 @@ describe('Foo', () => {
 #### With Vue options
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
@@ -67,7 +65,6 @@ describe('Foo', () => {
 #### Attach to DOM
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
@@ -82,7 +79,6 @@ describe('Foo', () => {
 #### Default and named slots
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
 import Foo from './Foo.vue';
 import Bar from './Bar.vue';
 import FooBar from './FooBar.vue';
@@ -103,7 +99,6 @@ describe('Foo', () => {
 #### Adding globals
 ```js
 import { mount } from 'avoriaz';
-import { expect } from 'chai';
 import Foo from './Foo.vue';
 
 describe('Foo', () => {
