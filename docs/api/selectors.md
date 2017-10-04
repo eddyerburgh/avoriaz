@@ -27,9 +27,9 @@ avoriaz uses the *name* property to search the instance tree for matching Vue co
 ```js
 // Foo.vue
 
-export default{
-  name: 'Foo',
-};
+export default {
+  name: 'Foo'
+}
 ```
 
 ```js
