@@ -6,8 +6,8 @@ Let’s look at some code.
 
 This is the component we want to test. It calls Vuex actions.
 
-```vue
-<template>
+```js
+<template lang="html">
   <div class="text-align-center">
     <input type="text" @input="actionInputIfTrue" />
     <button @click="actionClick()">Click</button>
@@ -109,8 +109,8 @@ Great, so now we can mock actions, let’s look at mocking getters.
 ## Mocking Getters
    
 
-```vue
-<template>
+```js
+<template lang="html">
   <div>
     <p v-if="inputValue">{{inputValue}}</p>
     <p v-if="clicks">{{clicks}}</p>
@@ -133,7 +133,7 @@ This is a fairly simple component. It renders the result of the getters clicks a
 
 Let’s see the test:
 
-```javascript
+```js
 import 'babel-polyfill';
 import Vue from 'vue';
 import { mount } from 'avoriaz';
@@ -182,8 +182,8 @@ This is great, but what if we want to check our getters are returning the correc
 
 Let’s look at our component:
 
-```vue
-<template>
+```js
+<template lang="html">
   <div>
     <button @click="moduleActionClick()">Click</button>
     <p>{{moduleClicks}}</p>
@@ -210,7 +210,7 @@ Simple component that includes one action and one getter.
 
 And the test:
 
-```javascript
+```js
 import Vue from 'vue';
 import { mount } from 'avoriaz';
 import sinon from 'sinon';
