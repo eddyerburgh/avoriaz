@@ -11,7 +11,7 @@ event (`String`): type of event (e.g. click).
 ```js
 import { mount } from 'avoriaz';
 import sinon from 'sinon';
-import Foo from './Foo';
+import Foo from './Foo.vue';
 
 const clickHandler = sinon.stub();
 const wrapper = mount(Foo, {
