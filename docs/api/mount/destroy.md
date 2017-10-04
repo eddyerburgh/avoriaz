@@ -4,27 +4,27 @@ Destroys Vue instance. Can only be called on a Vue component
 
 ### Example
 
-BeforeDestroy.vue
-```vue
-<template>
-  <div />
+`BeforeDestroy.vue`
+
+```js
+<template lang="html">
+  <div></div>
 </template>
 
 <script>
-
-export default{
+export default {
   name: 'BeforeDestroy',
   beforeDestroy() {
     this.func();
   },
-  props: ['func'],
-
-};
+  props: ['func']
+}
 </script>
 
 ```
 
-BeforeDestroy.spec.js
+`BeforeDestroy.spec.js`
+
 ```js
 import { mount } from 'avoriaz';
 import sinon from 'sinon';
