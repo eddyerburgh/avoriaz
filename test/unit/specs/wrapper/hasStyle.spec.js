@@ -47,7 +47,7 @@ describe('hasStyle', () => {
   it('throws an error if value is not a string', () => {
     const compiled = compileToFunctions('<div />');
     const wrapper = mount(compiled);
-    const message = 'wrapper.hasClass() must be passed value as string';
+    const message = 'wrapper.hasStyle() must be passed value as string';
     expect(() => wrapper.hasStyle('color', undefined)).to.throw(Error, message);
   });
 });
