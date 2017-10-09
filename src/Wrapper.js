@@ -223,7 +223,7 @@ export default class Wrapper implements WrapperInterface {
     }
 
     if (typeof value !== 'string') {
-      error('wrapper.hasClass() must be passed value as string');
+      error('wrapper.hasStyle() must be passed value as string');
     }
 
     /* istanbul ignore next */
