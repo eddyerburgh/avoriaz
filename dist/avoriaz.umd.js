@@ -2871,7 +2871,7 @@ Wrapper.prototype.hasStyle = function hasStyle (style, value) {
   }
 
   if (typeof value !== 'string') {
-    error('wrapper.hasClass() must be passed value as string');
+    error('wrapper.hasStyle() must be passed value as string');
   }
 
   /* istanbul ignore next */
@@ -3147,6 +3147,11 @@ var VueWrapper = (function (Wrapper$$1) {
       get: function () { return this$1.vm._vnode; },
       set: function () {},
     });
+    // $FlowIgnore
+    Object.defineProperty(this, 'element', ({
+      get: function () { return vm.$el; },
+      set: function () {},
+    }));
     this.isVueComponent = true;
   }
 
