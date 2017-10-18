@@ -10,6 +10,16 @@ describe('setData', () => {
     expect(wrapper.find('.child.ready').length).to.equal(1);
   });
 
+  it('sets component data and updates element', () => {
+    const Component = {
+      template: '<a v-if="aProp"></a>',
+      props: ['aProp'],
+    };
+    const wrapper = mount(Component);
+    wrapper.setProps({ aProp: true });
+    expect(wrapper.html()).to.contain('a');
+  });
+
   it('throws an error if node is not a Vue instance', () => {
     const message = 'wrapper.setData() can only be called on a Vue instance';
     const compiled = compileToFunctions('<div><p></p></div>');

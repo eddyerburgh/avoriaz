@@ -16,6 +16,11 @@ export default class VueWrapper extends Wrapper {
       get: () => this.vm._vnode,
       set: () => {},
     });
+    // $FlowIgnore
+    Object.defineProperty(this, 'element', ({
+      get: () => vm.$el,
+      set: () => {},
+    }));
     this.isVueComponent = true;
   }
 }
