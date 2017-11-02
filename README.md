@@ -3,6 +3,9 @@
 
 > a Vue.js testing utility library
 
+## Deprecation
+
+This library will be deprecated once [vue-test-utils](https://github.com/vuejs/vue-test-utils) is released.
 
 ## Installation
 
