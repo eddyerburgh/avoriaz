@@ -1,3 +1,4 @@
+# Note: This library is obsolete. Use [vue-test-utils](https://github.com/vuejs/vue-test-utils). 
 # avoriaz [![Build Status](https://travis-ci.org/eddyerburgh/avoriaz.svg?branch=master)](https://travis-ci.org/eddyerburgh/avoriaz)
 
 
