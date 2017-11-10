@@ -34,3 +34,4 @@
   * [selectors](/api/selectors.md)
   * guides
     * [using with vuex](/guides/using-with-vuex.md)
+    * [migrating to vue-test-utils](/guides/migrating-to-vue-test-utils.md)
