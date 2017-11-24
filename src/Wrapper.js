@@ -207,13 +207,7 @@ export default class Wrapper implements WrapperInterface {
       error('wrapper.hasClass() must be passed a string');
     }
 
-    let classes = this.element.className;
-
-    if (typeof classes === 'object') {
-      classes = classes.baseVal;
-    }
-
-    return classes.split(' ').indexOf(className) !== -1;
+    return this.element.classList.contains(className);
   }
 
   /**
