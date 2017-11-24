@@ -1,5 +1,6 @@
 // @flow
 
+import createEvent from 'create-event';
 import findMatchingVNodes from './lib/find-matching-vnodes';
 import {
   findVueComponents,
@@ -437,8 +438,8 @@ export default class Wrapper implements WrapperInterface {
      * @param {String} type - type of event
      * @returns {Boolean}
      */
-  trigger(type: string) {
-    if (typeof type !== 'string') {
+  trigger(eventTypeWithModifier: string, options: object = {}) {
+    if (typeof eventTypeWithModifier !== 'string') {
       error('wrapper.trigger() must be passed a string');
     }
 
@@ -454,23 +455,17 @@ export default class Wrapper implements WrapperInterface {
       right: 39,
     };
 
-    const event = type.split('.');
-
-    let eventObject;
+    const [type, keyModifier] = eventTypeWithModifier.split('.');
 
     // Fallback for IE10,11 - https://stackoverflow.com/questions/26596123
-    if (typeof (Event) === 'function') {
-      eventObject = new window.Event(event[0]);
-    } else {
-      eventObject = document.createEvent('Event');
-      eventObject.initEvent(event[0], true, true);
-    }
-
-    if (event.length === 2) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (keyModifier && modifiers.hasOwnProperty(keyModifier)) {
       // $FlowIgnore
-      eventObject.keyCode = modifiers[event[1]];
+      // eslint-disable-next-line no-param-reassign
+      options.key = modifiers[keyModifier];
     }
 
+    const eventObject = createEvent(type, options);
     this.element.dispatchEvent(eventObject);
     this.update();
   }
