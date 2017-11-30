@@ -5,6 +5,7 @@ dispatch an event on the wrapper
 ### Arguments
 
 event (`String`): type of event (e.g. click).
+options (`Object`): options.
 
 ## Example
 
@@ -18,7 +19,9 @@ const wrapper = mount(Foo, {
   propsData: { clickHandler },
 });
 
-wrapper.dispatch('click');
+wrapper.dispatch('click', {
+  clientX: 123
+});
 
 expect(clickHandler.called).to.equal(true)
 ```
