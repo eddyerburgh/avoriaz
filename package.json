@@ -1,6 +1,6 @@
 {
   "name": "avoriaz",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "a Vue.js testing utility library",
   "main": "dist/avoriaz.js",
   "types": "types/index.d.ts",
