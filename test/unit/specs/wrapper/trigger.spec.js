@@ -26,6 +26,19 @@ describe('trigger', () => {
     expect(wrapper.vm.clickHandler.called).to.equal(true);
   });
 
+  it('should pass additional properties to the event', () => {
+    const childClickHandler = sinon.stub();
+    const wrapper = mount(ClickComponent, {
+      propsData: { childClickHandler, parentClickHandler: () => {} },
+    });
+    const button = wrapper.find('#button')[0];
+    button.trigger('click', {
+      clientX: 123,
+    });
+
+    expect(childClickHandler.args[0][0].clientX).to.equal(123);
+  });
+
   it('causes click handler to fire when wrapper.trigger("click") is fired on root node', () => {
     const parentClickHandler = sinon.stub();
     const wrapper = mount(ClickComponent, {

@@ -435,9 +435,10 @@ export default class Wrapper implements WrapperInterface {
      * Triggers a DOM event on wrapper
      *
      * @param {String} type - type of event
+     * @param {Object} properties - additional event object properities
      * @returns {Boolean}
      */
-  trigger(type: string) {
+  trigger(type: string, properties: Object = {}) {
     if (typeof type !== 'string') {
       error('wrapper.trigger() must be passed a string');
     }
@@ -477,6 +478,10 @@ export default class Wrapper implements WrapperInterface {
       // $FlowIgnore
       eventObject.keyCode = modifiers[event[1]];
     }
+
+    Object.keys(properties).forEach((key) => {
+      eventObject[key] = properties[key];
+    });
 
     this.element.dispatchEvent(eventObject);
     this.update();
