@@ -3089,9 +3089,12 @@ Wrapper.prototype.value = function value () {
    * Triggers a DOM event on wrapper
    *
    * @param {String} type - type of event
+   * @param {Object} properties - additional event object properities
    * @returns {Boolean}
    */
-Wrapper.prototype.trigger = function trigger (type) {
+Wrapper.prototype.trigger = function trigger (type, properties) {
+    if ( properties === void 0 ) properties = {};
+
   if (typeof type !== 'string') {
     error('wrapper.trigger() must be passed a string');
   }
@@ -3131,6 +3134,10 @@ Wrapper.prototype.trigger = function trigger (type) {
     // $FlowIgnore
     eventObject.keyCode = modifiers[event[1]];
   }
+
+  Object.keys(properties).forEach(function (key) {
+    eventObject[key] = properties[key];
+  });
 
   this.element.dispatchEvent(eventObject);
   this.update();
