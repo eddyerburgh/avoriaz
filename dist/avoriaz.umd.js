@@ -3106,6 +3106,13 @@ Wrapper.prototype.trigger = function trigger (type) {
     down: 40,
     left: 37,
     right: 39,
+    end: 35,
+    home: 36,
+    del: 46,
+    backspace: 8,
+    insert: 45,
+    pageup: 33,
+    pagedown: 34,
   };
 
   var event = type.split('.');
