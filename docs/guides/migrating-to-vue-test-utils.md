@@ -34,6 +34,21 @@ Another difference is the name of the mounting options:
 | `globals`  | `mocks`  |
 |  `instance` | `localVue`  |
 
+## Accessing data on components
+In the past, avoriaz exposed `data`, `methods` and `props` on the wrappers for mounted components. Going forward it is recommended that any data from these methods instead be accessed directly from `vm`.
+
+```js
+// avoriaz
+const wrapper = mount(Component)
+expect(component.$data.propValue).to.equal(123)
+```
+
+```js
+// vue-test-utils
+const wrapper = mount(Component)
+expect(component.vm.propValue).to.equal(123)
+```
+
 ## hasClass, hasProp, and hasAttribute
 
 vue-test-utils will replace `hasProp`, `hasClass`, and `hasAttribute` with `props`, `classes`, and `attributes`.
